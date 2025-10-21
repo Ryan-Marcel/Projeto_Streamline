@@ -26,6 +26,11 @@ public class Principal : Controller
         return View();
     }
 
+     public IActionResult IndexADM()
+    {
+        return View();
+    }
+
      public IActionResult Login()
     {
         return View();

@@ -1,0 +1,249 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+header {
+  color: white;
+  height: 2vh;
+  background-color: rgb(14, 65, 148);
+}
+
+.header2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  height: 150px;
+  padding-right: 30px;
+}
+
+.header2 img {
+  height: 15vh;
+  width: 56vh;
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 2vh;
+  flex-direction: column;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-items {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-item {
+  color: rgb(56, 56, 56);
+  background-color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  position: relative;
+}
+
+a.menu-item {
+  color: rgb(56, 56, 56);
+  background-color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  position: relative;
+  text-align: center;
+}
+
+.menu-item:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(249, 166, 52);
+}
+.menu-item {
+  text-decoration: none;
+}
+
+.submenu {
+  position: relative;
+}
+
+.submenu-content {
+  display: none !important;
+  position: absolute;
+  background: #fff;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  left: 0;
+  top: 100%;
+  flex-direction: column;
+}
+
+.submenu-content a {
+  padding: 8px 12px;
+  display: block;
+  text-decoration: none;
+  color: #333;
+}
+
+.submenu-content a:hover {
+  background: #eee;
+}
+
+.submenu.open .submenu-content {
+  display: block !important;
+}
+
+.banner {
+  display: flex;
+  background-image: url(../IMG/banner-portfolio-senai[105527]_267825_img.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 45vh;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+}
+
+body {
+  height: 60vh;
+  padding-bottom: 10vh;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url(../IMG/magicpattern-65O4Dw6-xLg-unsplash\ \(1\).jpg);
+}
+
+.container2 {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  height: 100%;
+  width: 90%;
+  margin: 20px auto;
+  background-color: rgba(0, 0, 0, 0.534);
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 50px;
+}
+
+.ferramentas {
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 2fr);
+  grid-template-rows: repeat(2, 2fr);
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  height: 99%;
+  width: 99%;
+  padding: 10px;
+}
+
+#card{
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  height: 90%;
+  gap: 8px;
+  transition: 0.3s;
+  border-radius: 10px;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#card img{
+  height: 60px;
+  width: auto;
+}
+
+#card p{
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-link {
+    display: flex;             
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgb(255, 255, 255);
+    height: 90%;
+    border-radius: 10px;
+    margin: 10px;
+    text-decoration: none;      /* Remove sublinhado do link */
+    color: inherit;             /* Mantém cor do texto */
+    transition: 0.3s;
+}
+
+.card-link img {
+    height: 60px;
+    width: auto;
+}
+
+.card-link p {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-link:hover {
+    background-color: rgb(255, 255, 255);
+    border: 5px solid rgb(249, 166, 52);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+/* Responsivo */
+@media (max-width: 1087px) {
+  .menu-items {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  .menu-items.open {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+}
+
+footer {
+  background-color: rgb(38, 35, 55);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  width: 100%;
+  height: 9vh;
+}

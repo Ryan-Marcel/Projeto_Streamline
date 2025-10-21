@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hoNtYFW1joU=",
+  "dgSpecHash": "Bv2s25schoo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\G91147\\Projeto\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
+  "projectFilePath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Aluno SENAI.C308-LAB3-001\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Aluno SENAI.C308-LAB3-001\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

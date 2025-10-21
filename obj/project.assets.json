@@ -8469,11 +8469,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\G91147\\Projeto\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
+      "projectUniqueName": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
       "projectName": "Projeto_Dotnet8",
-      "projectPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\G91147\\Projeto\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
+      "projectPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
       "packagesPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\G91147\\Projeto\\Projeto_Dotnet8\\obj\\",
+      "outputPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Aluno SENAI.C308-LAB3-001\\AppData\\Roaming\\NuGet\\NuGet.Config"
