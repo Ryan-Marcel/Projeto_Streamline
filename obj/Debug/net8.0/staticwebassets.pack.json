@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\css\\index.css"
     },
     {
+      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\wwwroot\\css\\indexADM.css",
+      "PackagePath": "staticwebassets\\css\\indexADM.css"
+    },
+    {
       "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\wwwroot\\css\\listar.css",
       "PackagePath": "staticwebassets\\css\\listar.css"
     },

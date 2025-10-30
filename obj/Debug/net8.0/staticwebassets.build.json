@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZCnYTwTy3B3ysHsVAHTXHPZNUQb6mpyheY5r6iEBDiI=",
+  "Hash": "I27ajPmgsSY7sL/8+bIRoZIO4b/OTkCnBMoDtaCv5ao=",
   "Source": "Projeto_Dotnet8",
   "BasePath": "_content/Projeto_Dotnet8",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\index.css"
+    },
+    {
+      "Identity": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\wwwroot\\css\\indexADM.css",
+      "SourceId": "Projeto_Dotnet8",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\wwwroot\\",
+      "BasePath": "_content/Projeto_Dotnet8",
+      "RelativePath": "css/indexADM.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\indexADM.css"
     },
     {
       "Identity": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\wwwroot\\css\\listar.css",
