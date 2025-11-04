@@ -31,7 +31,12 @@ public class Principal : Controller
         return View();
     }
 
-     public IActionResult Login()
+    public IActionResult Login()
+    {
+        return View();
+    }
+    
+         public IActionResult Dashboard()
     {
         return View();
     }

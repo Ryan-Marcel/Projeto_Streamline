@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj": {}
+    "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj": {
+    "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
+        "projectUniqueName": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
         "projectName": "Projeto_Dotnet8",
-        "projectPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\Projeto_Dotnet8.csproj",
-        "packagesPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Dotnet8\\obj\\",
+        "projectPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Aluno SENAI.C308-LAB3-001\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -79,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
