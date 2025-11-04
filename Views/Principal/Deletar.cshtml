@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/deletar.css" />
-
+    <link rel="stylesheet" href="~/css/header.css" />
 
 
 </head>
@@ -18,12 +18,11 @@
 
     <partial name="_Header" />
 
-  
-
     <section class="container">
         @* Processo de exclusão do Pc do Banco De Dados *@
-        <h1>Confirmar Deletar</h1>
-        <p>sVocê tem certeza que deseja deletar o Computador: @Model.Nome?</p>
+        <h2>Confirmar Deletar</h2>
+        
+        <p>Você tem certeza que deseja deletar o Computador: @Model.Nome?</p>
 
         <form asp-action="Deletar" method="post">
             <input type="hidden" asp-for="ID" />

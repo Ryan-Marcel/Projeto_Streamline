@@ -33,7 +33,7 @@ body {
   justify-content: center;
   align-self: center;
   justify-self: center;
-  height: 110%;
+  min-height: 100%;
   width: 90%;
   margin: 20px auto;
   background-color: rgba(0, 0, 0, 0.534);
@@ -42,23 +42,30 @@ body {
   margin-bottom: 50px;
 }
 
+
 .ferramentas {
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 2fr);
-  grid-template-rows: repeat(2, 2fr);
-  gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
-  height: 99%;
   width: 99%;
   padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .ferramentas {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  
 }
 
 #card{
   display: flex;
   background-color: rgb(255, 255, 255);
   height: 90%;
+  padding: 10px;
   gap: 2px;
   transition: 0.3s;
   border-radius: 10px;
@@ -71,6 +78,7 @@ body {
 #card img{
   height: 50px;
   width: auto;
+  padding: 5px;
 }
 
 #card p{
@@ -89,7 +97,7 @@ body {
     background-color: rgb(255, 255, 255);
     height: 90%;
     border-radius: 10px;
-    margin: 10px;
+    margin: 17px;
     text-decoration: none;      /* Remove sublinhado do link */
     color: inherit;             /* Mantém cor do texto */
     transition: 0.3s;
@@ -111,30 +119,9 @@ body {
     background-color: rgb(255, 255, 255);
     border: 5px solid rgb(249, 166, 52);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05);
     transition: 0.3s;
 }
 
-/* Responsivo */
-@media (max-width: 1087px) {
-  .menu-items {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-  }
-  .menu-items.open {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-}
 
 footer {
   background-color: rgb(38, 35, 55);

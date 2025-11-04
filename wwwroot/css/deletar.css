@@ -4,113 +4,13 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* INICIO DO HEADER E NAVBAR */
-
-header {
-    color: white;
-    height: 5vh;
-    background-color: rgb(14,65,148);
-}
-
-.header2 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: white;
-    height: 150px;
-    padding-right: 30px;
-}
-
-.header2 img {
-    height: 15vh;
-    width: 56vh;
-}
-
-.menu {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 2vh;
-}
-
-.menu-toggle {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.menu-toggle img {
-    height: 32px;
-    width: 32px;
-}
-
-.menu-items {
-    display: flex;
-    gap: 10px;
-}
-
-.menu-item {
-    color: rgb(56, 56, 56);
-    background-color: white;
-    border: none;
-    padding: 8px 14px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-    position: relative;
-}
-
-a.menu-item {
-    color: rgb(56, 56, 56);
-    background-color: white;
-    border: none;
-    padding: 8px 14px;
-    font-size: 20px;
-    cursor: pointer;
-    transition: 0.5s;
-    position: relative;
-    text-align: center;
-}
-
-.menu-item:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(249, 166, 52);
-}
-.menu-item {
-    text-decoration: none;
-}
-
-@media (max-width: 1087px) {
-    .menu-items {
-        display: none;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        right: 0;
-        top: 100%;
-        width: 200px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        z-index: 100;
-    }
-    .menu-items.open {
-        display: flex;
-    }
-    .menu-toggle {
-        display: block !important;
-    }
-}
-/* FIM DO HEADER E NAVBAR */
-
 body{
     background-size: cover;
     background:
     linear-gradient(100deg, rgba(37, 4, 121, 0.855), rgb(255 0 0 / 0%) 70.71%),
     linear-gradient(28deg, rgb(184, 0, 31), rgb(0 255 0 / 0%) 70.71%),
     linear-gradient(280deg, rgba(212, 96, 7, 0.904), rgb(0 0 255 / 0%) 70.71%);
-    height: 140vh;
+    height: 100vh;
 }
 
 
@@ -120,8 +20,8 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
-    min-width: 500px;
+    max-width: 50%;
+    min-width: 250px;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;

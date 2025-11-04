@@ -5,110 +5,6 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-header {
-  color: white;
-  height: 2vh;
-  background-color: rgb(14, 65, 148);
-}
-
-.header2 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: white;
-  height: 150px;
-  padding-right: 30px;
-}
-
-.header2 img {
-  height: 15vh;
-  width: 56vh;
-}
-
-.menu {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 2vh;
-  flex-direction: column;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.menu-items {
-  display: flex;
-  gap: 10px;
-}
-
-.menu-item {
-  color: rgb(56, 56, 56);
-  background-color: white;
-  border: none;
-  padding: 8px 14px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.5s;
-  position: relative;
-}
-
-a.menu-item {
-  color: rgb(56, 56, 56);
-  background-color: white;
-  border: none;
-  padding: 8px 14px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.5s;
-  position: relative;
-  text-align: center;
-}
-
-.menu-item:hover {
-  background-color: rgb(255, 255, 255);
-  color: rgb(249, 166, 52);
-}
-.menu-item {
-  text-decoration: none;
-}
-
-.submenu {
-  position: relative;
-}
-
-.submenu-content {
-  display: none !important;
-  position: absolute;
-  background: #fff;
-  min-width: 120px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  left: 0;
-  top: 100%;
-  flex-direction: column;
-}
-
-.submenu-content a {
-  padding: 8px 12px;
-  display: block;
-  text-decoration: none;
-  color: #333;
-}
-
-.submenu-content a:hover {
-  background: #eee;
-}
-
-.submenu.open .submenu-content {
-  display: block !important;
-}
-
 .banner {
   display: flex;
   background-image: url(../IMG/banner-portfolio-senai[105527]_267825_img.png);
@@ -137,7 +33,7 @@ body {
   justify-content: center;
   align-self: center;
   justify-self: center;
-  height: 100%;
+  min-height: 100%;
   width: 90%;
   margin: 20px auto;
   background-color: rgba(0, 0, 0, 0.534);
@@ -154,9 +50,16 @@ body {
   gap: 8px;
   justify-content: center;
   align-items: center;
-  height: 99%;
   width: 99%;
   padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .ferramentas {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  
 }
 
 #card{
@@ -193,15 +96,16 @@ body {
     background-color: rgb(255, 255, 255);
     height: 90%;
     border-radius: 10px;
-    margin: 10px;
+    margin: 17px;
     text-decoration: none;      /* Remove sublinhado do link */
     color: inherit;             /* Mantém cor do texto */
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 .card-link img {
     height: 60px;
     width: auto;
+    padding: 3px;
 }
 
 .card-link p {
@@ -217,27 +121,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
     transition: 0.3s;
-}
-
-/* Responsivo */
-@media (max-width: 1087px) {
-  .menu-items {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    right: 0;
-    top: 100%;
-    width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-  }
-  .menu-items.open {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
 }
 
 footer {
