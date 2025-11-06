@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4xfO9RhmD5KlwsFER07k8JPH9gWf9Qabuf/kYoh5aNY=",
+  "Hash": "gIFG1oQXEfiS69Wl/a8nkLa1RJoTmwsmJimyEMbBmMM=",
   "Source": "Projeto_Dotnet8",
   "BasePath": "_content/Projeto_Dotnet8",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\criarPC.css"
+    },
+    {
+      "Identity": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\dashboard.css",
+      "SourceId": "Projeto_Dotnet8",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\",
+      "BasePath": "_content/Projeto_Dotnet8",
+      "RelativePath": "css/dashboard.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\dashboard.css"
     },
     {
       "Identity": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\deletar.css",

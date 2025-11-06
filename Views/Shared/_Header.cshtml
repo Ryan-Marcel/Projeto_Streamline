@@ -2,11 +2,12 @@
 
 <link rel="stylesheet" href="~/header.css" asp-append-version="true" />
 
-<header></header>
+<section class="header1"></section>
 
 <section class="header2">
     <a asp-controller="Principal" asp-action="Index">
-        <img id="Logo" src="https://www.senaibahia.com.br/wp-content/themes/senai/assets/images/senailogo_nova.png" alt="">
+        <img id="Logo" src="https://www.senaibahia.com.br/wp-content/themes/senai/assets/images/senailogo_nova.png"
+            alt="">
     </a>
 
     <nav class="menu">
@@ -19,15 +20,14 @@
             <button class="menu-item">Para Você</button>
             <button class="menu-item">Fale Conosco</button>
             <a class="menu-item" asp-controller="Principal" asp-action="Login">Sair</a>
-        </div>  
+        </div>
     </nav>
 </section>
-
 
 @* FUNÇÃO DO NAVBAR RESPONSIVO *@
 
 <script>
-document.getElementById('menuToggle').onclick = function() {
-    document.getElementById('menuItems').classList.toggle('open');
-};
+    document.getElementById('menuToggle').onclick = function () {
+        document.getElementById('menuItems').classList.toggle('open');
+    };
 </script>

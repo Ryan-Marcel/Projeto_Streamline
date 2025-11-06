@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets\\css\\criarPC.css"
     },
     {
+      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\dashboard.css",
+      "PackagePath": "staticwebassets\\css\\dashboard.css"
+    },
+    {
       "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\deletar.css",
       "PackagePath": "staticwebassets\\css\\deletar.css"
     },

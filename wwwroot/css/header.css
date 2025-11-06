@@ -5,9 +5,9 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-header {
+.header1 {
   color: white;
-  height: 2vh;
+  height: 3vh;
   background-color: rgb(14, 65, 148);
 }
 
