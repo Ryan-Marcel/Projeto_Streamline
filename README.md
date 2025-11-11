@@ -11,8 +11,9 @@ Este projeto tem o objetivo de facilitar a comunicação entre alunos e técnico
 - Listagem de todas solicitações em um lugar <- ADM
 - Edição da lista com a opção de excluir solicitações <- ADM
 - Dashboard com estastísticas gerais das salas como total <- ADM
-- Gerador de Solicitações para notificar problemas com uma máquina <- Aluno
+- Gerador de solicitações para notificar problemas com uma máquina <- Aluno
 - Visualizar histórico e status de visualizações <- Aluno
+- Editar notificações criadas <- Aluno
 
 ---
 

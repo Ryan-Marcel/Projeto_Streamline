@@ -71,6 +71,7 @@ button.accept-policy {
     max-width: 380px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     animation: fadeIn 0.8s ease-in-out;
+    margin-bottom: 50px;
 }
 
 .login-box h2 {
@@ -161,5 +162,8 @@ button.accept-policy {
     text-align: center;
 }
 
+.btn-login{
+    margin-top: 15px;
+}
 
 
