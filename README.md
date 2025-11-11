@@ -1,16 +1,18 @@
-# 🖥️ Sistema de Gerenciamento de Computadores
+# 🖥️ Projeto StreamLine
 
-Este projeto tem o objetivo de facilitar a comunicação entre professores e técnicos, de maneira que os técnicos possam visualizar todas solicitações de atenção em computadores de salas específicas, melhorando a eficiência de aprendizado dos alunos da instituição.
+Este projeto tem o objetivo de facilitar a comunicação entre alunos e técnicos, de maneira que os técnicos possam visualizar todas solicitações de atenção em computadores de salas específicas, melhorando a eficiência de aprendizado dos alunos da instituição.
 
 ---
 
 ## ⌨️ Funcionalidades
 
-- Cadastro de Computadores por nome e ID
-- Cadastro de Salas por computador no sistema
-- Gerador de Solicitações para notificar problemas com uma máquina
-- Listagem de todas solicitações em um lugar
-- Edição da lista com a opção de excluir solicitações
+- Cadastro de computadores por nome e ID <- ADM
+- Cadastro de computadores por sala no sistema <- ADM
+- Listagem de todas solicitações em um lugar <- ADM
+- Edição da lista com a opção de excluir solicitações <- ADM
+- Dashboard com estastísticas gerais das salas como total <- ADM
+- Gerador de Solicitações para notificar problemas com uma máquina <- Aluno
+- Visualizar histórico e status de visualizações <- Aluno
 
 ---
 
@@ -39,7 +41,7 @@ Este projeto tem o objetivo de facilitar a comunicação entre professores e té
 2. Acesse o git bash no diretório escolhido
 
 3. Clone o repositório com o link:
-git clone https://github.com/Trustingtag/Projeto_Dotnet8.git
+https://github.com/Ryan-Marcel/Projeto_Streamline
 
 4. Abra o diretório no VScode
 
@@ -65,19 +67,30 @@ git clone https://github.com/Trustingtag/Projeto_Dotnet8.git
     └── BancoContext.cs
 ├── Migrations
 ├── /Models
+        └── /Models
+            └── /ViewModel
+                └── CriarMensagem.cs
+                └── CriarPc_Sala.cs
     └── ComputadorModel.cs
     └── ErrorViewModel.cs
     └── MensagemModels.cs
     └── SalaModels.cs
+├── /obj
+├── /Properties
+├── /Repository
 ├── /Views
         Computador
             └── CriarPC.cshtml
         Principal
             └── Criar.cshtml
+            └── Dashboard.cshtml
             └── Deletar.cshtml
             └── Editar.cshtml
             └── Index.cshtml
+            └── IndexADM.cshtml
             └── Listar.cshtml
+            └── Login.cshtml
+            └── Solicitacao.cshtml
 ├── Shared
 ├── /wwwroot (arquivos estáticos como CSS e JS)
 ├── appsettings.json
@@ -86,8 +99,9 @@ git clone https://github.com/Trustingtag/Projeto_Dotnet8.git
 
 ## 🤝 Contribuidores
 
-- Ryan Marcel Sousa Santos 
 - Leonardo Araujo Oliveira
+- Gabriel Gregorio Silva
+- Ryan Marcel Sousa Santos 
 
 ---
 
@@ -96,5 +110,7 @@ git clone https://github.com/Trustingtag/Projeto_Dotnet8.git
 Para dúvidas ou sugestões:
 - 📧 ryan.m.santos@ba.estudante.senai.br
 - 📧 leonardo.a.oliveira6@ba.estudante.senai.br
+- 📧 gabriel.g.silva6@ba.estudante.senai.br
 - 🌐 https://github.com/Ryan-Marcel
 - 🌐 https://github.com/Trustingtag
+- 🌐 https://github.com/GregDev71
