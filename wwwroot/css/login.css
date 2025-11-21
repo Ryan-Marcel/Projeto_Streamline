@@ -56,9 +56,9 @@ button.accept-policy {
     align-items: center;
     min-height: 80vh;
     background: 
-    linear-gradient(150deg, rgb(17, 120, 141), rgb(255 0 0 / 0%) 70.71%),
+    linear-gradient(150deg, rgb(4, 141, 168), rgb(255 0 0 / 0%) 70.71%),
     linear-gradient(5deg, rgb(10, 2, 51), rgb(0 255 0 / 0%) 70.71%),
-    linear-gradient(999deg, rgb(2, 55, 154), rgb(0 0 255 / 0%) 70.71%);
+    linear-gradient(999deg, rgb(56, 1, 158), rgb(0 0 255 / 0%) 70.71%);
     padding: 40px;
 }
 
