@@ -1,24 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
-using Projeto_Dotnet8.Data;
+using Projeto_Dotnet8.Data.Contexts;
 using Microsoft.Extensions.DependencyInjection;
-using Projeto_Dotnet8.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddControllers();
-
-string MySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+string MySqlConnection = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<BancoContext>(opt =>
 {
     opt.UseMySql(MySqlConnection, ServerVersion.AutoDetect(MySqlConnection));
 });
-
-builder.Services.AddScoped<IcomputadorRepository, ComputadorRepository>();
-builder.Services.AddScoped<ISalaRepository, SalaRepository>();
 
 var app = builder.Build();
 
@@ -40,5 +34,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Principal}/{action=Login}/{id?}");
+
+app.MapFallbackToController("Login", "Principal");
 
 app.Run();

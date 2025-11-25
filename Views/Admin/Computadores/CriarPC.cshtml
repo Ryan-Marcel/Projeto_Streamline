@@ -1,0 +1,57 @@
+@model Projeto_Dotnet8.Models.ViewModels.CriarPC_Sala;
+@{
+    ViewData["Title"] = "Criar Computador";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/criarPC.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+
+    @section Scripts {
+        <script src="~/js/index.js"></script>
+    }
+</head>
+
+<body>
+    <partial name="_HeaderADM" />
+
+    <div class="titulo">
+        <h1>Criar Computador</h1>
+    </div>
+
+    <section class="container">
+        <form asp-controller="Computador" asp-action="CriarPc" method="post">
+            <div class="form-floating mb-3">
+                <input asp-for="Computador.Nome" class="form-control" placeholder="Nome do Computador" id="nomePc"/>
+                <label asp-for="Computador.Nome">Nome do Computador</label>
+            </div>
+            @* Procura de Salas Existentes, para selecionar aonde deve ser criado a Máquina  *@
+            <div class="form-floating mb-3">
+                <select asp-for="SalaSelecionadaId" class="form-control" id="salaPc">
+                    <option value="">Selecione a Sala</option>
+                    @if (Model?.Salas != null)
+                    {
+                        @foreach (var sala in Model.Salas)
+                        {
+                            <option value="@sala.ID">@sala.Sala_Num</option>
+                        }
+                    }
+                </select>
+                <label asp-for="SalaSelecionadaId">Sala</label>
+            </div>
+            @* Criação de Sala, SE necessário *@
+            <div class="form-floating mb-3">
+                <input asp-for="NovaSalaNum" class="form-control" placeholder="Nova Sala (opcional)" id="novaSala" />
+                <label asp-for="NovaSalaNum">Criar Nova Sala (opcional)</label>
+            </div>
+
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button id="btnEnviarPc" class="botao" type="submit" disabled>Enviar</button>
+                <a asp-controller="Principal" asp-action="Index" id="secundario">Voltar</a>
+            </div>
+        </form>
+    </section>
+
+</body>

@@ -1,0 +1,65 @@
+@using Projeto_Dotnet8.Models.Entities
+@model IEnumerable<Projeto_Dotnet8.Models.Entities.ComputadorModels>
+
+@{
+    ViewData["Title"] = "Editar Solicitações";
+}
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/editar.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+
+    @section Scripts {
+        <script src="~/js/listar.js"></script>
+    }
+
+
+</head>
+
+
+<body>
+<using Projeto_Dotnet8.Controllers; #line default <partial name="_Header"/>
+
+<div class="titulo">
+    <h1>Editar Solicitações</h1>
+</div>
+
+<section class="container">
+
+    <section class="left50">
+ </section>
+   
+
+    <ul class="computers-list">
+        @if (Model != null && Model.Any())
+        {
+            foreach (ComputadorModels computador in Model)
+            {
+                <li>
+                    <div class="computer-header">
+                        <span>
+                        
+                            <span class="status-circle status-ok"></span>
+                            @* Redirecionamento para a página de Editar e Botão de VerificarExclusão *@
+                            <p>
+                                <b>ID:</b> @computador.ID <br>
+                                <b>Nome:</b> @computador.Nome <br>
+                                <b>Sala:</b> @computador.SalaModelsID  
+                            </p>
+                        </span>
+
+                    <a asp-controller="Principal" asp-action="Deletar" asp-route-id="@computador.ID" class="btn btn-danger">Deletar</a>
+
+                    </div>
+                </li>
+                
+            }
+        }
+    </ul>
+
+    <a asp-controller="Principal" asp-action="Listar" id="editar">Voltar</a>
+</section>
+</body>

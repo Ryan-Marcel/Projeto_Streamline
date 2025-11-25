@@ -1,0 +1,81 @@
+﻿@using Projeto_Dotnet8.Models.Entities
+@model IEnumerable<Projeto_Dotnet8.Models.Entities.ComputadorModels>
+
+@{
+    ViewData["Title"] = "Listar Solicitações";
+}
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/listar.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+
+    @section Scripts {
+        <script src="~/js/listar.js"></script>
+    }
+
+
+</head>
+
+<header>
+
+</header>
+
+<body>
+    
+
+<partial name="_Header"/>
+
+
+<div class="titulo">
+    <h1>Listar Solicitações</h1>
+</div>
+
+<section class="container">
+
+    <ul class="computers-list">
+        @* Laço de repetição para que todos os computadores criados sejam alcançados pelo código *@
+        @if (Model != null && Model.Any())
+        {
+            foreach (ComputadorModels computador in Model)
+            {
+
+                <li>
+                    <div class="computer-header">
+                        <span>
+                            @* Apresentação dos dados de cada Computador *@
+                            <span class="status-circle status-ok"></span>
+                            <p><b>ID:</b> @computador.ID <br> <b>Nome:</b> @computador.Nome <br> <b>Sala:</b>
+                                @computador.SalaModelsID <br>
+                                <b>Postado em:</b> @computador.DataPostagem.ToString("dd/MM/yyyy HH:mm")
+                            </p>
+                        </span>
+                        <button class="dropdown-btn" onclick="toggleDropdown(this)">Detalhes</button>
+                    </div>
+                    <div class="dropdown-box" style="display:none;">
+                        @* Mensagem que cada computador retem *@
+                        @if (computador.Mensagens != null && computador.Mensagens.Any())
+                        {
+                            foreach (var mensagem in computador.Mensagens)
+                            {
+                                <textarea readonly>@mensagem.Texto</textarea>
+                            }
+                        }
+                        else
+                        {
+                            <textarea readonly>Nenhuma mensagem cadastrada.</textarea>
+                        }
+                    </div>
+                </li>
+
+            }
+        }
+    </ul>
+
+    <a asp-controller="Principal" asp-action="Editar" id="editar">Editar</a>
+    <a asp-controller="Principal" asp-action="Index" id="secundario">Voltar</a>
+</section>
+
+</body>

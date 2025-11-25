@@ -1,19 +1,18 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Projeto_Dotnet8.Models;
-using Projeto_Dotnet8.Repository;
+using Projeto_Dotnet8.Data.Contexts;
+using Projeto_Dotnet8.Models.Entities;
+using Projeto_Dotnet8.Models.ViewModels;
 
 namespace Projeto_Dotnet8.Controllers;
 
 public class Computador : Controller
 {
-    private readonly IcomputadorRepository computadorRepository;
-    private readonly ISalaRepository salaRepository; 
+    private readonly BancoContext _context;
 
-    public Computador(IcomputadorRepository computador_Repository, ISalaRepository salaRepository)
+    public Computador(BancoContext context)
     {
-        computadorRepository = computador_Repository;
-        this.salaRepository = salaRepository;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -37,7 +36,7 @@ public class Computador : Controller
         var viewModel = new CriarPC_Sala
         {
             Computador = new ComputadorModels(),
-            Salas = salaRepository.ListarSalas()
+            Salas = _context.Salas.ToList()
         };
         return View(viewModel);
     }
@@ -48,16 +47,17 @@ public class Computador : Controller
         if (!string.IsNullOrWhiteSpace(model.NovaSalaNum))
         {
             var novaSala = new SalaModels { Sala_Num = model.NovaSalaNum };
-            salaRepository.adicionar(novaSala);
+            _context.Salas.Add(novaSala);
+            _context.SaveChanges();
             model.SalaSelecionadaId = novaSala.ID;
         }
 
         int salaId = (model.SalaSelecionadaId != 0) ? model.SalaSelecionadaId : 0;
-        var computadoresNaSala = computadorRepository.ListarPorSala(salaId)?.Count() ?? 0;
+        var computadoresNaSala = _context.Computadores.Where(c => c.SalaModelsID == salaId).Count();
         if (computadoresNaSala >= 5)
         {
             ModelState.AddModelError("", "Esta sala já possui o limite de 5 computadores.");
-            model.Salas = salaRepository.ListarSalas();
+            model.Salas = _context.Salas.ToList();
             return View(model);
         }
 
@@ -66,7 +66,8 @@ public class Computador : Controller
             var computador = model.Computador;
             computador.SalaModelsID = salaId;
             computador.DataPostagem = DateTime.Now;
-            computadorRepository.adicionar(computador);
+            _context.Computadores.Add(computador);
+            _context.SaveChanges();
         }
         return RedirectToAction("Index");
     }

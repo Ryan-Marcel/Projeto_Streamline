@@ -1,0 +1,148 @@
+Projeto_Streamline/
+│
+├── 📁 Controllers/
+│   ├── 📁 Dashboard/
+│   │   ├── PrincipalController.cs       ← Controllers de dashboard/usuário
+│   │   └── DashboardController.cs
+│   ├── 📁 Admin/
+│   │   └── SalaController.cs            ← Controllers administrativos
+│   └── ComputadorController.cs
+│
+├── 📁 Models/
+│   ├── 📁 Entities/
+│   │   ├── ComputadorModels.cs
+│   │   ├── SalaModels.cs
+│   │   └── MensagemModels.cs
+│   └── 📁 ViewModels/
+│       ├── CriarPC_Sala.cs
+│       ├── CriarMensagem.cs
+│       └── ErrorViewModel.cs
+│
+├── 📁 Views/
+│   ├── 📁 Auth/                         ← Autenticação (Login público)
+│   │   ├── Login.cshtml
+│   │   ├── _ViewImports.cshtml
+│   │   └── _ViewStart.cshtml
+│   │
+│   ├── 📁 User/                         ← Páginas de Usuário Comum (7 views)
+│   │   ├── Index.cshtml                 ← Home do usuário
+│   │   ├── Dashboard.cshtml             ← Dashboard de usuário
+│   │   ├── Listar.cshtml                ← Listar computadores
+│   │   ├── Criar.cshtml                 ← Criar solicitação
+│   │   ├── Editar.cshtml                ← Editar computador
+│   │   ├── Deletar.cshtml               ← Deletar computador
+│   │   └── Solicitacao.cshtml           ← Formulário de solicitação
+│   │
+│   ├── 📁 Admin/                        ← Páginas de Administrador
+│   │   ├── 📁 Auth/
+│   │   │   └── IndexADM.cshtml          ← Home do administrador
+│   │   └── 📁 Computadores/
+│   │       └── CriarPC.cshtml           ← Criar novo computador
+│   │
+│   ├── 📁 Shared/                       ← Componentes Compartilhados
+│   │   ├── _Layout.cshtml               ← Layout padrão
+│   │   ├── _Header.cshtml               ← Header de usuário
+│   │   ├── _HeaderADM.cshtml            ← Header de admin
+│   │   └── _ValidationScriptsPartial.cshtml
+│   │
+│   ├── _ViewImports.cshtml              ← Imports globais
+│   └── _ViewStart.cshtml                ← Start global
+│
+├── 📁 Data/
+│   └── 📁 Contexts/
+│       └── BancoContext.cs              ← Contexto do banco
+│
+├── 📁 Migrations/                       ← Migrações de BD
+│
+├── 📁 Properties/
+│   └── launchSettings.json
+│
+├── 📁 wwwroot/
+│   ├── 📁 css/
+│   ├── 📁 js/
+│   ├── 📁 lib/
+│   └── 📁 IMG/
+│
+├── 🔧 Program.cs                        ← Ponto de entrada
+├── 📋 appsettings.json
+├── 📋 appsettings.Development.json
+│
+└── 📖 Documentação:
+    ├── RESUMO_REORGANIZACAO.md         ← Sumário geral
+    ├── LIMPEZA_REORGANIZACAO.md        ← Detalhes técnicos
+    ├── PROXIMOS_PASSOS.md              ← Guia de próximos passos
+    ├── VIEWS_SEPARADAS_POR_ROLE.md     ← Detalhes de Views
+    └── VIEWS_RESUMO.md                 ← Resumo de Views
+
+═══════════════════════════════════════════════════════════════
+
+🎯 ESTRUTURA DE VIEWS - SEPARAÇÃO POR ROLE:
+
+✅ Auth/          - Login público (antes de autenticar)
+✅ User/          - 7 views para usuário comum
+✅ Admin/         - 2 views para administrador
+✅ Shared/        - Componentes reutilizáveis
+
+═══════════════════════════════════════════════════════════════
+
+📊 CONTAGEM DE VIEWS:
+
+Total: 12 views (excluindo Shared)
+├── Auth:   1 view
+├── User:   7 views
+├── Admin:  2 views (1 auth + 1 computadores)
+└── Shared: 6 componentes (_Layout, _Header, etc)
+
+═══════════════════════════════════════════════════════════════
+
+🔐 SEPARAÇÃO POR PERMISSÃO:
+
+Auth (Público)
+  └── Login.cshtml
+
+User (Requer autenticação)
+  ├── Index.cshtml
+  ├── Dashboard.cshtml
+  ├── Listar.cshtml
+  ├── Criar.cshtml
+  ├── Editar.cshtml
+  ├── Deletar.cshtml
+  └── Solicitacao.cshtml
+
+Admin (Requer Admin)
+  ├── IndexADM.cshtml
+  └── CriarPC.cshtml
+
+═══════════════════════════════════════════════════════════════
+
+✨ BENEFÍCIOS:
+
+1. SEGURANÇA
+   - Fácil aplicar [Authorize] por role
+   - Controllers separados por função
+
+2. MANUTENÇÃO
+   - Sabe exatamente onde cada view está
+   - Fácil encontrar views de User ou Admin
+
+3. ESCALABILIDADE
+   - Adicione novas views em sua pasta
+   - Estrutura pronta para crescimento
+
+4. CLAREZA
+   - Views/User = para usuários comuns
+   - Views/Admin = para administradores
+   - Views/Auth = para login
+
+═══════════════════════════════════════════════════════════════
+
+🚀 PRÓXIMAS AÇÕES:
+
+1. Compilar: dotnet build
+2. Testar: dotnet run
+3. Adicionar autenticação com [Authorize] se necessário
+
+═══════════════════════════════════════════════════════════════
+
+Data: 25 de Novembro de 2025
+Status: ✅ Reorganização Completa!

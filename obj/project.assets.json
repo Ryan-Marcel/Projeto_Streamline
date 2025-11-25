@@ -8464,19 +8464,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\Cleane\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+      "projectUniqueName": "C:\\vscode\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
       "projectName": "Projeto_Dotnet8",
-      "projectPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\obj\\",
+      "projectPath": "C:\\vscode\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+      "packagesPath": "C:\\Users\\Cleane\\.nuget\\packages\\",
+      "outputPath": "C:\\vscode\\Projeto_Streamline\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Cleane\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -8499,8 +8499,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.300"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -8542,7 +8541,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.416/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
