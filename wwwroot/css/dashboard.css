@@ -30,7 +30,8 @@ body {
 
 .dashboard-container {
     flex-direction: column;
-    align-items: center;
+    align-items: space-around;
+    align-content: space-between;
     justify-content: flex-start;
 }
 
@@ -43,7 +44,7 @@ body {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 .dashboard-graphic-card {

@@ -72,6 +72,9 @@ button.accept-policy {
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
     animation: fadeIn 0.8s ease-in-out;
     margin-bottom: 50px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .login-box h2 {
@@ -112,6 +115,7 @@ button.accept-policy {
 .btn-login {
     width: 100%;
     padding: 12px;
+    margin-top: 10px;
     background: #1565c0;
     border: none;
     border-radius: 8px;
@@ -120,6 +124,8 @@ button.accept-policy {
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
     text-decoration: none;
+    justify-self: center;
+    align-self: center;
 }
 
 .btn-login:hover {
@@ -149,21 +155,13 @@ button.accept-policy {
     to { opacity: 1; transform: translateY(0); }
 }
 
-#editar{
-    color: white;
-    width: 50%;
-    align-self: center;
-    font-size: 17px;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: none;
-    transition: 0.3s;
-    text-align: center;
-}
 
-.btn-login{
-    margin-top: 15px;
+footer {
+  background-color: rgb(38, 35, 55);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  width: 100%;
+  height: 9vh;
 }
 
 

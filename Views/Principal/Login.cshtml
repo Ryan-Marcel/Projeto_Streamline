@@ -28,21 +28,25 @@
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                </p>        
-            </form>
-            <a asp-controller="Principal" asp-action="Index" id="editar">
-                <button type="submit" class="btn-login">Entrar Como Aluno</button>
-                </a>
+                </p>       
+    
 
-                 <a asp-controller="Principal" asp-action="IndexADM" id="editar">
-                <button type="submit" class="btn-login">Entrar Como Admin</button>
-                </a>
+            </form>
+
+                @* BOTÃO FORA DO FORM PARA TESTES, QUANDO FOR ATIVAR O LOGIN, COLOQUE DE VOLTA DENTRO DO FORM *@
+                <a asp-controller="Principal" asp-action="Index" id="">
+                <button type="submit" class="btn-login">Entrar</button>
+                </a> 
+
 
                 <p class="extra">
                     <a href="#">Esqueceu sua senha?</a>
         </div>
     </main>
+    <footer></footer>
 
 </body>
+
+
 
 </html>

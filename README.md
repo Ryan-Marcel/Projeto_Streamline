@@ -6,8 +6,8 @@ Este projeto tem o objetivo de facilitar a comunicação entre alunos e técnico
 
 ## ⌨️ Funcionalidades
 
-- Cadastro de computadores por nome e ID <- ADM
-- Cadastro de computadores por sala no sistema <- ADM
+- Cadastro de computadores por sala <- ADM
+- Cadastro de salas no banco de dados <- ADM
 - Listagem de todas solicitações em um lugar <- ADM
 - Edição da lista com a opção de excluir solicitações <- ADM
 - Dashboard com estastísticas gerais das salas como total <- ADM
