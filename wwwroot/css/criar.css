@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Stack-Sans';
+    src: url('../fonts/StackSansText-VariableFont_wght.ttf') format('truetype');
+}
+
 *{
     margin: 0%;
     padding: 0%;
@@ -8,24 +13,33 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background:
-    linear-gradient(100deg, rgb(23, 15, 44), rgb(255 0 0 / 0%) 70.71%),
-    linear-gradient(28deg, rgb(255, 51, 0), rgb(0 255 0 / 0%) 70.71%),
-    linear-gradient(336deg, rgb(47, 0, 255), rgb(0 0 255 / 0%) 70.71%);
+    linear-gradient(130deg, rgb(23, 15, 44), rgb(255 0 0 / 0%) 70.71%),
+    linear-gradient(80deg, rgb(138, 2, 143), rgb(0 255 0 / 0%) 70.71%),
+    linear-gradient(250deg, rgb(33, 2, 170), rgb(0 0 255 / 0%) 70.71%);
     height: 130vh;
 }
 
 .titulo{
-    background-color: rgb(249, 166, 52);
-    height: 200px;
-    width: 65vh;
-    background-color: rgb(249, 166, 52);
-    color: white;
-    font-size: 25px;
-    align-content: center;
+    height: 100px;
+    max-width: 50%;
     margin-top: 20px;
+    width: auto;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 10px;
+    align-content: center;
     padding-left: 20px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}	
+}
+
+.titulo h1 {
+    font-family: "Stack-Sans";
+    font-weight: 500;
+    font-size: 45px;
+    border-bottom: 6px solid #ffffff;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -35,10 +49,9 @@ body{
     width: 50%;
     padding: 20px;
     background-color: #f5f5f5;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
 
 form {
     display: flex;
@@ -49,7 +62,7 @@ form {
     width: 50%;
     padding: 20px;
     background-color: #f5f5f5;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 

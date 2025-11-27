@@ -1,145 +1,211 @@
-*{
-    margin: 0%;
-    padding: 0%;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+@font-face {
+  font-family: "Stack-Sans";
+  src: url("../fonts/StackSansText-VariableFont_wght.ttf") format("truetype");
 }
 
-body{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background:
-    linear-gradient(100deg, rgb(23, 15, 44), rgb(255 0 0 / 0%) 70.71%),
-    linear-gradient(28deg, rgb(255, 51, 0), rgb(0 255 0 / 0%) 70.71%),
-    linear-gradient(200deg, rgb(47, 0, 255), rgb(0 0 255 / 0%) 70.71%);
-    height: auto;
-    min-height: 120vh;
+* {
+  margin: 0%;
+  padding: 0%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.titulo{
-    background-color: rgb(249, 166, 52);
-    height: 200px;
-    width: 65vh;
-    background-color: rgb(249, 166, 52);
-    color: white;
-    font-size: 25px;
-    align-content: center;
-    margin-top: 20px;
-    padding-left: 20px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}	
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-    align-self: center;
-    margin-top: 30px;
-    margin-bottom: 60px;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    width: auto;
-    min-width: 600px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: fixed;
+  background: linear-gradient(30deg, rgb(26, 5, 59), rgb(255 0 0 / 0%) 70.71%),
+    linear-gradient(-90deg, rgb(87, 2, 143), rgb(0 255 0 / 0%) 70.71%),
+    linear-gradient(-250deg, rgb(12, 0, 65), rgb(0 0 255 / 0%) 70.71%);
+  min-height: 150vh;
+  height: auto;
 }
 
-h3{
-    text-align: center;
-    margin-bottom: 40px;
-    margin-top: 20px;
-    color: #333;
+.titulo {
+  height: 100px;
+  max-width: 50%;
+  margin-top: 20px;
+  width: auto;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 10px;
+  align-content: center;
+  padding-left: 20px;
 }
 
+.titulo h1 {
+  font-family: "Stack-Sans";
+  font-weight: 500;
+  font-size: 45px;
+  border-bottom: 6px solid #ffffff;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  margin-top: 30px;
+  margin-bottom: 200px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: auto;
+  min-width: 70%;
+  padding: 20px;
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.container h3 {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+#computador {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 100px;
+  align-items: center;
+  background: #ececef;
+  margin-bottom: 15px;
+  color: black;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.447) 0px 2px 8px;
+  transition: 0.5s;
+  font-size: 20px;
+}
+
+#computador:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+
+#computador img {
+  height: 20px;
+  width: auto;
+  padding-left: 20px;
+}
+
+#mensagem-form-12345 textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: rgb(29, 29, 29);
+  resize: none;
+  transition: 0.5s;
+}
 
 form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    min-width: 300px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    transition: 0.5s;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 80%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow:
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: 0.5s;
 }
 
 form label {
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #333;
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #000000;
 }
 
 form input,
 form select,
 form textarea {
-    min-width: 80%;
-    padding: 10px;
-    font-size: 14px;
-    background: rgb(236, 236, 236);
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s;
+  min-width: 80%;
+  padding: 10px;
+  font-size: 14px;
+  background: rgb(236, 236, 236);
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
 }
 
 form input:focus,
 form select:focus,
 form textarea:focus {
-    border-color: #007bff;
+  border-color: #007bff;
 }
 
 form button {
-    padding: 10px 20px;
-    font-size: 16px;
-    width: auto;
-    align-self: center;
-    color: white;
-    background-color: rgb(14,65,148);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: auto;
+  align-self: center;
+  color: white;
+  background-color: rgb(14, 65, 148);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 form button:hover {
-    background-color: rgb(249, 166, 52);
+  background-color: rgb(249, 166, 52);
 }
 
-.carregar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+.carregar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-#editar{
-    background-color: rgb(14, 65, 148);
-    color: white;
-    min-width: 300px;
-    align-self: center;
-    font-size: 17px;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 10px;
-    border: none;
-    transition: 0.3s;
-    text-align: center;
-    margin-bottom: 20px;
+.computers-list {
+  list-style: none;
+  padding: 20px;
+  width: 100%;
+  margin: 0 auto;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s;
 }
 
-#editar:hover{
-    background-color: rgb(249, 166, 52);
-    color: white;
-}
-
-ul, ol {
+ul,
+ol {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-bottom: 50px;
+}
+
+.mensagem-form {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  margin-top: 0;
+}
+
+.mensagem-form.open {
+  max-height: 600px; /* ajuste conforme necessário */
+  opacity: 1;
+  margin-top: 10px;
+  margin-bottom: 60px;
 }

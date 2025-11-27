@@ -13,7 +13,6 @@
 
     @* PUXA O HEADER COMPARTILHADO *@
     <partial name="_Header" />
- 
 
     <!-- CONTEÚDO LOGIN -->
     <main class="login-container">
@@ -28,25 +27,25 @@
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                </p>       
-    
+                </p>
 
             </form>
 
-                @* BOTÃO FORA DO FORM PARA TESTES, QUANDO FOR ATIVAR O LOGIN, COLOQUE DE VOLTA DENTRO DO FORM *@
-                <a asp-controller="Principal" asp-action="Index" id="">
+            @* BOTÃO FORA DO FORM PARA TESTES, QUANDO FOR ATIVAR O LOGIN, COLOQUE DE VOLTA DENTRO DO FORM *@
+            <a asp-controller="Principal" asp-action="Index" id="">
                 <button type="submit" class="btn-login">Entrar</button>
-                </a> 
+            </a>
 
+            <a asp-controller="Principal" asp-action="IndexADM" id="">
+                <button type="submit" class="btn-login">Entrar como ADMIN</button>
+            </a>
 
-                <p class="extra">
-                    <a href="#">Esqueceu sua senha?</a>
+            <p class="extra">
+                <a href="#">Esqueceu sua senha?</a>
         </div>
     </main>
     <footer></footer>
 
 </body>
-
-
 
 </html>

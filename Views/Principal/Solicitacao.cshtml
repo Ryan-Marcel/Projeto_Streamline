@@ -4,38 +4,34 @@
 }
 
 <head>
-
     <script>
         function toggleMensagemForm(id) {
             var form = document.getElementById('mensagem-form-' + id);
-            if (form.style.display === 'none' || form.style.display === '') {
-                form.style.display = 'block';
+            var img = document.getElementById('chevron-img-' + id);
+            if (form.classList.contains('open')) {
+                form.classList.remove('open');
+                if (img) img.src = '/IMG/chevron.png';
             } else {
-                form.style.display = 'none';
+                form.classList.add('open');
+                if (img) img.src = '/IMG/up-arrows.png';
             }
         }
     </script>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="~/css/solicitacao.css" />
     <link rel="stylesheet" href="~/css/header.css" />
-
 </head>
 
 <partial name="_Header" />
 
-
 <body>
-
     <div class="titulo">
         <h1>Criar Solicitação</h1>
     </div>
 
     <section class="container">
-
-
-
+        <section class="computers-list">
         @if (Model.Computadores != null && Model.Computadores.Any())
         {
             <h3>Computadores:</h3>
@@ -43,15 +39,15 @@
                 @foreach (var computador in Model.Computadores)
                 {
                     <li>
-                        <button type="button" id="editar" onclick="toggleMensagemForm(@computador.ID)">Criar Mensagem para
-                            @computador.Nome</button>
-
-                        <div id="mensagem-form-@computador.ID" style="display:none; margin-top:10px;">
+                        <button type="button" id="computador" onclick="toggleMensagemForm(@computador.ID)">
+                            Nome: @computador.Nome
+                            <img id="chevron-img-@computador.ID" src="/IMG/chevron.png" alt="">
+                        </button>
+                        <div id="mensagem-form-@computador.ID" class="mensagem-form">
                             <form asp-action="Solicitacao" asp-controller="Principal" method="post">
                                 <input type="hidden" name="SalaId" value="@Model.SalaId" />
                                 <input type="hidden" name="ComputadorId" value="@computador.ID" />
-                                <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..."
-                            required></textarea><br />
+                                <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..." required></textarea><br />
                                 <button type="submit">Enviar Mensagem</button>
                             </form>
                         </div>
@@ -59,9 +55,7 @@
                 }
             </ul>
         }
-
-    </section>
+        </section>
     </section>
 </body>
-
 </html>

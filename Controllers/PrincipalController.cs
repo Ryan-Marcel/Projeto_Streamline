@@ -41,7 +41,7 @@ public class Principal : Controller
         return View();
     }
 
-    public IActionResult Listar()
+    public IActionResult ListarADM()
     {
         var computadores = computadorRepository.ListarComputadores();
         return View(computadores);
@@ -149,7 +149,7 @@ public class Principal : Controller
             };
             _context.Mensagens.Add(mensagem);
             _context.SaveChanges();
-            return RedirectToAction("Listar");
+            return RedirectToAction("ListarADM");
         }
         // Recarregar listas caso falte algum campo
         model.Salas = salaRepository.ListarSalas();
