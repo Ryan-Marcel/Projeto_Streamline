@@ -9,13 +9,13 @@ namespace Projeto_Dotnet8.Repository
 {
     public class SalaRepository : ISalaRepository
     {
-        private readonly BancoContext salaContext;
 
-        public SalaRepository(BancoContext sala_Context)
+        private readonly ApplicationDbContext salaContext;
+        public SalaRepository(ApplicationDbContext sala_Context)
         {
             salaContext = sala_Context;
         }
-        
+
         public SalaModels adicionar(SalaModels Sala)
         {
             salaContext.Salas.Add(Sala);

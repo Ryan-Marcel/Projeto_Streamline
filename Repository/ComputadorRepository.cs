@@ -11,11 +11,12 @@ namespace Projeto_Dotnet8.Repository
 {
     public class ComputadorRepository : IcomputadorRepository
     {
-        private readonly BancoContext computador_Context;
-        public ComputadorRepository(BancoContext computadorContext)
+        private readonly ApplicationDbContext computador_Context;
+        public ComputadorRepository(ApplicationDbContext computadorContext)
         {
             computador_Context = computadorContext;
         }
+
 
         public ComputadorModels adicionar(ComputadorModels Computador)
         {
@@ -51,5 +52,7 @@ namespace Projeto_Dotnet8.Repository
                 computador_Context.SaveChanges();
             }
         }
+
     }
+
 }

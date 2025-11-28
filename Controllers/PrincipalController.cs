@@ -8,12 +8,13 @@ namespace Reserva.Controllers;
 
 public class Principal : Controller
 {
+    
     private readonly ILogger<Principal> _logger;
     private readonly IcomputadorRepository computadorRepository;
     private readonly ISalaRepository salaRepository; 
-    private readonly BancoContext _context; 
+    private readonly ApplicationDbContext  _context; 
 
-    public Principal(ILogger<Principal> logger, IcomputadorRepository computadorRepository, ISalaRepository salaRepository, BancoContext context)
+    public Principal(ILogger<Principal> logger, IcomputadorRepository computadorRepository, ISalaRepository salaRepository, ApplicationDbContext  context)
     {
         _logger = logger;
         this.computadorRepository = computadorRepository;

@@ -1,50 +1,72 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/header.css" />
-    <link rel="stylesheet" href="/css/login.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="~/css/login.css" />
+    <title>Login</title>
 </head>
 
 <body>
 
-    @* PUXA O HEADER COMPARTILHADO *@
+    @* HEADER COMPARTILHADO *@
     <partial name="_Header" />
 
-    <!-- CONTEÚDO LOGIN -->
     <main class="login-container">
         <div class="login-box">
+
             <h2>Acesse sua conta</h2>
-            <form>
+
+            @* EXIBIR ERRO DA AUTENTICAÇÃO *@
+            @if (ViewBag.Error != null || TempData["Error"] != null)
+            {
+                var errorMessage = ViewBag.Error ?? TempData["Error"];
+                <div class="alert-error">@errorMessage</div>
+            }
+
+            @* DEBUG VISUAL PARA SABER SE A VIEW ESTÁ SENDO CHAMADA *@
+            <div style="color: #777; font-size: 14px; margin-bottom: 10px;">
+                [DEBUG] View: Login.cshtml carregada
+            </div>
+
+            @* FORM REAL DE AUTENTICAÇÃO *@
+            @* Submissão para a action Login do AccountController (que recebe email e senha como strings) *@
+            <form asp-controller="Account" asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
                 <div class="input-group">
-                    <label for="username">Registro do Aluno</label>
-                    <input type="text" id="username" name="username" required>
+                    <label for="email">Registro do Aluno</label>
+                    <input name="email" id="email" type="text" class="form-control" required />
                 </div>
+
                 <div class="input-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" required>
+                    <label for="senha">Senha</label>
+                    <input name="senha" id="senha" type="password" class="form-control" required />
                 </div>
-                </p>
+
+                <button type="submit" class="btn-login">Entrar</button>
 
             </form>
 
-            @* BOTÃO FORA DO FORM PARA TESTES, QUANDO FOR ATIVAR O LOGIN, COLOQUE DE VOLTA DENTRO DO FORM *@
-            <a asp-controller="Principal" asp-action="Index" id="">
-                <button type="submit" class="btn-login">Entrar</button>
-            </a>
+            <hr />
 
-            <a asp-controller="Principal" asp-action="IndexADM" id="">
-                <button type="submit" class="btn-login">Entrar como ADMIN</button>
-            </a>
+            @* ACESSO ADMIN: navegar para a página de Login do Account (use credenciais de administrador) *@
+            <a asp-controller="Account" asp-action="Login" class="btn-login">Entrar como ADMIN</a>
 
             <p class="extra">
                 <a href="#">Esqueceu sua senha?</a>
+            </p>
+
         </div>
     </main>
+
     <footer></footer>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
 
 </body>
 
