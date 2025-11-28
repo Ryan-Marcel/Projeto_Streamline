@@ -27,35 +27,41 @@
 
 <body>
     <div class="titulo">
-        <h1>Criar Solicitação</h1>
+        <div class="bg1">
+            <h1>Criar Solicitação</h1>
+        </div>
+        <div class="bg2"></div>
     </div>
+
 
     <section class="container">
         <section class="computers-list">
-        @if (Model.Computadores != null && Model.Computadores.Any())
-        {
-            <h3>Computadores:</h3>
-            <ul>
-                @foreach (var computador in Model.Computadores)
-                {
-                    <li>
-                        <button type="button" id="computador" onclick="toggleMensagemForm(@computador.ID)">
-                            Nome: @computador.Nome
-                            <img id="chevron-img-@computador.ID" src="/IMG/chevron.png" alt="">
-                        </button>
-                        <div id="mensagem-form-@computador.ID" class="mensagem-form">
-                            <form asp-action="Solicitacao" asp-controller="Principal" method="post">
-                                <input type="hidden" name="SalaId" value="@Model.SalaId" />
-                                <input type="hidden" name="ComputadorId" value="@computador.ID" />
-                                <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..." required></textarea><br />
-                                <button type="submit">Enviar Mensagem</button>
-                            </form>
-                        </div>
-                    </li>
-                }
-            </ul>
-        }
+            @if (Model.Computadores != null && Model.Computadores.Any())
+            {
+                <h3>Computadores:</h3>
+                <ul>
+                    @foreach (var computador in Model.Computadores)
+                    {
+                        <li>
+                            <button type="button" id="computador" onclick="toggleMensagemForm(@computador.ID)">
+                                Nome: @computador.Nome
+                                <img id="chevron-img-@computador.ID" src="/IMG/chevron.png" alt="">
+                            </button>
+                            <div id="mensagem-form-@computador.ID" class="mensagem-form">
+                                <form asp-action="Solicitacao" asp-controller="Principal" method="post">
+                                    <input type="hidden" name="SalaId" value="@Model.SalaId" />
+                                    <input type="hidden" name="ComputadorId" value="@computador.ID" />
+                                    <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..."
+                                required></textarea><br />
+                                    <button type="submit">Enviar Mensagem</button>
+                                </form>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            }
         </section>
     </section>
 </body>
+
 </html>

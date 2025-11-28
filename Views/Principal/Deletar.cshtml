@@ -20,9 +20,10 @@
 
     <section class="container">
         @* Processo de exclusão do Pc do Banco De Dados *@
-        <h2>Confirmar Deletar</h2>
         
-        <p>Você tem certeza que deseja deletar o Computador: @Model.Nome?</p>
+        <p>Você tem certeza que deseja DELETAR o computador:<br> 
+            <span style="font-weight: bold;">@Model.Nome</span>  ?
+        </p>
 
         <form asp-action="Deletar" method="post">
             <input type="hidden" asp-for="ID" />

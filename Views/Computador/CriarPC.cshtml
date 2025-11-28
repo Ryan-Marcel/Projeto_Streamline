@@ -18,7 +18,10 @@
     <partial name="_HeaderADM" />
 
     <div class="titulo">
-        <h1>Criar Computador</h1>
+        <div class="bg1">
+            <h1>Criar Computador</h1>
+        </div>
+        <div class="bg2"></div>
     </div>
 
     <section class="container">
@@ -46,10 +49,11 @@
                 <label asp-for="NovaSalaNum">Criar Nova Sala (opcional)</label>
             </div>
 
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div class="botao-container">
                 <button id="btnEnviarPc" class="botao" type="submit" disabled>Enviar</button>
                 <a asp-controller="Principal" asp-action="IndexADM" id="secundario">Voltar</a>
             </div>
+            
         </form>
     </section>
 

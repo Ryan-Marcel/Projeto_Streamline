@@ -24,8 +24,11 @@
 <using Projeto_Dotnet8.Controllers; #line default <partial name="_Header"/>
 
 <div class="titulo">
-    <h1>Editar Solicitações</h1>
-</div>
+        <div class="bg1">
+            <h1>Editar Solicitação</h1>
+        </div>
+        <div class="bg2"></div>
+    </div>
 
 <section class="container">
 
@@ -41,17 +44,16 @@
                 <li>
                     <div class="computer-header">
                         <span>
-                        
-                            <span class="status-circle status-ok"></span>
-                            @* Redirecionamento para a página de Editar e Botão de VerificarExclusão *@
+                
                             <p>
+                             <b>Nome:</b> @computador.Nome
                                 <b>ID:</b> @computador.ID <br>
-                                <b>Nome:</b> @computador.Nome <br>
                                 <b>Sala:</b> @computador.SalaModelsID  
                             </p>
+
                         </span>
 
-                    <a asp-controller="Principal" asp-action="Deletar" asp-route-id="@computador.ID" class="btn btn-danger">Deletar</a>
+                    <a asp-controller="Principal" asp-action="Deletar" asp-route-id="@computador.ID" class="btn-delete"><img id="chevron-img-@computador.ID" src="/IMG/delete.png" alt=""></a>
 
                     </div>
                 </li>
@@ -60,6 +62,6 @@
         }
     </ul>
 
-    <a asp-controller="Principal" asp-action="Listar" id="editar">Voltar</a>
+    <a asp-controller="Principal" asp-action="ListarADM" id="editar">Voltar</a>
 </section>
 </body>
