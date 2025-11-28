@@ -35,6 +35,20 @@ public class Principal : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    public IActionResult Login(string username, string password)
+    {
+        // TODO: Implementar validação de credenciais com o banco de dados
+        // Por enquanto, redireciona para Index se os campos forem preenchidos
+        if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+        {
+            return RedirectToAction("Index");
+        }
+        
+        ModelState.AddModelError("", "Registro do Aluno ou Senha inválidos");
+        return View();
+    }
     
          public IActionResult Dashboard()
     {

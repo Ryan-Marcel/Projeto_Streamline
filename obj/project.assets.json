@@ -8464,19 +8464,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\gabri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+      "projectUniqueName": "C:\\VSCODE\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
       "projectName": "Projeto_Dotnet8",
-      "projectPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\obj\\",
+      "projectPath": "C:\\VSCODE\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+      "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+      "outputPath": "C:\\VSCODE\\Projeto_Streamline\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -8542,7 +8542,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -18,7 +18,7 @@
     <main class="login-container">
         <div class="login-box">
             <h2>Acesse sua conta</h2>
-            <form>
+            <form asp-controller="Principal" asp-action="Login" method="post">
                 <div class="input-group">
                     <label for="username">Registro do Aluno</label>
                     <input type="text" id="username" name="username" required>
@@ -27,21 +27,12 @@
                     <label for="password">Senha</label>
                     <input type="password" id="password" name="password" required>
                 </div>
-                </p>
-
-            </form>
-
-            @* BOTÃO FORA DO FORM PARA TESTES, QUANDO FOR ATIVAR O LOGIN, COLOQUE DE VOLTA DENTRO DO FORM *@
-            <a asp-controller="Principal" asp-action="Index" id="">
                 <button type="submit" class="btn-login">Entrar</button>
-            </a>
-
-            <a asp-controller="Principal" asp-action="IndexADM" id="">
-                <button type="submit" class="btn-login">Entrar como ADMIN</button>
-            </a>
+            </form>
 
             <p class="extra">
                 <a href="#">Esqueceu sua senha?</a>
+            </p>
         </div>
     </main>
     <footer></footer>
