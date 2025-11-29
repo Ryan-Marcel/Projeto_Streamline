@@ -54,6 +54,23 @@ public class Principal : Controller
     return View(salas);
 }
 
+public IActionResult DetalhesComputador(int id)
+{
+    var computador = computadorRepository.BuscarPorId(id);
+    
+    if (computador == null)
+        return NotFound();
+    
+    // Carregar as mensagens do computador
+    computador.Mensagens = _context.Mensagens
+        .Where(m => m.ComputadorID == id)
+        .OrderByDescending(m => m.ID)
+        .ToList();
+    
+    return View(computador);
+}
+
+
     [HttpPost]
     public IActionResult Login(string username, string password)
     {

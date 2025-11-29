@@ -33,7 +33,7 @@
                     <div class="sala-item">
                         <button class="sala-header" onclick="toggleSala(this)">
                             <span class="sala-info">
-                                <strong> @sala.Sala_Num</strong>
+                                <strong>@sala.Sala_Num</strong>
                                 <span class="computador-count">(@sala.Computadores.Count computadores)</span>
                             </span>
                             <span class="arrow">▼</span>
@@ -46,17 +46,19 @@
                                     @foreach (var computador in sala.Computadores)
                                     {
                                         <li class="computador-item">
-                                            <div class="computador-info">
-                                                <span class="pc-icon">💻</span>
-                                                <div class="pc-details">
-                                                    <strong>@computador.Nome</strong>
-                                                    <small>ID: @computador.ID | Cadastrado em: @computador.DataPostagem.ToString("dd/MM/yyyy HH:mm")</small>
+                                            <a asp-controller="Principal" asp-action="DetalhesComputador" asp-route-id="@computador.ID" class="computador-link">
+                                                <div class="computador-info">
+                                                    <span class="pc-icon">💻</span>
+                                                    <div class="pc-details">
+                                                        <strong>@computador.Nome</strong>
+                                                        <small>ID: @computador.ID | Cadastrado em: @computador.DataPostagem.ToString("dd/MM/yyyy HH:mm")</small>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            @if (computador.Mensagens != null && computador.Mensagens.Any())
-                                            {
-                                                <span class="badge-mensagens">@computador.Mensagens.Count mensagem(ns)</span>
-                                            }
+                                                @if (computador.Mensagens != null && computador.Mensagens.Any())
+                                                {
+                                                    <span class="badge-mensagens">@computador.Mensagens.Count mensagem(ns)</span>
+                                                }
+                                            </a>
                                         </li>
                                     }
                                 </ul>
@@ -75,9 +77,7 @@
             <p class="sem-salas">Nenhuma sala cadastrada no sistema.</p>
         }
 
-    
-            <a asp-controller="Principal" asp-action="IndexADM" id="voltar">Voltar</a>
-
+        <a asp-controller="Principal" asp-action="IndexADM" id="voltar">Voltar</a>
     </section>
 
     <footer></footer>
@@ -97,31 +97,6 @@
                 button.classList.add('active');
             }
         }
-
-        // Fechar outros dropdowns ao abrir um novo (opcional)
-        document.addEventListener('DOMContentLoaded', function() {
-            const headers = document.querySelectorAll('.sala-header');
-            
-            headers.forEach(header => {
-                header.addEventListener('click', function() {
-                    const currentDropdown = this.nextElementSibling;
-                    const allDropdowns = document.querySelectorAll('.computadores-dropdown');
-                    const allArrows = document.querySelectorAll('.arrow');
-                    const allHeaders = document.querySelectorAll('.sala-header');
-                    
-                    // Fechar todos os outros (opcional - comente se quiser múltiplos abertos)
-                    /*
-                    allDropdowns.forEach((dropdown, index) => {
-                        if (dropdown !== currentDropdown && dropdown.classList.contains('open')) {
-                            dropdown.classList.remove('open');
-                            allArrows[index].style.transform = 'rotate(0deg)';
-                            allHeaders[index].classList.remove('active');
-                        }
-                    });
-                    */
-                });
-            });
-        });
     </script>
 </body>
 </html>

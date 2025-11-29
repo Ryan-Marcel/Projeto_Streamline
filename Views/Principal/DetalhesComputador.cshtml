@@ -1,0 +1,108 @@
+@model Projeto_Dotnet8.Models.ComputadorModels
+
+@{
+    ViewData["Title"] = "Detalhes do Computador";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/detalhesComputador.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+</head>
+
+<body>
+    <partial name="_HeaderADM" />
+
+    <div class="titulo">
+        <div class="bg1">
+            <h1>Detalhes do Computador</h1>
+        </div>
+        <div class="bg2"></div>
+    </div>
+
+    <section class="container">
+        <div class="computador-card">
+            <div class="computador-header">
+                <div class="header-info">
+                    <h2>Computador</h2>
+                    <div class="info-linha">
+                        <span class="info-label">Nome:</span>
+                        <span class="info-valor">@Model.Nome</span>
+                    </div>
+                    <div class="info-linha">
+                        <span class="info-label">ID:</span>
+                        <span class="info-valor">@Model.ID</span>
+                    </div>
+                </div>
+                <div class="status-container">
+                    <span class="status-label">Status:</span>
+                    @if (Model.Mensagens != null && Model.Mensagens.Any())
+                    {
+                        <span class="status-indicator status-problema"></span>
+                    }
+                    else
+                    {
+                        <span class="status-indicator status-ok"></span>
+                    }
+                </div>
+            </div>
+
+            <div class="notificacoes-lista">
+                @if (Model.Mensagens != null && Model.Mensagens.Any())
+                {
+                    foreach (var mensagem in Model.Mensagens)
+                    {
+                        <div class="notificacao-item">
+                            <button class="notificacao-header" onclick="toggleNotificacao(this)">
+                                <div class="notificacao-info">
+                                    <span class="aluno-nome">Aluno: (NOME COMPLETO)</span>
+                                    <span class="notificacao-data">Data: @mensagem.ID/03/2026 16:32</span>
+                                </div>
+                                <span class="arrow-icon">▼</span>
+                            </button>
+                            <div class="notificacao-conteudo">
+                                <div class="mensagem-box">
+                                    <p>@mensagem.Texto</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="sem-notificacoes">
+                        <p>Nenhuma notificação registrada para este computador.</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="botoes-container">
+            <a asp-controller="Principal" asp-action="Salas" id="voltar">Voltar</a>
+        </div>
+    </section>
+
+    <footer></footer>
+
+    <script>
+        function toggleNotificacao(button) {
+            const conteudo = button.nextElementSibling;
+            const arrow = button.querySelector('.arrow-icon');
+            
+            if (conteudo.classList.contains('open')) {
+                conteudo.classList.remove('open');
+                arrow.style.transform = 'rotate(0deg)';
+                button.classList.remove('active');
+            } else {
+                conteudo.classList.add('open');
+                arrow.style.transform = 'rotate(180deg)';
+                button.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
