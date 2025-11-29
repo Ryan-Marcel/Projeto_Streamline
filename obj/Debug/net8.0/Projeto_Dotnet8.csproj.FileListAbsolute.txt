@@ -2067,3 +2067,7 @@ C:\VSCODE\Projeto_Streamline\obj\Debug\net8.0\Projeto_Dotnet8.pdb
 C:\VSCODE\Projeto_Streamline\obj\Debug\net8.0\Projeto_Dotnet8.genruntimeconfig.cache
 C:\VSCODE\Projeto_Streamline\obj\Debug\net8.0\ref\Projeto_Dotnet8.dll
 C:\VSCODE\Projeto_Streamline\bin\Debug\net8.0\cypress\fixtures\users.json
+C:\VSCODE\TCC\Projeto_Streamline\bin\Debug\net8.0\cypress\fixtures\example.json
+C:\VSCODE\TCC\Projeto_Streamline\bin\Debug\net8.0\cypress\fixtures\users.json
+C:\VSCODE\TCC\Projeto_Streamline\bin\Debug\net8.0\package-lock.json
+C:\VSCODE\TCC\Projeto_Streamline\bin\Debug\net8.0\package.json

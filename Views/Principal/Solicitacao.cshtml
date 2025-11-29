@@ -47,13 +47,15 @@
                                 Nome: @computador.Nome
                                 <img id="chevron-img-@computador.ID" src="/IMG/chevron.png" alt="">
                             </button>
+
                             <div id="mensagem-form-@computador.ID" class="mensagem-form">
                                 <form asp-action="Solicitacao" asp-controller="Principal" method="post">
+
                                     <input type="hidden" name="SalaId" value="@Model.SalaId" />
                                     <input type="hidden" name="ComputadorId" value="@computador.ID" />
-                                    <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..."
-                                required></textarea><br />
+                                    <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..."required></textarea><br />
                                     <button type="submit">Enviar Mensagem</button>
+                                    
                                 </form>
                             </div>
                         </li>
@@ -61,6 +63,7 @@
                 </ul>
             }
         </section>
+         <a asp-controller="Principal" asp-action="Criar" id="secundario">Voltar</a>
     </section>
 </body>
 

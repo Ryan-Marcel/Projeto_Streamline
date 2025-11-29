@@ -30,16 +30,20 @@
                 <input asp-for="Computador.Nome" class="form-control" placeholder="Nome do Computador" id="nomePc" />
                 <label asp-for="Computador.Nome">Nome do Computador</label>
             </div>
+
             @* Procura de Salas Existentes, para selecionar aonde deve ser criado a Máquina  *@
             <div class="form-floating mb-3">
-                <select asp-for="SalaSelecionadaId" class="form-control" id="salaPc">
-                    <option value="">Selecione a Sala</option>
-                    @foreach (var sala in Model.Salas)
-                    {
-                        <option value="@sala.ID">@sala.Sala_Num</option>
-                    }
-                </select>
-                <label asp-for="SalaSelecionadaId">Sala</label>
+                <div class="select-wrapper">
+                    <select asp-for="SalaSelecionadaId" class="form-control" id="salaPc">
+                        <option value="">Selecione a Sala</option>
+                        @foreach (var sala in Model.Salas)
+                        {
+                            <option value="@sala.ID">@sala.Sala_Num</option>
+                        }
+                    </select>
+                    <img src="~/IMG/chevron.png" class="chevron-icon" alt="chevron">
+                </div>
+                
             </div>
 
             @* Criação de Sala, SE necessário *@
@@ -53,7 +57,7 @@
                 <button id="btnEnviarPc" class="botao" type="submit" disabled>Enviar</button>
                 <a asp-controller="Principal" asp-action="IndexADM" id="secundario">Voltar</a>
             </div>
-            
+
         </form>
     </section>
 

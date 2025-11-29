@@ -25,6 +25,8 @@
         <div class="bg2"></div>
     </div>
 
+    <section class='container'>
+
         <form asp-action="Criar" method="post">
 
             @* Procura de Sala existente *@
@@ -34,9 +36,12 @@
                 <option value="">Escolha uma sala</option>
             </select>
 
-            <button type="submit" class="carregar" asp-controller="Principal" asp-action="Solicitacao" formnovalidate id="btnCarregar" disabled>Carregar Computadores</button>
+            <button type="submit" class="carregar" asp-controller="Principal" asp-action="Solicitacao" formnovalidate id="btnCarregar" disabled>Ver Computadores</button>
             <a asp-controller="Principal" asp-action="Index" id="secundario">Voltar</a>
         </form>
+
+</section>
+
     @section Scripts{
         <script src="~/js/Criar.js"></script>
     }

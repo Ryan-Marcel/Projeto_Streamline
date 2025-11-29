@@ -1,0 +1,127 @@
+@model IEnumerable<Projeto_Dotnet8.Models.SalaModels>
+
+@{
+    ViewData["Title"] = "Salas e Computadores";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/listarSalas.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+</head>
+
+<body>
+    <partial name="_Header" />
+
+    <div class="titulo">
+        <div class="bg1">
+            <h1>Salas e Computadores</h1>
+        </div>
+        <div class="bg2"></div>
+    </div>
+
+    <section class="container">
+        @if (Model != null && Model.Any())
+        {
+            <div class="salas-list">
+                @foreach (var sala in Model)
+                {
+                    <div class="sala-item">
+                        <button class="sala-header" onclick="toggleSala(this)">
+                            <span class="sala-info">
+                                <strong> @sala.Sala_Num</strong>
+                                <span class="computador-count">(@sala.Computadores.Count computadores)</span>
+                            </span>
+                            <span class="arrow">▼</span>
+                        </button>
+
+                        <div class="computadores-dropdown">
+                            @if (sala.Computadores != null && sala.Computadores.Any())
+                            {
+                                <ul class="computadores-list">
+                                    @foreach (var computador in sala.Computadores)
+                                    {
+                                        <li class="computador-item">
+                                            <div class="computador-info">
+                                                <span class="pc-icon">💻</span>
+                                                <div class="pc-details">
+                                                    <strong>@computador.Nome</strong>
+                                                    <small>ID: @computador.ID | Cadastrado em: @computador.DataPostagem.ToString("dd/MM/yyyy HH:mm")</small>
+                                                </div>
+                                            </div>
+                                            @if (computador.Mensagens != null && computador.Mensagens.Any())
+                                            {
+                                                <span class="badge-mensagens">@computador.Mensagens.Count mensagem(ns)</span>
+                                            }
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="sem-computadores">Nenhum computador cadastrado nesta sala.</p>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="sem-salas">Nenhuma sala cadastrada no sistema.</p>
+        }
+
+    
+            <a asp-controller="Principal" asp-action="IndexADM" id="voltar">Voltar</a>
+
+    </section>
+
+    <footer></footer>
+
+    <script>
+        function toggleSala(button) {
+            const dropdown = button.nextElementSibling;
+            const arrow = button.querySelector('.arrow');
+            
+            if (dropdown.classList.contains('open')) {
+                dropdown.classList.remove('open');
+                arrow.style.transform = 'rotate(0deg)';
+                button.classList.remove('active');
+            } else {
+                dropdown.classList.add('open');
+                arrow.style.transform = 'rotate(180deg)';
+                button.classList.add('active');
+            }
+        }
+
+        // Fechar outros dropdowns ao abrir um novo (opcional)
+        document.addEventListener('DOMContentLoaded', function() {
+            const headers = document.querySelectorAll('.sala-header');
+            
+            headers.forEach(header => {
+                header.addEventListener('click', function() {
+                    const currentDropdown = this.nextElementSibling;
+                    const allDropdowns = document.querySelectorAll('.computadores-dropdown');
+                    const allArrows = document.querySelectorAll('.arrow');
+                    const allHeaders = document.querySelectorAll('.sala-header');
+                    
+                    // Fechar todos os outros (opcional - comente se quiser múltiplos abertos)
+                    /*
+                    allDropdowns.forEach((dropdown, index) => {
+                        if (dropdown !== currentDropdown && dropdown.classList.contains('open')) {
+                            dropdown.classList.remove('open');
+                            allArrows[index].style.transform = 'rotate(0deg)';
+                            allHeaders[index].classList.remove('active');
+                        }
+                    });
+                    */
+                });
+            });
+        });
+    </script>
+</body>
+</html>

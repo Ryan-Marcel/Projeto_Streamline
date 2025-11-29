@@ -240,3 +240,23 @@ ol {
   margin-top: 10px;
   margin-bottom: 60px;
 }
+
+#secundario{
+    background-color: rgb(38, 48, 65);
+    color: white;
+    width: 50%;
+    align-self: center;
+    font-size: 17px;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    width: 250px;
+    transition: 0.3s;
+    text-align: center;
+}
+
+#secundario:hover{
+    background-color: rgb(104, 109, 129);
+    color: white;
+}

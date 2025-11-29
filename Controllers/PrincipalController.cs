@@ -36,6 +36,24 @@ public class Principal : Controller
         return View();
     }
 
+    public IActionResult EditarNotif()
+    {
+        return View();
+    }
+
+   public IActionResult Salas()
+{
+    var salas = salaRepository.ListarSalas();
+    
+    // Para cada sala, buscar seus computadores
+    foreach (var sala in salas)
+    {
+        sala.Computadores = computadorRepository.ListarPorSala(sala.ID).ToList();
+    }
+    
+    return View(salas);
+}
+
     [HttpPost]
     public IActionResult Login(string username, string password)
     {
