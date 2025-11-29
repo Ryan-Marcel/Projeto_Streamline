@@ -1,28 +1,23 @@
 ﻿@using Projeto_Dotnet8.Models
-@model IEnumerable<Projeto_Dotnet8.Models.ComputadorModels>
+@model IEnumerable<Projeto_Dotnet8.Models.MensagemModels>
 
 @{
-    ViewData["Title"] = "Listar Solicitações";
+    ViewData["Title"] = "Notificações";
+    var statusFiltro = ViewBag.StatusFiltro as int?;
 }
 
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/css/listar.css" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/listarADM.css" />
     <link rel="stylesheet" href="~/css/header.css" />
-
 </head>
 
-<header>
-
-</header>
-
 <body>
-
-
-    <partial name="_Header" />
-
+    <partial name="_HeaderADM" />
 
     <div class="titulo">
         <div class="bg1">
@@ -32,65 +27,166 @@
     </div>
 
     <section class="container">
+        
+        <!-- Filtro de Status -->
+        <div class="filtro-container">
+            <label for="filtroStatus">Filtrar por Status:</label>
+            <select id="filtroStatus" onchange="filtrarStatus(this.value)">
+                <option value="" selected="@(!statusFiltro.HasValue)">Todas as Notificações</option>
+                <option value="0" selected="@(statusFiltro.HasValue && statusFiltro.Value == 0)">Em Aberto</option>
+                <option value="1" selected="@(statusFiltro.HasValue && statusFiltro.Value == 1)">Em Andamento</option>
+                <option value="2" selected="@(statusFiltro.HasValue && statusFiltro.Value == 2)">Resolvido</option>
+            </select>
+        </div>
 
-        <ul class="computers-list">
-            @* Laço de repetição para que todos os computadores criados sejam alcançados pelo código *@
+        <!-- Lista de Notificações -->
+        <ul class="notificacoes-list">
             @if (Model != null && Model.Any())
             {
-                foreach (ComputadorModels computador in Model)
+                foreach (var mensagem in Model)
                 {
+                    <li class="notificacao-item" data-status="@mensagem.Status">
+                        <div class="notificacao-header" onclick="toggleDropdown(this)">
+                            <div class="notificacao-info">
+                                <div class="info-principal">
+                                    <span class="computador-nome">
+                                        <strong>💻 @mensagem.Computador.Nome</strong>
+                                    </span>
+                                    <span class="computador-id">ID: @mensagem.Computador.ID</span>
+                                </div>
+                                <span class="notificacao-data">
+                                    📅 @mensagem.DataCriacao.ToString("dd/MM/yyyy HH:mm")
+                                </span>
+                            </div>
+                            
+                            <div class="status-badge status-@mensagem.Status">
+                                @if (mensagem.Status == 0)
+                                {
+                                    <span>Em Aberto</span>
+                                }
+                                else if (mensagem.Status == 1)
+                                {
+                                    <span>Em Andamento</span>
+                                }
+                                else
+                                {
+                                    <span>Resolvido</span>
+                                }
+                            </div>
 
-                    <li>
-                        <div class="computer-header" onclick="toggleDropdown(this)">
-                            <span>
-                                @* Apresentação dos dados de cada Computador *@
-                                <span class="status-circle status-ok"></span>
-                                <p>
-                                    <b>Nome:</b> @computador.Nome
-                                    <b>ID:</b> @computador.ID <br>
-                                    <b>Postado em:</b> @computador.DataPostagem.ToString("dd/MM/yyyy HH:mm")
-                                </p>
-                            </span>
                             <button class="dropdown-btn" tabindex="-1">
-                            <img id="chevron-img-@computador.ID" src="/IMG/chevron.png" alt="">
+                                <img class="chevron-img" src="/IMG/chevron.png" alt="">
                             </button>
                         </div>
+
                         <div class="dropdown-box">
-                            @* Mensagem que cada computador retem *@
-                            @if (computador.Mensagens != null && computador.Mensagens.Any())
-                            {
-                                foreach (var mensagem in computador.Mensagens)
-                                {
-                                    <textarea readonly>@mensagem.Texto</textarea>
-                                }
-                            }
-                            else
-                            {
-                                <textarea readonly>Nenhuma mensagem cadastrada.</textarea>
-                            }
+                            <div class="mensagem-conteudo">
+                                <h4>Descrição do Problema:</h4>
+                                <textarea readonly>@mensagem.Texto</textarea>
+                            </div>
+
+                            <div class="acoes-container">
+                                <label for="status-@mensagem.ID">Alterar Status:</label>
+                                <select id="status-@mensagem.ID" class="status-select" onchange="atualizarStatus(@mensagem.ID, this.value)">
+                                    <option value="0" selected="@(mensagem.Status == 0)">Em Aberto</option>
+                                    <option value="1" selected="@(mensagem.Status == 1)">Em Andamento</option>
+                                    <option value="2" selected="@(mensagem.Status == 2)">Resolvido</option>
+                                </select>
+                            </div>
                         </div>
                     </li>
-
                 }
+            }
+            else
+            {
+                <li class="sem-notificacoes">
+                    <p>Nenhuma notificação encontrada.</p>
+                </li>
             }
         </ul>
 
-        <a asp-controller="Principal" asp-action="Editar" id="editar">Editar</a>
-        <a asp-controller="Principal" asp-action="IndexADM" id="secundario">Voltar</a>
+        <a asp-controller="Principal" asp-action="IndexADM" id="voltar">Voltar</a>
     </section>
 
     <script>
-function toggleDropdown(headerDiv) {
-    var box = headerDiv.nextElementSibling;
-    var img = headerDiv.querySelector('.dropdown-btn img');
-    if (box.classList.contains('open')) {
-        box.classList.remove('open');
-        if (img) img.src = '/IMG/chevron.png';
-    } else {
-        box.classList.add('open');
-        if (img) img.src = '/IMG/up-arrows.png';
-    }
-}
-</script>
+        function toggleDropdown(headerDiv) {
+            var box = headerDiv.nextElementSibling;
+            var img = headerDiv.querySelector('.chevron-img');
+            
+            if (box.classList.contains('open')) {
+                box.classList.remove('open');
+                if (img) img.src = '/IMG/chevron.png';
+            } else {
+                box.classList.add('open');
+                if (img) img.src = '/IMG/up-arrows.png';
+            }
+        }
 
+        function filtrarStatus(valor) {
+            if (valor === "") {
+                window.location.href = '@Url.Action("ListarADM", "Principal")';
+            } else {
+                window.location.href = '@Url.Action("ListarADM", "Principal")?statusFiltro=' + valor;
+            }
+        }
+
+        async function atualizarStatus(mensagemId, novoStatus) {
+            try {
+                const response = await fetch('@Url.Action("AtualizarStatus", "Principal")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: mensagemId,
+                        novoStatus: parseInt(novoStatus)
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Atualizar a badge de status visualmente
+                    const item = document.querySelector(`[data-status]`).closest('li');
+                    const badge = item.querySelector('.status-badge');
+                    
+                    // Remover classes antigas
+                    badge.classList.remove('status-0', 'status-1', 'status-2');
+                    badge.classList.add('status-' + novoStatus);
+                    
+                    // Atualizar texto
+                    const textos = ['Em Aberto', 'Em Andamento', 'Resolvido'];
+                    badge.querySelector('span').textContent = textos[novoStatus];
+                    
+                    // Atualizar data-status
+                    item.setAttribute('data-status', novoStatus);
+                    
+                    // Mostrar feedback
+                    mostrarFeedback('Status atualizado com sucesso!', 'success');
+                } else {
+                    mostrarFeedback('Erro ao atualizar status.', 'error');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                mostrarFeedback('Erro ao atualizar status.', 'error');
+            }
+        }
+
+        function mostrarFeedback(mensagem, tipo) {
+            const feedback = document.createElement('div');
+            feedback.className = `feedback ${tipo}`;
+            feedback.textContent = mensagem;
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                feedback.classList.remove('show');
+                setTimeout(() => feedback.remove(), 300);
+            }, 3000);
+        }
+    </script>
 </body>
+</html>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Projeto_Dotnet8.Data;
 using Projeto_Dotnet8.Models;
 using Projeto_Dotnet8.Models.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using Projeto_Dotnet8.Repository;
 namespace Reserva.Controllers;
 
@@ -90,11 +91,38 @@ public IActionResult DetalhesComputador(int id)
         return View();
     }
 
-    public IActionResult ListarADM()
+    public IActionResult ListarADM(int? statusFiltro)
+{
+    // Buscar todas as mensagens com seus computadores
+    var mensagens = _context.Mensagens
+        .Include(m => m.Computador)
+        .OrderByDescending(m => m.DataCriacao)
+        .AsQueryable();
+
+    // Aplicar filtro de status se especificado
+    if (statusFiltro.HasValue)
     {
-        var computadores = computadorRepository.ListarComputadores();
-        return View(computadores);
+        mensagens = mensagens.Where(m => m.Status == statusFiltro.Value);
     }
+
+    ViewBag.StatusFiltro = statusFiltro;
+    return View(mensagens.ToList());
+}
+
+[HttpPost]
+public IActionResult AtualizarStatus(int id, int novoStatus)
+{
+    var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == id);
+    
+    if (mensagem != null)
+    {
+        mensagem.Status = novoStatus;
+        _context.SaveChanges();
+        return Json(new { success = true });
+    }
+    
+    return Json(new { success = false });
+}
 
     /* Criação das mensagens para cada computador de sua respectiva Sala */
     public IActionResult Criar()
