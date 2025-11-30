@@ -2,31 +2,31 @@
 @inject SignInManager<Projeto_Dotnet8.Models.ApplicationUser> SignInManager
 @inject UserManager<Projeto_Dotnet8.Models.ApplicationUser> UserManager
 
-<link rel="stylesheet" href="~/header.css" asp-append-version="true" />
-
 <section class="header1"></section>
 
 <section class="header2">
     <a asp-controller="Principal" asp-action="Index">
         <img id="Logo" src="https://www.senaibahia.com.br/wp-content/themes/senai/assets/images/senailogo_nova.png"
-            alt="">
+            alt="Logo SENAI">
     </a>
 
     <nav class="menu">
-        <button class="menu-toggle" id="menuToggle">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
             <img src="/IMG/Hamburger_icon.svg.png" alt="Menu" style="height:32px;width:32px;">
         </button>
         <div class="menu-items" id="menuItems">
             <a class="menu-item" asp-controller="Principal" asp-action="Index">Início</a>
-            <button class="menu-item">Institucional</button>
-            <button class="menu-item">Para Você</button>
-            <button class="menu-item">Fale Conosco</button>
+            <a class="menu-item" href="#">Institucional</a>
+            <a class="menu-item" href="#">Para Você</a>
+            <a class="menu-item" href="#">Fale Conosco</a>
             
             @if (SignInManager.IsSignedIn(User))
             {
-                <span class="menu-item" style="color: #fff;">Olá, @User.Identity.Name</span>
+                <span class="menu-item">Olá, @User.Identity.Name</span>
                 <form asp-controller="Principal" asp-action="Logout" method="post" style="display: inline;">
-                    <button type="submit" class="menu-item" style="background: none; border: none; cursor: pointer;">Sair</button>
+                    <button type="submit" class="menu-item" style="background: none; border: none; cursor: pointer;">
+                        <img id='logout' src="/IMG/logout.png" style="height: 26px; opacity: 90%; transition: 0.5s;" alt="">
+                    </button>
                 </form>
             }
             else
@@ -38,7 +38,7 @@
 </section>
 
 <script>
-    document.getElementById('menuToggle').onclick = function () {
-        document.getElementById('menuItems').classList.toggle('open');
-    };
+    document.getElementById('menuToggle')?.addEventListener('click', function() {
+        document.getElementById('menuItems')?.classList.toggle('open');
+    });
 </script>

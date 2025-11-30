@@ -3,25 +3,10 @@
     ViewData["Title"] = "Criar Solicitação";
 }
 
-<head>
-    <script>
-        function toggleMensagemForm(id) {
-            var form = document.getElementById('mensagem-form-' + id);
-            var img = document.getElementById('chevron-img-' + id);
-            if (form.classList.contains('open')) {
-                form.classList.remove('open');
-                if (img) img.src = '/IMG/chevron.png';
-            } else {
-                form.classList.add('open');
-                if (img) img.src = '/IMG/up-arrows.png';
-            }
-        }
-    </script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@section Styles {
     <link rel="stylesheet" href="~/css/solicitacao.css" />
     <link rel="stylesheet" href="~/css/header.css" />
-</head>
+}
 
 <partial name="_Header" />
 
@@ -32,7 +17,6 @@
         </div>
         <div class="bg2"></div>
     </div>
-
 
     <section class="container">
         <section class="computers-list">
@@ -50,12 +34,10 @@
 
                             <div id="mensagem-form-@computador.ID" class="mensagem-form">
                                 <form asp-action="Solicitacao" asp-controller="Principal" method="post">
-
                                     <input type="hidden" name="SalaId" value="@Model.SalaId" />
                                     <input type="hidden" name="ComputadorId" value="@computador.ID" />
-                                    <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..."required></textarea><br />
+                                    <textarea name="Mensagem" rows="3" cols="30" placeholder="Digite sua mensagem..." required></textarea><br />
                                     <button type="submit">Enviar Mensagem</button>
-                                    
                                 </form>
                             </div>
                         </li>
@@ -63,8 +45,22 @@
                 </ul>
             }
         </section>
-         <a asp-controller="Principal" asp-action="Criar" id="secundario">Voltar</a>
+        <a asp-controller="Principal" asp-action="Criar" id="secundario">Voltar</a>
     </section>
 </body>
 
-</html>
+@section Scripts {
+    <script>
+        function toggleMensagemForm(id) {
+            var form = document.getElementById('mensagem-form-' + id);
+            var img = document.getElementById('chevron-img-' + id);
+            if (form.classList.contains('open')) {
+                form.classList.remove('open');
+                if (img) img.src = '/IMG/chevron.png';
+            } else {
+                form.classList.add('open');
+                if (img) img.src = '/IMG/up-arrows.png';
+            }
+        }
+    </script>
+}

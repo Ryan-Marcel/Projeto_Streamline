@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/leo/Documentos/PROJETO1/Projeto_Streamline/Projeto_Dotnet8.csproj": {}
+    "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {}
   },
   "projects": {
-    "/home/leo/Documentos/PROJETO1/Projeto_Streamline/Projeto_Dotnet8.csproj": {
+    "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/Projeto_Dotnet8.csproj",
+        "projectUniqueName": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
         "projectName": "Projeto_Dotnet8",
-        "projectPath": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/Projeto_Dotnet8.csproj",
-        "packagesPath": "/home/leo/.nuget/packages/",
-        "outputPath": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/obj/",
+        "projectPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/leo/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -37,7 +37,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -83,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/home/leo/.dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

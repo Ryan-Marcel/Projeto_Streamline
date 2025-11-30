@@ -1,6 +1,7 @@
 * {
   margin: 0%;
   padding: 0%;
+  box-sizing: border-box;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
@@ -9,37 +10,34 @@
   color: white;
   height: 3vh;
   background-color: rgb(14, 65, 148);
+  width: 100%;
 }
 
 .header2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 30px 10px 10px;
   background-color: white;
-  height: 130px;
-  padding-right: 30px;
+  min-height: 130px;
+  width: 100%;
 }
 
 .header2 img {
   height: auto;
 }
 
-#Logo{
-  width: 60vw;      /* 10% da largura da tela */
-  min-width: 100px;  /* tamanho mínimo */
-  max-width: 300px; /* tamanho máximo */
+#Logo {
+  width: clamp(200px, 25vw, 250px);
+  margin-left: 20px;
   height: auto;
-  padding-left: 10px;
   display: block;
 }
 
 .menu {
-  position: relative;
   display: flex;
-  justify-content: center;
-  gap: 2vh;
-  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .menu-toggle {
@@ -48,11 +46,14 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 10px;
 }
 
 .menu-items {
   display: flex;
   gap: 10px;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .menu-item {
@@ -60,30 +61,21 @@
   background-color: white;
   border: none;
   padding: 8px 14px;
-  font-size: 20px;
+  font-size: 18px;
   cursor: pointer;
-  transition: 0.5s;
-  position: relative;
+  transition: 0.3s;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align: center;
 }
 
 a.menu-item {
-  color: rgb(56, 56, 56);
-  background-color: white;
-  border: none;
-  padding: 8px 14px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.5s;
-  position: relative;
-  text-align: center;
+  display: inline-block;
 }
 
 .menu-item:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(249, 166, 52);
-}
-.menu-item {
-  text-decoration: none;
 }
 
 .submenu {
@@ -117,9 +109,15 @@ a.menu-item {
   display: block !important;
 }
 
+#logout:hover {
+  scale: 1.2;
+}
 
-/* Responsivo */
 @media (max-width: 1087px) {
+  .menu {
+    position: relative;
+  }
+
   .menu-items {
     display: none;
     flex-direction: column;
@@ -127,14 +125,41 @@ a.menu-item {
     position: absolute;
     right: 0;
     top: 100%;
-    width: 200px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 100;
+    padding: 10px 0;
   }
+
   .menu-items.open {
     display: flex;
   }
+
   .menu-toggle {
     display: block;
+  }
+
+  .menu-item {
+    width: 100%;
+    text-align: left;
+    padding: 12px 20px;
+  }
+
+  .header2 {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  #Logo {
+    width: clamp(150px, 20vw, 150px);
+  }
+
+  .menu-item {
+    font-size: 16px;
+  }
+
+  .header2 {
+    min-height: 100px;
   }
 }

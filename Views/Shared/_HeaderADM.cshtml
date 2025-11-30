@@ -24,9 +24,11 @@
             
             @if (SignInManager.IsSignedIn(User))
             {
-                <span class="menu-item" style="color: #fff;">👤 Admin: @User.Identity.Name</span>
+                <span class="menu-item">Admin: @User.Identity.Name</span>
                 <form asp-controller="Principal" asp-action="Logout" method="post" style="display: inline;">
-                    <button type="submit" class="menu-item" style="background: none; border: none; cursor: pointer;">Sair</button>
+                    <button type="submit" class="menu-item" style="background: none; border: none; cursor: pointer;"> 
+                        <img id='logout' src="/IMG/logout.png" style="height: 26px; opacity: 80%; transition: 0.5s;" alt="">
+                    </button>
                 </form>
             }
             else

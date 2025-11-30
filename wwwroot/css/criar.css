@@ -85,7 +85,7 @@ body{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-form {
+#FormCriar {
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -94,15 +94,15 @@ form {
     padding: 20px;
 }
 
-form label {
+#FormCriar label {
     font-size: 16px;
     margin-bottom: 5px;
     color: #333;
 }
 
-form input,
-form select,
-form textarea {
+#FormCriar input,
+#FormCriar select,
+#FormCriar textarea {
     min-width: 80%;
     padding: 10px;
     font-size: 14px;
@@ -115,13 +115,13 @@ form textarea {
 }
 
 
-form input:focus,
-form select:focus,
-form textarea:focus {
+#FormCriar input:focus,
+#FormCriar select:focus,
+#FormCriar textarea:focus {
     border-color: #007bff;
 }
 
-form button {
+#FormCriar button {
     background-color: rgb(14, 65, 148);
     color: white;
     width: 50%;
@@ -137,7 +137,7 @@ form button {
     margin-bottom: 10px;
 }
 
-form button:hover {
+#FormCriar button:hover {
     background-color: rgb(249, 166, 52);
 }
 

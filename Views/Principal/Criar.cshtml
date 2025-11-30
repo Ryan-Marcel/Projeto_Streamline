@@ -3,21 +3,14 @@
     ViewData["Title"] = "Criar Solicitação";
 }
 
-<head>
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@section Styles {
     <link rel="stylesheet" href="~/css/criar.css" />
     <link rel="stylesheet" href="~/css/header.css" />
-
-</head>
+}
 
 <partial name="_Header" />
 
-
 <body>
-@*     @RenderSection("Scripts", required: false) *@
-
     <div class="titulo">
         <div class="bg1">
             <h1>Criar Solicitação</h1>
@@ -26,10 +19,7 @@
     </div>
 
     <section class='container'>
-
-        <form asp-action="Criar" method="post">
-
-            @* Procura de Sala existente *@
+        <form asp-action="Criar" id="FormCriar" method="post">
             <label for="sala">Selecione a sala:</label>
             <select asp-for="SalaId" asp-items="@(new SelectList(Model.Salas, "ID", "Sala_Num"))" id="sala"
                 name="SalaId" required>
@@ -39,14 +29,9 @@
             <button type="submit" class="carregar" asp-controller="Principal" asp-action="Solicitacao" formnovalidate id="btnCarregar" disabled>Ver Computadores</button>
             <a asp-controller="Principal" asp-action="Index" id="secundario">Voltar</a>
         </form>
-
-</section>
-
-    @section Scripts{
-        <script src="~/js/Criar.js"></script>
-    }
-
     </section>
 </body>
 
-</html>
+@section Scripts{
+    <script src="~/js/Criar.js"></script>
+}

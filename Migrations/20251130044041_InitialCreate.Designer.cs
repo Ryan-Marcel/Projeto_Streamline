@@ -12,8 +12,8 @@ using Projeto_Dotnet8.Data;
 namespace Projeto_Dotnet8.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20251130035601_Update2")]
-    partial class Update2
+    [Migration("20251130044041_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

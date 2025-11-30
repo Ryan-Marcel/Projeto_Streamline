@@ -108,7 +108,6 @@ body {
   min-height: 100px;
   align-items: center;
   background: #ececef;
-  margin-bottom: 15px;
   color: black;
   padding: 10px 20px;
   border: 1px solid #ddd;
@@ -141,7 +140,7 @@ body {
   transition: 0.5s;
 }
 
-form {
+.mensagem-form {
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -169,6 +168,7 @@ form textarea {
   padding: 10px;
   font-size: 14px;
   background: rgb(236, 236, 236);
+  width: 100%;
   color: black;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -176,17 +176,16 @@ form textarea {
   transition: border-color 0.3s;
 }
 
-form input:focus,
-form select:focus,
-form textarea:focus {
+.mensagem-form input:focus,
+.mensagem-form select:focus,
+.mensagem-form textarea:focus {
   border-color: #007bff;
 }
 
-form button {
+.mensagem-form button {
   padding: 10px 20px;
   font-size: 16px;
   width: auto;
-  align-self: center;
   color: white;
   background-color: rgb(14, 65, 148);
   border: none;
@@ -197,7 +196,7 @@ form button {
   margin-bottom: 20px;
 }
 
-form button:hover {
+.mensagem-form button:hover {
   background-color: rgb(249, 166, 52);
 }
 
@@ -223,7 +222,10 @@ ul,
 ol {
   list-style: none;
   padding: 0;
-  margin-bottom: 50px;
+}
+
+li {
+  margin-bottom: 5px;
 }
 
 .mensagem-form {
@@ -238,7 +240,7 @@ ol {
   max-height: 600px; /* ajuste conforme necessário */
   opacity: 1;
   margin-top: 10px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 #secundario{
