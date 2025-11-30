@@ -1,0 +1,77 @@
+
+@model Projeto_Dotnet8.Models.ViewModel.RegisterViewModel
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/header.css" />
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Cadastro - Sistema SENAI</title>
+</head>
+
+<body>
+    <partial name="_Header" />
+
+    <main class="login-container">
+        <div class="login-box">
+            <h2>Cadastre-se</h2>
+            
+            <form asp-controller="Account" asp-action="Register" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
+                <div class="input-group">
+                    <label asp-for="RU">Registro do Aluno (RU)</label>
+                    <input asp-for="RU" type="text" maxlength="10" placeholder="Digite seu RU (10 dígitos)" required>
+                    <span asp-validation-for="RU" class="text-danger"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label asp-for="NomeCompleto">Nome Completo</label>
+                    <input asp-for="NomeCompleto" type="text" placeholder="Digite seu nome completo" required>
+                    <span asp-validation-for="NomeCompleto" class="text-danger"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label asp-for="Password">Senha</label>
+                    <input asp-for="Password" type="password" placeholder="Digite sua senha (mínimo 6 caracteres)" required>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label asp-for="ConfirmPassword">Confirmar Senha</label>
+                    <input asp-for="ConfirmPassword" type="password" placeholder="Confirme sua senha" required>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                
+                <div class="input-group">
+                    <label asp-for="TipoUsuario">Tipo de Usuário</label>
+                    <select asp-for="TipoUsuario" class="form-control" required>
+                        <option value="User">Usuário Normal</option>
+                        <option value="Admin">Administrador</option>
+                    </select>
+                    <span asp-validation-for="TipoUsuario" class="text-danger"></span>
+                </div>
+                
+                <button type="submit" class="btn-login">Cadastrar</button>
+            </form>
+
+            <p class="extra">
+                Já tem conta? <a asp-controller="Principal" asp-action="Login">Faça login aqui</a>
+            </p>
+        </div>
+    </main>
+    
+    <footer></footer>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+
+</html>

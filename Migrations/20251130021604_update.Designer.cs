@@ -12,8 +12,8 @@ using Projeto_Dotnet8.Data;
 namespace Projeto_Dotnet8.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20251129233901_SyncDataCriacao")]
-    partial class SyncDataCriacao
+    [Migration("20251130021604_update")]
+    partial class update
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

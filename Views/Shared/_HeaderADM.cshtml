@@ -1,4 +1,6 @@
-@* ESTE É O NAVBAR E O HEADER COMPLETO DO SITE, COMPARTILHADO ENTRE TELAS. *@
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Projeto_Dotnet8.Models.ApplicationUser> SignInManager
+@inject UserManager<Projeto_Dotnet8.Models.ApplicationUser> UserManager
 
 <link rel="stylesheet" href="~/header.css" asp-append-version="true" />
 
@@ -15,16 +17,25 @@
             <img src="/IMG/Hamburger_icon.svg.png" alt="Menu" style="height:32px;width:32px;">
         </button>
         <div class="menu-items" id="menuItems">
-            <a class="menu-item" asp-controller="Principal" asp-action="Index">Início</a>
+            <a class="menu-item" asp-controller="Principal" asp-action="IndexADM">Início</a>
             <button class="menu-item">Institucional</button>
             <button class="menu-item">Para Você</button>
             <button class="menu-item">Fale Conosco</button>
-            <a class="menu-item" asp-controller="Principal" asp-action="Login">Sair</a>
+            
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <span class="menu-item" style="color: #fff;">👤 Admin: @User.Identity.Name</span>
+                <form asp-controller="Principal" asp-action="Logout" method="post" style="display: inline;">
+                    <button type="submit" class="menu-item" style="background: none; border: none; cursor: pointer;">Sair</button>
+                </form>
+            }
+            else
+            {
+                <a class="menu-item" asp-controller="Principal" asp-action="Login">Entrar</a>
+            }
         </div>
     </nav>
 </section>
-
-@* FUNÇÃO DO NAVBAR RESPONSIVO *@
 
 <script>
     document.getElementById('menuToggle').onclick = function () {

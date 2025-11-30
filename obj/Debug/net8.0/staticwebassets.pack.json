@@ -1,375 +1,527 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Projeto_Dotnet8.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Projeto_Dotnet8.bundle.scp.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/obj/Debug/net8.0/scopedcss/projectbundle/Projeto_Dotnet8.bundle.scp.css",
+      "PackagePath": "staticwebassets/Projeto_Dotnet8.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\Hamburger_icon.svg.png",
-      "PackagePath": "staticwebassets\\IMG\\Hamburger_icon.svg.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/Hamburger_icon.svg.png",
+      "PackagePath": "staticwebassets/IMG/Hamburger_icon.svg.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\Logo-novo-SENAI_-sem-slogan_755X325.png",
-      "PackagePath": "staticwebassets\\IMG\\Logo-novo-SENAI_-sem-slogan_755X325.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/Logo-novo-SENAI_-sem-slogan_755X325.png",
+      "PackagePath": "staticwebassets/IMG/Logo-novo-SENAI_-sem-slogan_755X325.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\banner-portfolio-senai[105527]_267825_img.png",
-      "PackagePath": "staticwebassets\\IMG\\banner-portfolio-senai[105527]_267825_img.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/PROJETO TESTE DE SISTEMAS - G91147.pdf",
+      "PackagePath": "staticwebassets/IMG/PROJETO TESTE DE SISTEMAS - G91147.pdf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\chevron-down-solid.svg",
-      "PackagePath": "staticwebassets\\IMG\\chevron-down-solid.svg"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/banner-portfolio-senai[105527]_267825_img.png",
+      "PackagePath": "staticwebassets/IMG/banner-portfolio-senai[105527]_267825_img.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\chevron-up-solid.svg",
-      "PackagePath": "staticwebassets\\IMG\\chevron-up-solid.svg"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/chevron-down-solid.svg",
+      "PackagePath": "staticwebassets/IMG/chevron-down-solid.svg"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\codioful-formerly-gradienta-SvEzCnnrWP8-unsplash.jpg",
-      "PackagePath": "staticwebassets\\IMG\\codioful-formerly-gradienta-SvEzCnnrWP8-unsplash.jpg"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/chevron-up-solid.svg",
+      "PackagePath": "staticwebassets/IMG/chevron-up-solid.svg"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\image.png",
-      "PackagePath": "staticwebassets\\IMG\\image.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/chevron.png",
+      "PackagePath": "staticwebassets/IMG/chevron.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\magicpattern-65O4Dw6-xLg-unsplash (1).jpg",
-      "PackagePath": "staticwebassets\\IMG\\magicpattern-65O4Dw6-xLg-unsplash (1).jpg"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/codioful-formerly-gradienta-SvEzCnnrWP8-unsplash.jpg",
+      "PackagePath": "staticwebassets/IMG/codioful-formerly-gradienta-SvEzCnnrWP8-unsplash.jpg"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\senailogo_nova.png",
-      "PackagePath": "staticwebassets\\IMG\\senailogo_nova.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/delete.png",
+      "PackagePath": "staticwebassets/IMG/delete.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\t.webp",
-      "PackagePath": "staticwebassets\\IMG\\t.webp"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/image.png",
+      "PackagePath": "staticwebassets/IMG/image.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\t1.webp",
-      "PackagePath": "staticwebassets\\IMG\\t1.webp"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/magicpattern-65O4Dw6-xLg-unsplash (1).jpg",
+      "PackagePath": "staticwebassets/IMG/magicpattern-65O4Dw6-xLg-unsplash (1).jpg"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\t2.webp",
-      "PackagePath": "staticwebassets\\IMG\\t2.webp"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/senailogo_nova.png",
+      "PackagePath": "staticwebassets/IMG/senailogo_nova.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\IMG\\t3.png",
-      "PackagePath": "staticwebassets\\IMG\\t3.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/t.webp",
+      "PackagePath": "staticwebassets/IMG/t.webp"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\criar.css",
-      "PackagePath": "staticwebassets\\css\\criar.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/t1.webp",
+      "PackagePath": "staticwebassets/IMG/t1.webp"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\criarPC.css",
-      "PackagePath": "staticwebassets\\css\\criarPC.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/t2.webp",
+      "PackagePath": "staticwebassets/IMG/t2.webp"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\dashboard.css",
-      "PackagePath": "staticwebassets\\css\\dashboard.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/t3.png",
+      "PackagePath": "staticwebassets/IMG/t3.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\deletar.css",
-      "PackagePath": "staticwebassets\\css\\deletar.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/t4.webp",
+      "PackagePath": "staticwebassets/IMG/t4.webp"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\editar.css",
-      "PackagePath": "staticwebassets\\css\\editar.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/IMG/up-arrows.png",
+      "PackagePath": "staticwebassets/IMG/up-arrows.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\header.css",
-      "PackagePath": "staticwebassets\\css\\header.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/criar.css",
+      "PackagePath": "staticwebassets/css/criar.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\index.css",
-      "PackagePath": "staticwebassets\\css\\index.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/criarPC.css",
+      "PackagePath": "staticwebassets/css/criarPC.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\indexADM.css",
-      "PackagePath": "staticwebassets\\css\\indexADM.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/dashboard.css",
+      "PackagePath": "staticwebassets/css/dashboard.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\listar.css",
-      "PackagePath": "staticwebassets\\css\\listar.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/deletar.css",
+      "PackagePath": "staticwebassets/css/deletar.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\login.css",
-      "PackagePath": "staticwebassets\\css\\login.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/detalhesComputador.css",
+      "PackagePath": "staticwebassets/css/detalhesComputador.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\css\\solicitacao.css",
-      "PackagePath": "staticwebassets\\css\\solicitacao.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/editar.css",
+      "PackagePath": "staticwebassets/css/editar.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/header.css",
+      "PackagePath": "staticwebassets/css/header.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\favicon.png",
-      "PackagePath": "staticwebassets\\favicon.png"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/index.css",
+      "PackagePath": "staticwebassets/css/index.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\js\\Criar.js",
-      "PackagePath": "staticwebassets\\js\\Criar.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/indexADM.css",
+      "PackagePath": "staticwebassets/css/indexADM.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\js\\EditarNotificacoes.js",
-      "PackagePath": "staticwebassets\\js\\EditarNotificacoes.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/listarADM.css",
+      "PackagePath": "staticwebassets/css/listarADM.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\js\\index.js",
-      "PackagePath": "staticwebassets\\js\\index.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/listarSalas.css",
+      "PackagePath": "staticwebassets/css/listarSalas.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\js\\listar.js",
-      "PackagePath": "staticwebassets\\js\\listar.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/login.css",
+      "PackagePath": "staticwebassets/css/login.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\js\\site.js",
-      "PackagePath": "staticwebassets\\js\\site.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/css/solicitacao.css",
+      "PackagePath": "staticwebassets/css/solicitacao.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\LICENSE",
-      "PackagePath": "staticwebassets\\lib\\bootstrap"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/favicon.png",
+      "PackagePath": "staticwebassets/favicon.png"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono.zip",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono.zip"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/OFL.txt",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/OFL.txt"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/README.txt",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/README.txt"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-Bold.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-Bold.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-BoldItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-BoldItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraBold.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraBold.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraBoldItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraBoldItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraLight.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraLight.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraLightItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-ExtraLightItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-Italic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-Italic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-Light.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-Light.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-LightItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-LightItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-Medium.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-Medium.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-MediumItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-MediumItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-SemiBold.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-SemiBold.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-SemiBoldItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-SemiBoldItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-Thin.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-Thin.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/JetBrains_Mono/static/JetBrainsMono-ThinItalic.ttf",
+      "PackagePath": "staticwebassets/fonts/JetBrains_Mono/static/JetBrainsMono-ThinItalic.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/OFL.txt",
+      "PackagePath": "staticwebassets/fonts/OFL.txt"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/README.txt",
+      "PackagePath": "staticwebassets/fonts/README.txt"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/StackSansText-VariableFont_wght.ttf",
+      "PackagePath": "staticwebassets/fonts/StackSansText-VariableFont_wght.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/Stack_Sans_Text.zip",
+      "PackagePath": "staticwebassets/fonts/Stack_Sans_Text.zip"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/static/StackSansText-Bold.ttf",
+      "PackagePath": "staticwebassets/fonts/static/StackSansText-Bold.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/static/StackSansText-ExtraLight.ttf",
+      "PackagePath": "staticwebassets/fonts/static/StackSansText-ExtraLight.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/static/StackSansText-Light.ttf",
+      "PackagePath": "staticwebassets/fonts/static/StackSansText-Light.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/static/StackSansText-Medium.ttf",
+      "PackagePath": "staticwebassets/fonts/static/StackSansText-Medium.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/static/StackSansText-Regular.ttf",
+      "PackagePath": "staticwebassets/fonts/static/StackSansText-Regular.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/fonts/static/StackSansText-SemiBold.ttf",
+      "PackagePath": "staticwebassets/fonts/static/StackSansText-SemiBold.ttf"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/js/Criar.js",
+      "PackagePath": "staticwebassets/js/Criar.js"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/js/EditarNotificacoes.js",
+      "PackagePath": "staticwebassets/js/EditarNotificacoes.js"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/js/index.js",
+      "PackagePath": "staticwebassets/js/index.js"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/js/listar.js",
+      "PackagePath": "staticwebassets/js/listar.js"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery\\LICENSE.txt",
-      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery\\dist\\jquery.js",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\Aluno SENAI.C308-LAB3-001\\Documents\\.r\\Projeto_Streamline\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
-      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Projeto_Dotnet8.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/home/leo/Documentos/PROJETO1/Projeto_Streamline/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Projeto_Dotnet8.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Projeto_Dotnet8.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Projeto_Dotnet8.props",
       "PackagePath": "build\\Projeto_Dotnet8.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Projeto_Dotnet8.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Projeto_Dotnet8.props",
       "PackagePath": "buildMultiTargeting\\Projeto_Dotnet8.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Projeto_Dotnet8.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Projeto_Dotnet8.props",
       "PackagePath": "buildTransitive\\Projeto_Dotnet8.props"
     }
   ],

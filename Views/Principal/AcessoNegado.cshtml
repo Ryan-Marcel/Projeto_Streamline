@@ -1,0 +1,64 @@
+
+@{
+    ViewData["Title"] = "Acesso Negado";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/header.css" />
+    <title>Acesso Negado</title>
+    <style>
+        .acesso-negado-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .acesso-negado-container h1 {
+            color: #dc3545;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .acesso-negado-container p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .btn-voltar {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-voltar:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <partial name="_Header" />
+    
+    <div class="acesso-negado-container">
+        <h1>🚫 Acesso Negado</h1>
+        <p>Você não tem permissão para acessar esta página.</p>
+        <p>Se você acredita que isso é um erro, entre em contato com o administrador.</p>
+        
+        <a asp-controller="Principal" asp-action="Login" class="btn-voltar">Voltar ao Login</a>
+    </div>
+    
+    <footer></footer>
+</body>
+</html>
