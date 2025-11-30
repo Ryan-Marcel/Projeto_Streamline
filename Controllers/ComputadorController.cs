@@ -18,7 +18,7 @@ public class Computador : Controller
 
     public IActionResult Index()
     {
-        return RedirectToAction("Index", "Principal");
+        return RedirectToAction("IndexADM", "Principal");
     }
 
     public IActionResult Editar()

@@ -65,7 +65,6 @@ namespace Projeto_Dotnet8.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Texto")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("ID");

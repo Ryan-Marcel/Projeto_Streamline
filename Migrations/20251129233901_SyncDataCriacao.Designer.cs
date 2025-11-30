@@ -12,8 +12,8 @@ using Projeto_Dotnet8.Data;
 namespace Projeto_Dotnet8.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20251129224323_AddStatusEDataCriacaoMensagem")]
-    partial class AddStatusEDataCriacaoMensagem
+    [Migration("20251129233901_SyncDataCriacao")]
+    partial class SyncDataCriacao
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -68,7 +68,6 @@ namespace Projeto_Dotnet8.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Texto")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("ID");

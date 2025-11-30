@@ -95,9 +95,9 @@ public IActionResult DetalhesComputador(int id)
 {
     // Buscar todas as mensagens com seus computadores
     var mensagens = _context.Mensagens
-        .Include(m => m.Computador)
-        .OrderByDescending(m => m.DataCriacao)
-        .AsQueryable();
+    .Include(m => m.Computador)  
+    .OrderByDescending(m => m.DataCriacao)
+    .AsQueryable();
 
     // Aplicar filtro de status se especificado
     if (statusFiltro.HasValue)
@@ -109,21 +109,31 @@ public IActionResult DetalhesComputador(int id)
     return View(mensagens.ToList());
 }
 
-[HttpPost]
-public IActionResult AtualizarStatus(int id, int novoStatus)
+public class AtualizarStatusRequest
 {
-    var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == id);
-    
-    if (mensagem != null)
-    {
-        mensagem.Status = novoStatus;
-        _context.SaveChanges();
-        return Json(new { success = true });
-    }
-    
-    return Json(new { success = false });
+    public int id { get; set; }
+    public int novoStatus { get; set; }
 }
 
+[HttpPost]
+public IActionResult AtualizarStatus([FromBody] AtualizarStatusRequest request)
+{
+    try
+    {
+        var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
+        if (mensagem != null)
+        {
+            mensagem.Status = request.novoStatus;
+            _context.SaveChanges();
+            return Json(new { success = true });
+        }
+        return Json(new { success = false, error = "Mensagem não encontrada" });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, error = ex.Message });
+    }
+}
     /* Criação das mensagens para cada computador de sua respectiva Sala */
     public IActionResult Criar()
     {

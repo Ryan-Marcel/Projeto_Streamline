@@ -45,12 +45,14 @@
             {
                 foreach (var mensagem in Model)
                 {
-                    <li class="notificacao-item" data-status="@mensagem.Status">
+                    <li class="notificacao-item" 
+                        data-status="@mensagem.Status"
+                        data-mensagem-id="@mensagem.ID">
                         <div class="notificacao-header" onclick="toggleDropdown(this)">
                             <div class="notificacao-info">
                                 <div class="info-principal">
                                     <span class="computador-nome">
-                                        <strong>💻 @mensagem.Computador.Nome</strong>
+                                     <strong>💻 @(mensagem.Computador?.Nome ?? "Sem computador")</strong>
                                     </span>
                                     <span class="computador-id">ID: @mensagem.Computador.ID</span>
                                 </div>
@@ -132,6 +134,8 @@
 
         async function atualizarStatus(mensagemId, novoStatus) {
             try {
+                console.log('🔄 Atualizando status...', { mensagemId, novoStatus });
+                
                 const response = await fetch('@Url.Action("AtualizarStatus", "Principal")', {
                     method: 'POST',
                     headers: {
@@ -144,11 +148,25 @@
                 });
 
                 const result = await response.json();
+                console.log('✅ Resposta recebida:', result);
                 
                 if (result.success) {
-                    // Atualizar a badge de status visualmente
-                    const item = document.querySelector(`[data-status]`).closest('li');
+                    // 🎯 CORREÇÃO PRINCIPAL: Buscar pelo ID específico
+                    const item = document.querySelector(`li[data-mensagem-id="${mensagemId}"]`);
+                    
+                    if (!item) {
+                        console.error('❌ Item não encontrado! ID:', mensagemId);
+                        mostrarFeedback('Erro: Item não encontrado na página.', 'error');
+                        return;
+                    }
+                    
                     const badge = item.querySelector('.status-badge');
+                    
+                    if (!badge) {
+                        console.error('❌ Badge não encontrado!');
+                        mostrarFeedback('Erro: Badge não encontrado.', 'error');
+                        return;
+                    }
                     
                     // Remover classes antigas
                     badge.classList.remove('status-0', 'status-1', 'status-2');
@@ -161,13 +179,14 @@
                     // Atualizar data-status
                     item.setAttribute('data-status', novoStatus);
                     
-                    // Mostrar feedback
+                    console.log('✨ UI atualizada com sucesso!');
                     mostrarFeedback('Status atualizado com sucesso!', 'success');
                 } else {
+                    console.error('❌ Erro do servidor:', result);
                     mostrarFeedback('Erro ao atualizar status.', 'error');
                 }
             } catch (error) {
-                console.error('Erro:', error);
+                console.error('💥 Erro na requisição:', error);
                 mostrarFeedback('Erro ao atualizar status.', 'error');
             }
         }
