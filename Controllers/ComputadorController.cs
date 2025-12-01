@@ -10,7 +10,7 @@ namespace Projeto_Dotnet8.Controllers
     public class Computador : Controller
     {
         private readonly IcomputadorRepository computadorRepository;
-        private readonly ISalaRepository salaRepository; 
+        private readonly ISalaRepository salaRepository;
 
         public Computador(IcomputadorRepository computador_Repository, ISalaRepository salaRepository)
         {
@@ -31,9 +31,15 @@ namespace Projeto_Dotnet8.Controllers
                 Computador = new ComputadorModels(),
                 Salas = salaRepository.ListarSalas()
             };
+
+            // Carregar computadores para cada sala
+            foreach (var sala in viewModel.Salas)
+            {
+                sala.Computadores = computadorRepository.ListarPorSala(sala.ID).ToList();
+            }
+
             return View(viewModel);
         }
-
         // POST: Criar Computador
         [HttpPost]
         [ValidateAntiForgeryToken]

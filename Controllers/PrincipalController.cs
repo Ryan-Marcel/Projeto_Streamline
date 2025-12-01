@@ -202,50 +202,94 @@ public class Principal : Controller
         }
     }
 
+    // ========== MÉTODOS CRIAR ATUALIZADOS ==========
     [Authorize(Roles = "User")]
-    public IActionResult Criar()
+    public IActionResult Criar(int? SalaId)
     {
         var salas = salaRepository.ListarSalas();
         var viewModel = new CriarMensagem
         {
             Salas = salas,
-            Computadores = new List<ComputadorModels>()
+            SalaId = SalaId ?? 0,
+            Computadores = SalaId.HasValue && SalaId.Value != 0 
+                ? computadorRepository.ListarPorSala(SalaId.Value) 
+                : new List<ComputadorModels>()
         };
         return View(viewModel);
     }
 
     [HttpPost]
     [Authorize(Roles = "User")]
-    public IActionResult Criar(CriarMensagem model, string carregar)
+    [ValidateAntiForgeryToken]
+    public IActionResult Criar(CriarMensagem model)
     {
-        if (!string.IsNullOrEmpty(carregar))
+        // Validação da Sala
+        if (model.SalaId == 0)
         {
+            TempData["Erro"] = "Selecione uma sala.";
             model.Salas = salaRepository.ListarSalas();
-            model.Computadores = model.SalaId != 0
-                ? computadorRepository.ListarPorSala(model.SalaId)
-                : new List<ComputadorModels>();
+            model.Computadores = new List<ComputadorModels>();
             return View(model);
         }
 
-        if (!string.IsNullOrWhiteSpace(model.Mensagem) && model.ComputadorId != 0)
+        // Validação do Computador
+        if (model.ComputadorId == 0)
         {
+            TempData["Erro"] = "Selecione um computador.";
+            model.Salas = salaRepository.ListarSalas();
+            model.Computadores = computadorRepository.ListarPorSala(model.SalaId);
+            return View(model);
+        }
+
+        // Validação da Mensagem
+        if (string.IsNullOrWhiteSpace(model.Mensagem))
+        {
+            TempData["Erro"] = "Descreva o problema.";
+            model.Salas = salaRepository.ListarSalas();
+            model.Computadores = computadorRepository.ListarPorSala(model.SalaId);
+            return View(model);
+        }
+
+        try
+        {
+            var userId = _userManager.GetUserId(User);
+            
             var mensagem = new MensagemModels
             {
                 Texto = model.Mensagem,
                 ComputadorID = model.ComputadorId,
-                UserId = _userManager.GetUserId(User)
+                UserId = userId,
+                DataCriacao = DateTime.Now,
+                Status = 0
             };
+            
             _context.Mensagens.Add(mensagem);
             _context.SaveChanges();
-            return RedirectToAction("Listar");
-        }
 
-        model.Salas = salaRepository.ListarSalas();
-        model.Computadores = model.SalaId != 0
-            ? computadorRepository.ListarPorSala(model.SalaId)
-            : new List<ComputadorModels>();
-        return View(model);
+            TempData["Sucesso"] = "Solicitação enviada com sucesso!";
+            return RedirectToAction("HistoricoSolicitacoes");
+        }
+        catch (Exception ex)
+        {
+            TempData["Erro"] = $"Erro ao criar solicitação: {ex.Message}";
+            model.Salas = salaRepository.ListarSalas();
+            model.Computadores = computadorRepository.ListarPorSala(model.SalaId);
+            return View(model);
+        }
     }
+
+    // Método usado pelo AJAX para carregar computadores
+    [HttpGet]
+    [Authorize(Roles = "User")]
+    public IActionResult Solicitacao(int SalaId)
+    {
+        var computadores = SalaId != 0 
+            ? computadorRepository.ListarPorSala(SalaId) 
+            : new List<ComputadorModels>();
+
+        return PartialView("_ComputadoresGrid", computadores);
+    }
+    // ===============================================
 
     [Authorize(Roles = "User")]
     public IActionResult Editar()
@@ -278,142 +322,97 @@ public class Principal : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    [HttpGet]
     [Authorize(Roles = "User")]
-    public IActionResult Solicitacao(int SalaId)
+    public IActionResult HistoricoSolicitacoes()
     {
-        var salas = salaRepository.ListarSalas();
-        var computadores = SalaId != 0 ? computadorRepository.ListarPorSala(SalaId) : new List<ComputadorModels>();
-        var viewModel = new CriarMensagem
-        {
-            SalaId = SalaId,
-            Salas = salas,
-            Computadores = computadores
-        };
-        return View(viewModel);
+        // Pega o ID do usuário logado
+        var userId = _userManager.GetUserId(User);
+        
+        // Busca APENAS as mensagens do usuário logado
+        var mensagens = _context.Mensagens
+            .Where(m => m.UserId == userId) // Filtra por usuário
+            .Include(m => m.Computador)
+            .OrderByDescending(m => m.DataCriacao)
+            .ToList();
+        
+        return View(mensagens);
     }
 
+    // POST: Atualizar Mensagem
     [HttpPost]
-[Authorize(Roles = "User")]
-public IActionResult Solicitacao(CriarMensagem model)
-{
-    if (!string.IsNullOrWhiteSpace(model.Mensagem) && model.ComputadorId != 0)
-    {
-        // ⭐ Pega o ID do usuário logado
-        var userId = _userManager.GetUserId(User);
-        
-        var mensagem = new MensagemModels
-        {
-            Texto = model.Mensagem,
-            ComputadorID = model.ComputadorId,
-            UserId = userId // ⭐ Salva o ID do usuário
-        };
-        
-        _context.Mensagens.Add(mensagem);
-        _context.SaveChanges();
-        return RedirectToAction("HistoricoSolicitacoes"); // Redireciona para o histórico
-    }
-    
-    model.Salas = salaRepository.ListarSalas();
-    model.Computadores = model.SalaId != 0 
-        ? computadorRepository.ListarPorSala(model.SalaId) 
-        : new List<ComputadorModels>();
-    return View(model);
-}
-
-
     [Authorize(Roles = "User")]
-public IActionResult HistoricoSolicitacoes()
-{
-    // Pega o ID do usuário logado
-    var userId = _userManager.GetUserId(User);
-    
-    // Busca APENAS as mensagens do usuário logado
-    var mensagens = _context.Mensagens
-        .Where(m => m.UserId == userId) // ⭐ Filtra por usuário
-        .Include(m => m.Computador)
-        .OrderByDescending(m => m.DataCriacao)
-        .ToList();
-    
-    return View(mensagens);
-}
-
-// POST: Atualizar Mensagem
-[HttpPost]
-[Authorize(Roles = "User")]
-public IActionResult AtualizarMensagem([FromBody] AtualizarMensagemRequest request)
-{
-    try
+    public IActionResult AtualizarMensagem([FromBody] AtualizarMensagemRequest request)
     {
-        var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
-        
-        if (mensagem == null)
+        try
         {
-            return Json(new { success = false, error = "Mensagem não encontrada" });
+            var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
+            
+            if (mensagem == null)
+            {
+                return Json(new { success = false, error = "Mensagem não encontrada" });
+            }
+            
+            // Validação: Verifica se o usuário é o dono da mensagem
+            var userId = _userManager.GetUserId(User);
+            if (mensagem.UserId != userId)
+            {
+                return Json(new { success = false, error = "Você não tem permissão para editar esta mensagem" });
+            }
+            
+            // Atualiza a mensagem
+            mensagem.Texto = request.novoTexto;
+            _context.SaveChanges();
+            
+            return Json(new { success = true });
         }
-        
-        // ⭐ VALIDAÇÃO: Verifica se o usuário é o dono da mensagem
-        var userId = _userManager.GetUserId(User);
-        if (mensagem.UserId != userId)
+        catch (Exception ex)
         {
-            return Json(new { success = false, error = "Você não tem permissão para editar esta mensagem" });
+            return Json(new { success = false, error = ex.Message });
         }
-        
-        // Atualiza a mensagem
-        mensagem.Texto = request.novoTexto;
-        _context.SaveChanges();
-        
-        return Json(new { success = true });
     }
-    catch (Exception ex)
+
+    // POST: Excluir Mensagem
+    [HttpPost]
+    [Authorize(Roles = "User")]
+    public IActionResult ExcluirMensagem([FromBody] ExcluirMensagemRequest request)
     {
-        return Json(new { success = false, error = ex.Message });
-    }
-}
-
-// POST: Excluir Mensagem
-[HttpPost]
-[Authorize(Roles = "User")]
-public IActionResult ExcluirMensagem([FromBody] ExcluirMensagemRequest request)
-{
-    try
-    {
-        var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
-        
-        if (mensagem == null)
+        try
         {
-            return Json(new { success = false, error = "Mensagem não encontrada" });
+            var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
+            
+            if (mensagem == null)
+            {
+                return Json(new { success = false, error = "Mensagem não encontrada" });
+            }
+            
+            // Validação: Verifica se o usuário é o dono da mensagem
+            var userId = _userManager.GetUserId(User);
+            if (mensagem.UserId != userId)
+            {
+                return Json(new { success = false, error = "Você não tem permissão para excluir esta mensagem" });
+            }
+            
+            // Exclui a mensagem
+            _context.Mensagens.Remove(mensagem);
+            _context.SaveChanges();
+            
+            return Json(new { success = true });
         }
-        
-        // ⭐ VALIDAÇÃO: Verifica se o usuário é o dono da mensagem
-        var userId = _userManager.GetUserId(User);
-        if (mensagem.UserId != userId)
+        catch (Exception ex)
         {
-            return Json(new { success = false, error = "Você não tem permissão para excluir esta mensagem" });
+            return Json(new { success = false, error = ex.Message });
         }
-        
-        // Exclui a mensagem
-        _context.Mensagens.Remove(mensagem);
-        _context.SaveChanges();
-        
-        return Json(new { success = true });
     }
-    catch (Exception ex)
+
+    // Classes para os requests
+    public class AtualizarMensagemRequest
     {
-        return Json(new { success = false, error = ex.Message });
+        public int id { get; set; }
+        public string novoTexto { get; set; }
     }
-}
 
-// Classes para os requests (adicione no final da classe)
-public class AtualizarMensagemRequest
-{
-    public int id { get; set; }
-    public string novoTexto { get; set; }
-}
-
-public class ExcluirMensagemRequest
-{
-    public int id { get; set; }
-}
-
+    public class ExcluirMensagemRequest
+    {
+        public int id { get; set; }
+    }
 }

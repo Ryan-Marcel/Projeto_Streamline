@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="novaSalaInput">
                                 <span class="label-icon"></span>
-                            Nome da Sala
+                                Nome da Sala
                             </label>
                             <input 
                                 asp-for="NovaSalaNum" 
@@ -157,10 +157,7 @@
                 <div class="salas-grid">
                     @foreach (var sala in Model.Salas)
                     {
-                        var computadores = Model.Salas
-                            .Where(s => s.ID == sala.ID)
-                            .SelectMany(s => s.Computadores ?? new List<ComputadorModels>())
-                            .Count();
+                        var computadores = sala.Computadores?.Count ?? 0;
                         
                         <div class="sala-card">
                             <div class="sala-card-header">

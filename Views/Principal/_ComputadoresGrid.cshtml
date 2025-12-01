@@ -1,0 +1,22 @@
+@model IEnumerable<Projeto_Dotnet8.Models.ComputadorModels>
+
+@if (Model != null && Model.Any())
+{
+    foreach (var computador in Model)
+    {
+        <div class="computador-card" data-id="@computador.ID">
+            <input type="radio" name="ComputadorId" value="@computador.ID" id="pc-@computador.ID" required />
+            <label for="pc-@computador.ID">
+                <span class="pc-icon">💻</span>
+                <strong>@computador.Nome</strong>
+                <small>ID: @computador.ID</small>
+            </label>
+        </div>
+    }
+}
+else
+{
+    <div class="sem-computadores">
+        <p>Nenhum computador cadastrado nesta sala.</p>
+    </div>
+}

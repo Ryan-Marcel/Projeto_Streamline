@@ -3,14 +3,19 @@
     ViewData["Title"] = "Criar Solicitação";
 }
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/criar.css" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/criarSolicitacao.css" />
     <link rel="stylesheet" href="~/css/header.css" />
-}
-
-<partial name="_Header" />
+</head>
 
 <body>
+    <partial name="_Header" />
+
     <div class="titulo">
         <div class="bg1">
             <h1>Criar Solicitação</h1>
@@ -18,20 +23,290 @@
         <div class="bg2"></div>
     </div>
 
-    <section class='container'>
-        <form asp-action="Criar" id="FormCriar" method="post">
-            <label for="sala">Selecione a sala:</label>
-            <select asp-for="SalaId" asp-items="@(new SelectList(Model.Salas, "ID", "Sala_Num"))" id="sala"
-                name="SalaId" required>
-                <option value="">Escolha uma sala</option>
-            </select>
+    <section class="container">
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="alert alert-success">
+                <span class="alert-icon">✓</span>
+                @TempData["Sucesso"]
+            </div>
+        }
+        
+        @if (TempData["Erro"] != null)
+        {
+            <div class="alert alert-error">
+                <span class="alert-icon">✗</span>
+                @TempData["Erro"]
+            </div>
+        }
 
-            <button type="submit" class="carregar" asp-controller="Principal" asp-action="Solicitacao" formnovalidate id="btnCarregar" disabled>Ver Computadores</button>
-            <a asp-controller="Principal" asp-action="Index" id="secundario">Voltar</a>
-        </form>
+        <div class="solicitacao-card">
+            <div class="card-header">
+                <span class="header-icon">📝</span>
+                <h2>Nova Solicitação de Suporte</h2>
+            </div>
+
+            <form asp-controller="Principal" asp-action="Criar" method="post" id="formSolicitacao">
+                <!-- Passo 1: Seleção da Sala -->
+                <div class="form-step active" id="step-sala">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <h3>Selecione a Sala</h3>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="salaSelect">
+                            <span class="label-icon"></span>
+                            Sala
+                        </label>
+                        <div class="select-wrapper">
+                            <select asp-for="SalaId" class="form-control" id="salaSelect" required>
+                                <option value="0">Escolha uma sala</option>
+                                @foreach (var sala in Model.Salas)
+                                {
+                                    <option value="@sala.ID" selected="@(Model.SalaId == sala.ID)">@sala.Sala_Num</option>
+                                }
+                            </select>
+                            <span class="select-arrow">▼</span>
+                        </div>
+                        <span class="form-hint">Selecione a sala onde o problema está ocorrendo</span>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-primary" id="btnProximoSala" disabled>
+                            Próximo
+                            <span class="btn-icon">→</span>
+                        </button>
+                        <a asp-controller="Principal" asp-action="Index" class="btn btn-secondary">
+                            <span class="btn-icon">←</span>
+                            Voltar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Passo 2: Seleção do Computador -->
+                <div class="form-step" id="step-computador">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <h3>Selecione o Computador</h3>
+                    </div>
+
+                    <div id="computadores-lista" class="computadores-grid">
+                        @if (Model.Computadores != null && Model.Computadores.Any())
+                        {
+                            @foreach (var computador in Model.Computadores)
+                            {
+                                <div class="computador-card" data-id="@computador.ID">
+                                    <input type="radio" name="ComputadorId" value="@computador.ID" id="pc-@computador.ID" 
+                                           checked="@(Model.ComputadorId == computador.ID)" required />
+                                    <label for="pc-@computador.ID">
+                                        <span class="pc-icon">💻</span>
+                                        <strong>@computador.Nome</strong>
+                                        <small>ID: @computador.ID</small>
+                                    </label>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="sem-computadores">
+                                <p>Nenhum computador cadastrado nesta sala.</p>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" id="btnVoltarSala">
+                            <span class="btn-icon">←</span>
+                            Voltar
+                        </button>
+                        <button type="button" class="btn btn-primary" id="btnProximoComputador" disabled>
+                            Próximo
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Passo 3: Descrição do Problema -->
+                <div class="form-step" id="step-mensagem">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <h3>Descreva o Problema</h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagemTextarea">
+                            <span class="label-icon">📄</span>
+                            Descrição do Problema
+                        </label>
+                        <textarea 
+                            asp-for="Mensagem" 
+                            class="form-control" 
+                            id="mensagemTextarea"
+                            rows="8"
+                            placeholder="Descreva detalhadamente o problema que você está enfrentando..."
+                            required
+                        >@Model.Mensagem</textarea>
+                        <span class="form-hint">Quanto mais detalhes você fornecer, mais rápido poderemos ajudar</span>
+                    </div>
+
+                    <div class="resumo-solicitacao">
+                        <h4>Resumo da Solicitação:</h4>
+                        <div class="resumo-item">
+                            <strong>Sala:</strong> <span id="resumo-sala">-</span>
+                        </div>
+                        <div class="resumo-item">
+                            <strong>Computador:</strong> <span id="resumo-computador">-</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" class="btn btn-secondary" id="btnVoltarComputador">
+                            <span class="btn-icon">←</span>
+                            Voltar
+                        </button>
+                        <button type="submit" class="btn btn-success" id="btnEnviar" disabled>
+                            <span class="btn-icon">✓</span>
+                            Enviar Solicitação
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </section>
-</body>
 
-@section Scripts{
-    <script src="~/js/Criar.js"></script>
-}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const salaSelect = document.getElementById('salaSelect');
+            const btnProximoSala = document.getElementById('btnProximoSala');
+            const btnVoltarSala = document.getElementById('btnVoltarSala');
+            const btnProximoComputador = document.getElementById('btnProximoComputador');
+            const btnVoltarComputador = document.getElementById('btnVoltarComputador');
+            const btnEnviar = document.getElementById('btnEnviar');
+            const mensagemTextarea = document.getElementById('mensagemTextarea');
+
+            const stepSala = document.getElementById('step-sala');
+            const stepComputador = document.getElementById('step-computador');
+            const stepMensagem = document.getElementById('step-mensagem');
+
+            // Validação Sala
+            salaSelect.addEventListener('change', function() {
+                const isValid = this.value !== '0';
+                btnProximoSala.disabled = !isValid;
+                btnProximoSala.style.opacity = isValid ? '1' : '0.6';
+            });
+
+            // Validação inicial
+            if (salaSelect.value !== '0') {
+                btnProximoSala.disabled = false;
+                btnProximoSala.style.opacity = '1';
+            }
+
+            // Próximo: Sala -> Computador
+            btnProximoSala.addEventListener('click', function() {
+                const salaId = salaSelect.value;
+                if (salaId === '0') return;
+
+                // Carregar computadores via AJAX
+                carregarComputadores(salaId);
+                
+                stepSala.classList.remove('active');
+                stepComputador.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Voltar: Computador -> Sala
+            btnVoltarSala.addEventListener('click', function() {
+                stepComputador.classList.remove('active');
+                stepSala.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Validação Computador
+            document.addEventListener('change', function(e) {
+                if (e.target.name === 'ComputadorId') {
+                    btnProximoComputador.disabled = false;
+                    btnProximoComputador.style.opacity = '1';
+                    
+                    // Adicionar efeito visual no card selecionado
+                    document.querySelectorAll('.computador-card').forEach(card => {
+                        card.classList.remove('selected');
+                    });
+                    e.target.closest('.computador-card').classList.add('selected');
+                }
+            });
+
+            // Próximo: Computador -> Mensagem
+            btnProximoComputador.addEventListener('click', function() {
+                const computadorSelecionado = document.querySelector('input[name="ComputadorId"]:checked');
+                if (!computadorSelecionado) return;
+
+                // Atualizar resumo
+                atualizarResumo();
+
+                stepComputador.classList.remove('active');
+                stepMensagem.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Voltar: Mensagem -> Computador
+            btnVoltarComputador.addEventListener('click', function() {
+                stepMensagem.classList.remove('active');
+                stepComputador.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Validação Mensagem
+            mensagemTextarea.addEventListener('input', function() {
+                const isValid = this.value.trim() !== '';
+                btnEnviar.disabled = !isValid;
+                btnEnviar.style.opacity = isValid ? '1' : '0.6';
+            });
+
+            // Validação inicial da mensagem
+            if (mensagemTextarea.value.trim() !== '') {
+                btnEnviar.disabled = false;
+                btnEnviar.style.opacity = '1';
+            }
+
+            // Função para carregar computadores
+            function carregarComputadores(salaId) {
+                const listaComputadores = document.getElementById('computadores-lista');
+                listaComputadores.innerHTML = '<div class="loading">Carregando computadores...</div>';
+
+                fetch(`/Principal/Solicitacao?SalaId=${salaId}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        listaComputadores.innerHTML = html;
+                    })
+                    .catch(error => {
+                        console.error('Erro ao carregar computadores:', error);
+                        listaComputadores.innerHTML = '<div class="erro">Erro ao carregar computadores. Tente novamente.</div>';
+                    });
+            }
+
+            // Função para atualizar resumo
+            function atualizarResumo() {
+                const salaTexto = salaSelect.options[salaSelect.selectedIndex].text;
+                const computadorSelecionado = document.querySelector('input[name="ComputadorId"]:checked');
+                const computadorLabel = computadorSelecionado ? 
+                    computadorSelecionado.closest('.computador-card').querySelector('strong').textContent : '-';
+
+                document.getElementById('resumo-sala').textContent = salaTexto;
+                document.getElementById('resumo-computador').textContent = computadorLabel;
+            }
+
+            // Auto-hide alerts
+            setTimeout(function() {
+                const alerts = document.querySelectorAll('.alert');
+                alerts.forEach(alert => {
+                    alert.style.transition = 'opacity 0.5s';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500);
+                });
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
