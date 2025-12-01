@@ -1,61 +1,302 @@
-@model Projeto_Dotnet8.Models.ComputadorModels
 @{
     ViewData["Title"] = "Dashboard";
 }
 
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/dashboard.css" />
     <link rel="stylesheet" href="~/css/header.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<header>
-    <partial name="_HeaderADM"/>
-</header>
-
 <body>
+    <partial name="_HeaderADM" />
+
+    <div class="titulo">
+        <div class="bg1">
+            <h1>Dashboard Geral</h1>
+        </div>
+        <div class="bg2"></div>
+    </div>
+
     <section class="container dashboard-container">
-        <h2 class="dashboard-title">Dashboard Geral</h2>
+        
+        <!-- Seção de Gráficos -->
         <div class="dashboard-graphics">
+            <!-- Gráfico de Pizza - Status das Notificações -->
             <div class="dashboard-graphic-card">
-                <canvas id="barChart" width="300" height="200"></canvas>
+                <div class="card-header">
+                    <h3>Status das Notificações</h3>
+                </div>
+                <canvas id="statusChart"></canvas>
             </div>
+
+            <!-- Gráfico de Linha - Notificações por Mês -->
             <div class="dashboard-graphic-card">
-                <canvas id="pieChart" width="300" height="200"></canvas>
+                <div class="card-header">
+                    <h3>Notificações por Mês</h3>
+                </div>
+                <canvas id="monthlyChart"></canvas>
+            </div>
+
+            <!-- Gráfico de Barras - Solicitações por Sala -->
+            <div class="dashboard-graphic-card">
+                <div class="card-header">
+                    <h3>Solicitações por Sala</h3>
+                </div>
+                <canvas id="salaChart"></canvas>
+            </div>
+
+            <!-- Card de Notificações Recentes -->
+            <div class="dashboard-graphic-card recent-notifications-card">
+                <div class="card-header">
+                    <h3>Últimas Notificações</h3>
+                </div>
+                <div class="recent-notifications-list" id="recentNotificationsList">
+                    <div class="loading">Carregando...</div>
+                </div>
             </div>
         </div>
+
+        <a asp-controller="Principal" asp-action="IndexADM" id="voltar">Voltar</a>
     </section>
+
+
     <script>
-        // Exemplo de dados mockados, substitua pelos dados do seu Model futuramente
-        const barData = {
-            labels: ['Jan', 'Fev', 'Mar', 'Abr'],
-            datasets: [{
-                label: 'Vendas',
-                data: [12, 19, 3, 5],
-                backgroundColor: 'rgba(75,192,192,0.6)'
-            }]
-        };
+  
+        Chart.defaults.font.family = 'Stack-Sans, system-ui, sans-serif';
+        Chart.defaults.font.size = 14;
+        Chart.defaults.color = '#333';
 
-        const pieData = {
-            labels: ['Produto A', 'Produto B', 'Produto C'],
-            datasets: [{
-                data: [300, 50, 100],
-                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
-            }]
-        };
+        async function loadStatusChart() {
+            try {
+                const response = await fetch('@Url.Action("GetStatusData", "Dashboard")');
+                const data = await response.json();
 
-        new Chart(document.getElementById('barChart'), {
-            type: 'bar',
-            data: barData
-        });
+                const ctx = document.getElementById('statusChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            data: data.data,
+                            backgroundColor: [
+                                '#ff6384', 
+                                '#4caf50', 
+                                '#ffce56' 
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    font: {
+                                        size: 13
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed || 0;
+                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                        const percentage = ((value / total) * 100).toFixed(1);
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar gráfico de status:', error);
+            }
+        }
 
-        new Chart(document.getElementById('pieChart'), {
-            type: 'pie',
-            data: pieData
+        // Função para buscar e renderizar gráfico de linha (Mensal)
+        async function loadMonthlyChart() {
+            try {
+                const response = await fetch('@Url.Action("GetMonthlyData", "Dashboard")');
+                const data = await response.json();
+
+                const ctx = document.getElementById('monthlyChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Notificações',
+                            data: data.data,
+                            borderColor: '#2196f3',
+                            backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
+                            pointBackgroundColor: '#2196f3',
+                            pointBorderColor: '#fff',
+                            pointBorderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar gráfico mensal:', error);
+            }
+        }
+
+        // Função para buscar e renderizar gráfico de barras (Por Sala)
+        async function loadSalaChart() {
+            try {
+                const response = await fetch('@Url.Action("GetSalaData", "Dashboard")');
+                const data = await response.json();
+
+                const ctx = document.getElementById('salaChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Solicitações',
+                            data: data.data,
+                            backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                            borderColor: 'rgba(102, 126, 234, 1)',
+                            borderWidth: 2,
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `Solicitações: ${context.parsed.y}`;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 1
+                                },
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error('Erro ao carregar gráfico de salas:', error);
+            }
+        }
+
+        // Função para buscar e renderizar notificações recentes
+        async function loadRecentNotifications() {
+            try {
+                const response = await fetch('@Url.Action("GetRecentNotifications", "Dashboard")');
+                const notifications = await response.json();
+
+                const listElement = document.getElementById('recentNotificationsList');
+                
+                if (notifications.length === 0) {
+                    listElement.innerHTML = '<div class="no-notifications">Nenhuma notificação encontrada</div>';
+                    return;
+                }
+
+                const statusColors = {
+                    0: '#ff6384', 
+                    1: '#ffce56', 
+                    2: '#4caf50' 
+                };
+
+                const statusText = {
+                    0: 'Em Aberto',
+                    1: 'Em Andamento',
+                    2: 'Resolvido'
+                };
+
+                listElement.innerHTML = notifications.map(notif => `
+                    <div class="notification-item" onclick="window.location.href='@Url.Action("DetalhesComputador", "Principal")?id=${notif.computadorId}'">
+                        <div class="notification-header">
+                            <span class="notification-computer">💻 ${notif.computadorNome}</span>
+                            <span class="notification-status" style="background-color: ${statusColors[notif.status]}20; color: ${statusColors[notif.status]}">
+                                ${statusText[notif.status]}
+                            </span>
+                        </div>
+                        <div class="notification-body">
+                            <p class="notification-text">${notif.texto}</p>
+                            <span class="notification-date">📅 ${notif.dataCriacao}</span>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Erro ao carregar notificações recentes:', error);
+                document.getElementById('recentNotificationsList').innerHTML = 
+                    '<div class="error">Erro ao carregar notificações</div>';
+            }
+        }
+
+        // Carregar todos os dados quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStatusChart();
+            loadMonthlyChart();
+            loadSalaChart();
+            loadRecentNotifications();
         });
     </script>
 </body>
-
-<footer></footer>
+</html>
