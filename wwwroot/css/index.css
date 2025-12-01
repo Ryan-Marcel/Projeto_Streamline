@@ -50,7 +50,7 @@ body {
 .ferramentas {
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: center;
   width: 99%;
@@ -60,7 +60,7 @@ body {
 @media (max-width: 600px) {
   .ferramentas {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
   }
   
 }

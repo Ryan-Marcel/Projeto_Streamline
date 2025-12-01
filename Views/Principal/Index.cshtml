@@ -16,41 +16,34 @@
 </head>
 
 
-    <partial name="_Header"/>
+<partial name="_Header" />
 
-    <a href="https://www.senaibahia.com.br/para-empresa/educacao-profissional/">
+<a href="https://www.senaibahia.com.br/para-empresa/educacao-profissional/">
     <section class="banner"></section>
-    </a>
+</a>
 
 <body>
 
-        
-        <div class="container2">
-            <div class="ferramentas">
-            
-             <a asp-controller="Principal" asp-action="Criar" class="card-link">
+
+    <div class="container2">
+        <div class="ferramentas">
+
+            <a asp-controller="Principal" asp-action="Criar" class="card-link">
                 <div id="card">
-                <img src="/IMG/t.webp" alt="">
+                    <img src="/IMG/t.webp" alt="">
                     <p>Criar Notificação</p>
                 </div>
             </a>
 
-             <a asp-controller="Computador" asp-action="CriarPC" class="card-link">
+            <a asp-controller="Principal" asp-action="HistoricoSolicitacoes" class="card-link">
                 <div id="card">
-                <img src="/IMG/t1.webp" alt="">
-                    <p>Editar Notificações</p>
+                    <img src="/IMG/t2.webp" alt="">
+                    <p>Minhas Solicitações</p>
                 </div>
             </a>
 
-            <a asp-controller="Principal" asp-action="ListarADM" class="card-link">
-                <div id="card">
-                <img src="/IMG/t2.webp" alt="">
-                    <p>Histórico de Notificações</p>
-                </div>
-            </a>
-
-            </div>
         </div>
+    </div>
 
 </body>
 

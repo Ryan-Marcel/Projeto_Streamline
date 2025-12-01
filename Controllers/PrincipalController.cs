@@ -14,12 +14,12 @@ public class Principal : Controller
 {
     private readonly ILogger<Principal> _logger;
     private readonly IcomputadorRepository computadorRepository;
-    private readonly ISalaRepository salaRepository; 
+    private readonly ISalaRepository salaRepository;
     private readonly BancoContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public Principal(ILogger<Principal> logger, IcomputadorRepository computadorRepository, 
+    public Principal(ILogger<Principal> logger, IcomputadorRepository computadorRepository,
                      ISalaRepository salaRepository, BancoContext context,
                      UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
@@ -69,16 +69,16 @@ public class Principal : Controller
         {
             // Login usando o RU como UserName
             var result = await _signInManager.PasswordSignInAsync(
-                model.RU, 
-                model.Password, 
-                model.RememberMe, 
+                model.RU,
+                model.Password,
+                model.RememberMe,
                 lockoutOnFailure: true
             );
 
             if (result.Succeeded)
             {
                 var user = await _userManager.FindByNameAsync(model.RU);
-                
+
                 // Redireciona baseado no tipo de usuário
                 if (user != null && await _userManager.IsInRoleAsync(user, "Admin"))
                 {
@@ -89,7 +89,7 @@ public class Principal : Controller
                     return RedirectToAction("Index");
                 }
             }
-            
+
             if (result.IsLockedOut)
             {
                 ModelState.AddModelError("", "Conta bloqueada. Tente novamente mais tarde.");
@@ -99,7 +99,7 @@ public class Principal : Controller
                 ModelState.AddModelError("", "RU ou Senha inválidos");
             }
         }
-        
+
         return View(model);
     }
 
@@ -127,12 +127,12 @@ public class Principal : Controller
     public IActionResult Salas()
     {
         var salas = salaRepository.ListarSalas();
-        
+
         foreach (var sala in salas)
         {
             sala.Computadores = computadorRepository.ListarPorSala(sala.ID).ToList();
         }
-        
+
         return View(salas);
     }
 
@@ -140,15 +140,15 @@ public class Principal : Controller
     public IActionResult DetalhesComputador(int id)
     {
         var computador = computadorRepository.BuscarPorId(id);
-        
+
         if (computador == null)
             return NotFound();
-        
+
         computador.Mensagens = _context.Mensagens
             .Where(m => m.ComputadorID == id)
             .OrderByDescending(m => m.ID)
             .ToList();
-        
+
         return View(computador);
     }
 
@@ -162,7 +162,7 @@ public class Principal : Controller
     public IActionResult ListarADM(int? statusFiltro)
     {
         var mensagens = _context.Mensagens
-            .Include(m => m.Computador)  
+            .Include(m => m.Computador)
             .OrderByDescending(m => m.DataCriacao)
             .AsQueryable();
 
@@ -232,7 +232,8 @@ public class Principal : Controller
             var mensagem = new MensagemModels
             {
                 Texto = model.Mensagem,
-                ComputadorID = model.ComputadorId
+                ComputadorID = model.ComputadorId,
+                UserId = _userManager.GetUserId(User)
             };
             _context.Mensagens.Add(mensagem);
             _context.SaveChanges();
@@ -249,10 +250,10 @@ public class Principal : Controller
     [Authorize(Roles = "User")]
     public IActionResult Editar()
     {
-        var computadores = computadorRepository.ListarComputadores(); 
+        var computadores = computadorRepository.ListarComputadores();
         return View(computadores);
     }
-    
+
     [Authorize(Roles = "Admin")]
     public IActionResult Deletar(int id)
     {
@@ -293,23 +294,126 @@ public class Principal : Controller
     }
 
     [HttpPost]
-    [Authorize(Roles = "User")]
-    public IActionResult Solicitacao(CriarMensagem model)
+[Authorize(Roles = "User")]
+public IActionResult Solicitacao(CriarMensagem model)
+{
+    if (!string.IsNullOrWhiteSpace(model.Mensagem) && model.ComputadorId != 0)
     {
-        if (!string.IsNullOrWhiteSpace(model.Mensagem) && model.ComputadorId != 0)
+        // ⭐ Pega o ID do usuário logado
+        var userId = _userManager.GetUserId(User);
+        
+        var mensagem = new MensagemModels
         {
-            var mensagem = new MensagemModels
-            {
-                Texto = model.Mensagem,
-                ComputadorID = model.ComputadorId
-            };
-            _context.Mensagens.Add(mensagem);
-            _context.SaveChanges();
-            return RedirectToAction("ListarADM");
+            Texto = model.Mensagem,
+            ComputadorID = model.ComputadorId,
+            UserId = userId // ⭐ Salva o ID do usuário
+        };
+        
+        _context.Mensagens.Add(mensagem);
+        _context.SaveChanges();
+        return RedirectToAction("HistoricoSolicitacoes"); // Redireciona para o histórico
+    }
+    
+    model.Salas = salaRepository.ListarSalas();
+    model.Computadores = model.SalaId != 0 
+        ? computadorRepository.ListarPorSala(model.SalaId) 
+        : new List<ComputadorModels>();
+    return View(model);
+}
+
+
+    [Authorize(Roles = "User")]
+public IActionResult HistoricoSolicitacoes()
+{
+    // Pega o ID do usuário logado
+    var userId = _userManager.GetUserId(User);
+    
+    // Busca APENAS as mensagens do usuário logado
+    var mensagens = _context.Mensagens
+        .Where(m => m.UserId == userId) // ⭐ Filtra por usuário
+        .Include(m => m.Computador)
+        .OrderByDescending(m => m.DataCriacao)
+        .ToList();
+    
+    return View(mensagens);
+}
+
+// POST: Atualizar Mensagem
+[HttpPost]
+[Authorize(Roles = "User")]
+public IActionResult AtualizarMensagem([FromBody] AtualizarMensagemRequest request)
+{
+    try
+    {
+        var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
+        
+        if (mensagem == null)
+        {
+            return Json(new { success = false, error = "Mensagem não encontrada" });
         }
         
-        model.Salas = salaRepository.ListarSalas();
-        model.Computadores = model.SalaId != 0 ? computadorRepository.ListarPorSala(model.SalaId) : new List<ComputadorModels>();
-        return View(model);
+        // ⭐ VALIDAÇÃO: Verifica se o usuário é o dono da mensagem
+        var userId = _userManager.GetUserId(User);
+        if (mensagem.UserId != userId)
+        {
+            return Json(new { success = false, error = "Você não tem permissão para editar esta mensagem" });
+        }
+        
+        // Atualiza a mensagem
+        mensagem.Texto = request.novoTexto;
+        _context.SaveChanges();
+        
+        return Json(new { success = true });
     }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, error = ex.Message });
+    }
+}
+
+// POST: Excluir Mensagem
+[HttpPost]
+[Authorize(Roles = "User")]
+public IActionResult ExcluirMensagem([FromBody] ExcluirMensagemRequest request)
+{
+    try
+    {
+        var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
+        
+        if (mensagem == null)
+        {
+            return Json(new { success = false, error = "Mensagem não encontrada" });
+        }
+        
+        // ⭐ VALIDAÇÃO: Verifica se o usuário é o dono da mensagem
+        var userId = _userManager.GetUserId(User);
+        if (mensagem.UserId != userId)
+        {
+            return Json(new { success = false, error = "Você não tem permissão para excluir esta mensagem" });
+        }
+        
+        // Exclui a mensagem
+        _context.Mensagens.Remove(mensagem);
+        _context.SaveChanges();
+        
+        return Json(new { success = true });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { success = false, error = ex.Message });
+    }
+}
+
+// Classes para os requests (adicione no final da classe)
+public class AtualizarMensagemRequest
+{
+    public int id { get; set; }
+    public string novoTexto { get; set; }
+}
+
+public class ExcluirMensagemRequest
+{
+    public int id { get; set; }
+}
+
 }

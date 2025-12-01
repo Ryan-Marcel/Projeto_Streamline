@@ -1,0 +1,307 @@
+@using Projeto_Dotnet8.Models
+@model IEnumerable<Projeto_Dotnet8.Models.MensagemModels>
+
+@{
+    ViewData["Title"] = "Minhas Solicitações";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/historicoSolicitacoes.css" />
+    <link rel="stylesheet" href="~/css/header.css" />
+</head>
+
+<body>
+    <partial name="_Header" />
+
+    <div class="titulo">
+        <div class="bg1">
+            <h1>Minhas Solicitações</h1>
+        </div>
+        <div class="bg2"></div>
+    </div>
+
+    <section class="container">
+        
+        <!-- Lista de Solicitações -->
+        <ul class="solicitacoes-list">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var mensagem in Model)
+                {
+                    <li class="solicitacao-item" data-mensagem-id="@mensagem.ID">
+                        <div class="solicitacao-header" onclick="toggleDropdown(this)">
+                            <div class="solicitacao-info">
+                                <div class="info-principal">
+                                    <span class="computador-nome">
+                                        <strong>💻 @(mensagem.Computador?.Nome ?? "Sem computador")</strong>
+                                    </span>
+                                    <span class="computador-id">ID: @mensagem.Computador.ID</span>
+                                </div>
+                                <span class="solicitacao-data">
+                                    📅 @mensagem.DataCriacao.ToString("dd/MM/yyyy HH:mm")
+                                </span>
+                            </div>
+                            
+                            <div class="status-badge status-@mensagem.Status">
+                                @if (mensagem.Status == 0)
+                                {
+                                    <span>Em Aberto</span>
+                                }
+                                else if (mensagem.Status == 1)
+                                {
+                                    <span>Em Andamento</span>
+                                }
+                                else
+                                {
+                                    <span>Resolvido</span>
+                                }
+                            </div>
+
+                            <button class="dropdown-btn" tabindex="-1">
+                                <img class="chevron-img" src="/IMG/chevron.png" alt="">
+                            </button>
+                        </div>
+
+                        <div class="dropdown-box">
+                            <div class="mensagem-conteudo">
+                                <h4>Descrição do Problema:</h4>
+                                <textarea id="textarea-@mensagem.ID" readonly>@mensagem.Texto</textarea>
+                            </div>
+
+                            <div class="acoes-container">
+                                <button class="btn-editar" onclick="habilitarEdicao(@mensagem.ID)">
+                                    Editar
+                                </button>
+                                <button class="btn-salvar" id="btn-salvar-@mensagem.ID" style="display:none;" onclick="salvarEdicao(@mensagem.ID)">
+                                    Salvar
+                                </button>
+                                <button class="btn-cancelar" id="btn-cancelar-@mensagem.ID" style="display:none;" onclick="cancelarEdicao(@mensagem.ID)">
+                                    Cancelar
+                                </button>
+                                <button class="btn-excluir" onclick="confirmarExclusao(@mensagem.ID)">
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="sem-solicitacoes">
+                    <p>Você ainda não realizou nenhuma solicitação.</p>
+                </li>
+            }
+        </ul>
+
+        <a asp-controller="Principal" asp-action="Index" id="voltar">Voltar</a>
+    </section>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="modalExclusao" class="modal">
+        <div class="modal-content">
+            <h3>Confirmar Exclusão</h3>
+            <p>Tem certeza que deseja excluir esta solicitação?</p>
+            <div class="modal-buttons">
+                <button class="btn-confirmar" onclick="excluirSolicitacao()">Sim, Excluir</button>
+                <button class="btn-cancelar-modal" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let mensagemIdExcluir = null;
+        let textoOriginal = {};
+
+        function toggleDropdown(headerDiv) {
+            var box = headerDiv.nextElementSibling;
+            var img = headerDiv.querySelector('.chevron-img');
+            
+            if (box.classList.contains('open')) {
+                box.classList.remove('open');
+                if (img) img.src = '/IMG/chevron.png';
+            } else {
+                box.classList.add('open');
+                if (img) img.src = '/IMG/up-arrows.png';
+            }
+        }
+
+        function habilitarEdicao(mensagemId) {
+            const textarea = document.getElementById(`textarea-${mensagemId}`);
+            const btnSalvar = document.getElementById(`btn-salvar-${mensagemId}`);
+            const btnCancelar = document.getElementById(`btn-cancelar-${mensagemId}`);
+            const btnEditar = event.target;
+
+            // Salvar texto original
+            textoOriginal[mensagemId] = textarea.value;
+
+            // Habilitar edição
+            textarea.removeAttribute('readonly');
+            textarea.focus();
+            textarea.style.borderColor = '#667eea';
+            textarea.style.backgroundColor = '#fff';
+
+            // Mostrar/esconder botões
+            btnEditar.style.display = 'none';
+            btnSalvar.style.display = 'inline-block';
+            btnCancelar.style.display = 'inline-block';
+        }
+
+        function cancelarEdicao(mensagemId) {
+            const textarea = document.getElementById(`textarea-${mensagemId}`);
+            const btnSalvar = document.getElementById(`btn-salvar-${mensagemId}`);
+            const btnCancelar = document.getElementById(`btn-cancelar-${mensagemId}`);
+            const item = document.querySelector(`li[data-mensagem-id="${mensagemId}"]`);
+            const btnEditar = item.querySelector('.btn-editar');
+
+            // Restaurar texto original
+            textarea.value = textoOriginal[mensagemId];
+
+            // Desabilitar edição
+            textarea.setAttribute('readonly', true);
+            textarea.style.borderColor = '#ddd';
+            textarea.style.backgroundColor = '#f8f9fa';
+
+            // Mostrar/esconder botões
+            btnEditar.style.display = 'inline-block';
+            btnSalvar.style.display = 'none';
+            btnCancelar.style.display = 'none';
+        }
+
+        async function salvarEdicao(mensagemId) {
+            const textarea = document.getElementById(`textarea-${mensagemId}`);
+            const novoTexto = textarea.value.trim();
+
+            if (!novoTexto) {
+                mostrarFeedback('A mensagem não pode estar vazia.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch('@Url.Action("AtualizarMensagem", "Principal")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: mensagemId,
+                        novoTexto: novoTexto
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    mostrarFeedback('Mensagem atualizada com sucesso!', 'success');
+                    
+                    // Desabilitar edição
+                    textarea.setAttribute('readonly', true);
+                    textarea.style.borderColor = '#ddd';
+                    textarea.style.backgroundColor = '#f8f9fa';
+
+                    // Atualizar botões
+                    const btnSalvar = document.getElementById(`btn-salvar-${mensagemId}`);
+                    const btnCancelar = document.getElementById(`btn-cancelar-${mensagemId}`);
+                    const item = document.querySelector(`li[data-mensagem-id="${mensagemId}"]`);
+                    const btnEditar = item.querySelector('.btn-editar');
+
+                    btnEditar.style.display = 'inline-block';
+                    btnSalvar.style.display = 'none';
+                    btnCancelar.style.display = 'none';
+
+                    // Atualizar texto original
+                    textoOriginal[mensagemId] = novoTexto;
+                } else {
+                    mostrarFeedback('Erro ao atualizar mensagem.', 'error');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                mostrarFeedback('Erro ao atualizar mensagem.', 'error');
+            }
+        }
+
+        function confirmarExclusao(mensagemId) {
+            mensagemIdExcluir = mensagemId;
+            document.getElementById('modalExclusao').style.display = 'flex';
+        }
+
+        function fecharModal() {
+            document.getElementById('modalExclusao').style.display = 'none';
+            mensagemIdExcluir = null;
+        }
+
+        async function excluirSolicitacao() {
+            if (!mensagemIdExcluir) return;
+
+            try {
+                const response = await fetch('@Url.Action("ExcluirMensagem", "Principal")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id: mensagemIdExcluir })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    mostrarFeedback('Solicitação excluída com sucesso!', 'success');
+                    
+                    // Remover item da lista
+                    const item = document.querySelector(`li[data-mensagem-id="${mensagemIdExcluir}"]`);
+                    if (item) {
+                        item.style.transition = 'opacity 0.3s ease';
+                        item.style.opacity = '0';
+                        setTimeout(() => item.remove(), 300);
+                    }
+
+                    // Verificar se não há mais solicitações
+                    setTimeout(() => {
+                        const lista = document.querySelector('.solicitacoes-list');
+                        const items = lista.querySelectorAll('.solicitacao-item');
+                        if (items.length === 0) {
+                            lista.innerHTML = '<li class="sem-solicitacoes"><p>Você ainda não realizou nenhuma solicitação.</p></li>';
+                        }
+                    }, 350);
+                } else {
+                    mostrarFeedback('Erro ao excluir solicitação.', 'error');
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+                mostrarFeedback('Erro ao excluir solicitação.', 'error');
+            }
+
+            fecharModal();
+        }
+
+        function mostrarFeedback(mensagem, tipo) {
+            const feedback = document.createElement('div');
+            feedback.className = `feedback ${tipo}`;
+            feedback.textContent = mensagem;
+            document.body.appendChild(feedback);
+            
+            setTimeout(() => {
+                feedback.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                feedback.classList.remove('show');
+                setTimeout(() => feedback.remove(), 300);
+            }, 3000);
+        }
+
+        // Fechar modal ao clicar fora
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalExclusao');
+            if (event.target == modal) {
+                fecharModal();
+            }
+        }
+    </script>
+</body>
+</html>
