@@ -9,8 +9,9 @@ Este projeto tem o objetivo de facilitar a comunicação entre alunos e técnico
 - Cadastro de computadores por sala <- ADM
 - Cadastro de salas no banco de dados <- ADM
 - Listagem de todas solicitações em um lugar <- ADM
-- Edição da lista com a opção de excluir solicitações <- ADM
+- Edição da lista com a opção de 3 status de solicitações <- ADM
 - Dashboard com estastísticas gerais das salas como total <- ADM
+- Visualização de todas salas e seus computadores com listas colapsadas <- ADM
 - Gerador de solicitações para notificar problemas com uma máquina <- Aluno
 - Visualizar histórico e status de visualizações <- Aluno
 - Editar notificações criadas <- Aluno
@@ -61,41 +62,52 @@ https://github.com/Ryan-Marcel/Projeto_Streamline
 /Projeto_Dotnet8
 ├── /bin
 ├── /Controllers
+    └──AccountControllers.cs
     └──ComputadorController.cs
+    └──DashboardController.cs
     └──PrincipalController.cs
     └──SalaController.cs
 ├── /Data
     └── BancoContext.cs
 ├── Migrations
 ├── /Models
-        └── /Models
-            └── /ViewModel
-                └── CriarMensagem.cs
-                └── CriarPc_Sala.cs
-    └── ComputadorModel.cs
-    └── ErrorViewModel.cs
-    └── MensagemModels.cs
-    └── SalaModels.cs
+        └── /ViewModel
+            └── CriarMensagem.cs
+            └── CriarPc_Sala.cs
+            └── LoginViewModel.cs
+            └── RegisterViewModel.cs
+        └── ApplicationUser.cs    
+        └── ComputadorModels.cs
+        └── ErrorViewModel.cs
+        └── MensagemModels.cs
+        └── SalaModels.cs
 ├── /obj
 ├── /Properties
 ├── /Repository
 ├── /Views
-        Computador
+        ├── /Account
+            └── Register.cshtml
+        ├──/Computador
             └── CriarPC.cshtml
-        Principal
+        ├──/Principal
+            └── _ComputadoresGrid.cshtml
+            └── AcessoNegado.cshtml
             └── Criar.cshtml
             └── Dashboard.cshtml
             └── Deletar.cshtml
+            └── DetalhesComputador.cshtml
             └── Editar.cshtml
+            └── HistoricoSolicitacoes.cshtml
             └── Index.cshtml
             └── IndexADM.cshtml
-            └── Listar.cshtml
+            └── ListarADM.cshtml
             └── Login.cshtml
+            └── Salas.cshtml
             └── Solicitacao.cshtml
 ├── Shared
 ├── /wwwroot (arquivos estáticos como CSS e JS)
 ├── appsettings.json
-├── Program.cs```
+├── Program.cs
 
 
 ## 🤝 Contribuidores
