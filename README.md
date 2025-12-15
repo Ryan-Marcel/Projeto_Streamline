@@ -67,15 +67,17 @@ https://github.com/Ryan-Marcel/Projeto_Streamline
     └──DashboardController.cs
     └──PrincipalController.cs
     └──SalaController.cs
+├── /cypress
 ├── /Data
     └── BancoContext.cs
-├── Migrations
+    └── SeedData.cs
+├── /Migrations
 ├── /Models
         └── /ViewModel
             └── CriarMensagem.cs
             └── CriarPc_Sala.cs
             └── LoginViewModel.cs
-            └── RegisterViewModel.cs
+            └── RegisterViewModel
         └── ApplicationUser.cs    
         └── ComputadorModels.cs
         └── ErrorViewModel.cs
@@ -104,11 +106,12 @@ https://github.com/Ryan-Marcel/Projeto_Streamline
             └── Login.cshtml
             └── Salas.cshtml
             └── Solicitacao.cshtml
-├── Shared
+├── /Shared
 ├── /wwwroot (arquivos estáticos como CSS e JS)
 ├── appsettings.json
 ├── Program.cs
 
+```
 
 ## 🤝 Contribuidores
 
