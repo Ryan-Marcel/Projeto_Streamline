@@ -51,36 +51,42 @@
                 </div>
             </div>
 
-            <div class="notificacoes-lista">
-                @if (Model.Mensagens != null && Model.Mensagens.Any())
-                {
-                    foreach (var mensagem in Model.Mensagens)
-                    {
-                        <div class="notificacao-item">
-                            <button class="notificacao-header" onclick="toggleNotificacao(this)">
-                                <div class="notificacao-info">
-                                    <span class="aluno-nome">Aluno: (NOME COMPLETO)</span>
-                                    <span class="notificacao-data">Data: @mensagem.ID/03/2026 16:32</span>
-                                </div>
-                                <span class="arrow-icon">▼</span>
-                            </button>
-                            <div class="notificacao-conteudo">
-                                <div class="mensagem-box">
-                                    <p>@mensagem.Texto</p>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <div class="sem-notificacoes">
-                        <p>Nenhuma notificação registrada para este computador.</p>
+           <div class="notificacoes-lista">
+    @if (Model.Mensagens != null && Model.Mensagens.Any())
+    {
+        foreach (var mensagem in Model.Mensagens)
+        {
+            <div class="notificacao-item">
+                <button class="notificacao-header" onclick="toggleNotificacao(this)">
+                    <div class="notificacao-info">
+                        <span class="aluno-nome">
+                            👤 @(mensagem.Usuario?.NomeCompleto ?? "Usuário não identificado")
+                            @if (!string.IsNullOrEmpty(mensagem.Usuario?.RU))
+                            {
+                                <span style="font-weight: normal; font-size: 14px; color: #666;"> (RU: @mensagem.Usuario.RU)</span>
+                            }
+                        </span>
+                        <span class="notificacao-data">
+                            📅 @mensagem.DataCriacao.ToString("dd/MM/yyyy HH:mm")
+                        </span>
                     </div>
-                }
+                    <span class="arrow-icon">▼</span>
+                </button>
+                <div class="notificacao-conteudo">
+                    <div class="mensagem-box">
+                        <p>@mensagem.Texto</p>
+                    </div>
+                </div>
             </div>
+        }
+    }
+    else
+    {
+        <div class="sem-notificacoes">
+            <p>Nenhuma notificação registrada para este computador.</p>
         </div>
-
+    }
+</div>
         <div class="botoes-container">
             <a asp-controller="Principal" asp-action="Salas" id="voltar">Voltar</a>
         </div>

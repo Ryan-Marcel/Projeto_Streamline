@@ -81,8 +81,8 @@ body{
     margin-bottom: 100px;
     display: flex;
     flex-direction: column;
-    max-width: 40%;
-    min-width: 250px;
+    max-width: 50%;
+    min-width: 400px;
     padding: 30px;
     background-color: #e4e4e4;
     border-radius: 20px;
@@ -117,6 +117,8 @@ body{
     align-items: center;
     background: linear-gradient(0deg, #ffffff 0%, #ffffff 100%);
     padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border: 1px solid #ddd;
     color: black;
     border-radius: 10px;
@@ -128,6 +130,7 @@ body{
 
 .sala-header:hover {
     background: linear-gradient(0deg, #fff 0%, #ececef 100%);
+    transition: 0.5s;
 }
 
 .sala-header.active {

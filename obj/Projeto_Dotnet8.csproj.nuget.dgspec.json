@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {}
+    "C:\\Users\\Administrator\\Downloads\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {
+    "C:\\Users\\Administrator\\Downloads\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Downloads\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
         "projectName": "Projeto_Dotnet8",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Downloads\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\APRESENTAÇÃO TCC\\Projeto_Streamline\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Downloads\\APRESENTAÇÃO TCC\\Projeto_Streamline\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config"

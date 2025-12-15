@@ -144,13 +144,16 @@ public class Principal : Controller
         if (computador == null)
             return NotFound();
 
+        // IMPORTANTE: Incluir o relacionamento com Usuario
         computador.Mensagens = _context.Mensagens
+            .Include(m => m.Usuario) // ← LINHA CRUCIAL: Carrega os dados do usuário
             .Where(m => m.ComputadorID == id)
-            .OrderByDescending(m => m.ID)
+            .OrderByDescending(m => m.DataCriacao) // Ordena por data (mais recente primeiro)
             .ToList();
 
         return View(computador);
     }
+
 
     [Authorize]
     public IActionResult Dashboard()
@@ -211,8 +214,8 @@ public class Principal : Controller
         {
             Salas = salas,
             SalaId = SalaId ?? 0,
-            Computadores = SalaId.HasValue && SalaId.Value != 0 
-                ? computadorRepository.ListarPorSala(SalaId.Value) 
+            Computadores = SalaId.HasValue && SalaId.Value != 0
+                ? computadorRepository.ListarPorSala(SalaId.Value)
                 : new List<ComputadorModels>()
         };
         return View(viewModel);
@@ -241,10 +244,11 @@ public class Principal : Controller
             return View(model);
         }
 
-        // Validação da Mensagem
+        // VALIDAÇÃO ATUALIZADA: Aceita mensagem vazia se houver problemas recorrentes
+        // Nota: O JavaScript já preenche a mensagem automaticamente quando checkboxes são marcados
         if (string.IsNullOrWhiteSpace(model.Mensagem))
         {
-            TempData["Erro"] = "Descreva o problema.";
+            TempData["Erro"] = "Descreva o problema ou selecione um problema recorrente.";
             model.Salas = salaRepository.ListarSalas();
             model.Computadores = computadorRepository.ListarPorSala(model.SalaId);
             return View(model);
@@ -253,16 +257,16 @@ public class Principal : Controller
         try
         {
             var userId = _userManager.GetUserId(User);
-            
+
             var mensagem = new MensagemModels
             {
-                Texto = model.Mensagem,
+                Texto = model.Mensagem, // A mensagem já vem preenchida pelo JavaScript
                 ComputadorID = model.ComputadorId,
                 UserId = userId,
                 DataCriacao = DateTime.Now,
                 Status = 0
             };
-            
+
             _context.Mensagens.Add(mensagem);
             _context.SaveChanges();
 
@@ -283,8 +287,8 @@ public class Principal : Controller
     [Authorize(Roles = "User")]
     public IActionResult Solicitacao(int SalaId)
     {
-        var computadores = SalaId != 0 
-            ? computadorRepository.ListarPorSala(SalaId) 
+        var computadores = SalaId != 0
+            ? computadorRepository.ListarPorSala(SalaId)
             : new List<ComputadorModels>();
 
         return PartialView("_ComputadoresGrid", computadores);
@@ -327,14 +331,14 @@ public class Principal : Controller
     {
         // Pega o ID do usuário logado
         var userId = _userManager.GetUserId(User);
-        
+
         // Busca APENAS as mensagens do usuário logado
         var mensagens = _context.Mensagens
             .Where(m => m.UserId == userId) // Filtra por usuário
             .Include(m => m.Computador)
             .OrderByDescending(m => m.DataCriacao)
             .ToList();
-        
+
         return View(mensagens);
     }
 
@@ -346,23 +350,23 @@ public class Principal : Controller
         try
         {
             var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
-            
+
             if (mensagem == null)
             {
                 return Json(new { success = false, error = "Mensagem não encontrada" });
             }
-            
+
             // Validação: Verifica se o usuário é o dono da mensagem
             var userId = _userManager.GetUserId(User);
             if (mensagem.UserId != userId)
             {
                 return Json(new { success = false, error = "Você não tem permissão para editar esta mensagem" });
             }
-            
+
             // Atualiza a mensagem
             mensagem.Texto = request.novoTexto;
             _context.SaveChanges();
-            
+
             return Json(new { success = true });
         }
         catch (Exception ex)
@@ -379,23 +383,23 @@ public class Principal : Controller
         try
         {
             var mensagem = _context.Mensagens.FirstOrDefault(m => m.ID == request.id);
-            
+
             if (mensagem == null)
             {
                 return Json(new { success = false, error = "Mensagem não encontrada" });
             }
-            
+
             // Validação: Verifica se o usuário é o dono da mensagem
             var userId = _userManager.GetUserId(User);
             if (mensagem.UserId != userId)
             {
                 return Json(new { success = false, error = "Você não tem permissão para excluir esta mensagem" });
             }
-            
+
             // Exclui a mensagem
             _context.Mensagens.Remove(mensagem);
             _context.SaveChanges();
-            
+
             return Json(new { success = true });
         }
         catch (Exception ex)

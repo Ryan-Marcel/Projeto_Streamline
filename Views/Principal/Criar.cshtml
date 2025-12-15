@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/criarSolicitacao.css" />
+    <link rel="stylesheet" href="~/css/problemasRecorrentes.css" />
     <link rel="stylesheet" href="~/css/header.css" />
 </head>
 
@@ -56,7 +57,7 @@
                     
                     <div class="form-group">
                         <label for="salaSelect">
-                            <span class="label-icon"></span>
+                            <span class="label-icon">🏫</span>
                             Sala
                         </label>
                         <div class="select-wrapper">
@@ -134,20 +135,55 @@
                         <h3>Descreva o Problema</h3>
                     </div>
 
+                    <!-- NOVO: Problemas Recorrentes -->
+                    <div class="form-group">
+                        <label>
+                            <span class="label-icon">⚡</span>
+                            Problemas Recorrentes
+                        </label>
+                        <div class="problemas-recorrentes">
+                            <div class="problema-item">
+                                <input type="checkbox" id="prob1" name="ProblemaRecorrente" value="Computador não liga" />
+                                <label for="prob1">Computador não liga</label>
+                            </div>
+                            <div class="problema-item">
+                                <input type="checkbox" id="prob2" name="ProblemaRecorrente" value="Mouse ou teclado não funciona" />
+                                <label for="prob2">Mouse ou teclado não funciona</label>
+                            </div>
+                            <div class="problema-item">
+                                <input type="checkbox" id="prob3" name="ProblemaRecorrente" value="Monitor sem imagem" />
+                                <label for="prob3">Monitor sem imagem</label>
+                            </div>
+                            <div class="problema-item">
+                                <input type="checkbox" id="prob4" name="ProblemaRecorrente" value="Computador muito lento" />
+                                <label for="prob4">Computador muito lento</label>
+                            </div>
+                            <div class="problema-item">
+                                <input type="checkbox" id="prob5" name="ProblemaRecorrente" value="Sem acesso à internet" />
+                                <label for="prob5">Sem acesso à internet</label>
+                            </div>
+                            <div class="problema-item">
+                                <input type="checkbox" id="prob6" name="ProblemaRecorrente" value="Software não abre/trava" />
+                                <label for="prob6">Software não abre/trava</label>
+                            </div>
+                        </div>
+                        <span class="form-hint">Selecione um ou mais problemas comuns (opcional)</span>
+                    </div>
+
+                    <!-- Área de Mensagem Personalizada -->
                     <div class="form-group">
                         <label for="mensagemTextarea">
                             <span class="label-icon">📄</span>
-                            Descrição do Problema
+                            Descrição Adicional do Problema
                         </label>
                         <textarea 
                             asp-for="Mensagem" 
                             class="form-control" 
                             id="mensagemTextarea"
                             rows="8"
-                            placeholder="Descreva detalhadamente o problema que você está enfrentando..."
-                            required
+                            placeholder="Adicione detalhes adicionais se necessário..."
                         >@Model.Mensagem</textarea>
-                        <span class="form-hint">Quanto mais detalhes você fornecer, mais rápido poderemos ajudar</span>
+                        <span class="form-hint" id="mensagemHint">Campo opcional quando problemas recorrentes são selecionados</span>
                     </div>
 
                     <div class="resumo-solicitacao">
@@ -157,6 +193,9 @@
                         </div>
                         <div class="resumo-item">
                             <strong>Computador:</strong> <span id="resumo-computador">-</span>
+                        </div>
+                        <div class="resumo-item" id="resumo-problemas-container" style="display: none;">
+                            <strong>Problemas:</strong> <span id="resumo-problemas">-</span>
                         </div>
                     </div>
 
@@ -175,138 +214,6 @@
         </div>
     </section>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const salaSelect = document.getElementById('salaSelect');
-            const btnProximoSala = document.getElementById('btnProximoSala');
-            const btnVoltarSala = document.getElementById('btnVoltarSala');
-            const btnProximoComputador = document.getElementById('btnProximoComputador');
-            const btnVoltarComputador = document.getElementById('btnVoltarComputador');
-            const btnEnviar = document.getElementById('btnEnviar');
-            const mensagemTextarea = document.getElementById('mensagemTextarea');
-
-            const stepSala = document.getElementById('step-sala');
-            const stepComputador = document.getElementById('step-computador');
-            const stepMensagem = document.getElementById('step-mensagem');
-
-            // Validação Sala
-            salaSelect.addEventListener('change', function() {
-                const isValid = this.value !== '0';
-                btnProximoSala.disabled = !isValid;
-                btnProximoSala.style.opacity = isValid ? '1' : '0.6';
-            });
-
-            // Validação inicial
-            if (salaSelect.value !== '0') {
-                btnProximoSala.disabled = false;
-                btnProximoSala.style.opacity = '1';
-            }
-
-            // Próximo: Sala -> Computador
-            btnProximoSala.addEventListener('click', function() {
-                const salaId = salaSelect.value;
-                if (salaId === '0') return;
-
-                // Carregar computadores via AJAX
-                carregarComputadores(salaId);
-                
-                stepSala.classList.remove('active');
-                stepComputador.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Voltar: Computador -> Sala
-            btnVoltarSala.addEventListener('click', function() {
-                stepComputador.classList.remove('active');
-                stepSala.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Validação Computador
-            document.addEventListener('change', function(e) {
-                if (e.target.name === 'ComputadorId') {
-                    btnProximoComputador.disabled = false;
-                    btnProximoComputador.style.opacity = '1';
-                    
-                    // Adicionar efeito visual no card selecionado
-                    document.querySelectorAll('.computador-card').forEach(card => {
-                        card.classList.remove('selected');
-                    });
-                    e.target.closest('.computador-card').classList.add('selected');
-                }
-            });
-
-            // Próximo: Computador -> Mensagem
-            btnProximoComputador.addEventListener('click', function() {
-                const computadorSelecionado = document.querySelector('input[name="ComputadorId"]:checked');
-                if (!computadorSelecionado) return;
-
-                // Atualizar resumo
-                atualizarResumo();
-
-                stepComputador.classList.remove('active');
-                stepMensagem.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Voltar: Mensagem -> Computador
-            btnVoltarComputador.addEventListener('click', function() {
-                stepMensagem.classList.remove('active');
-                stepComputador.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Validação Mensagem
-            mensagemTextarea.addEventListener('input', function() {
-                const isValid = this.value.trim() !== '';
-                btnEnviar.disabled = !isValid;
-                btnEnviar.style.opacity = isValid ? '1' : '0.6';
-            });
-
-            // Validação inicial da mensagem
-            if (mensagemTextarea.value.trim() !== '') {
-                btnEnviar.disabled = false;
-                btnEnviar.style.opacity = '1';
-            }
-
-            // Função para carregar computadores
-            function carregarComputadores(salaId) {
-                const listaComputadores = document.getElementById('computadores-lista');
-                listaComputadores.innerHTML = '<div class="loading">Carregando computadores...</div>';
-
-                fetch(`/Principal/Solicitacao?SalaId=${salaId}`)
-                    .then(response => response.text())
-                    .then(html => {
-                        listaComputadores.innerHTML = html;
-                    })
-                    .catch(error => {
-                        console.error('Erro ao carregar computadores:', error);
-                        listaComputadores.innerHTML = '<div class="erro">Erro ao carregar computadores. Tente novamente.</div>';
-                    });
-            }
-
-            // Função para atualizar resumo
-            function atualizarResumo() {
-                const salaTexto = salaSelect.options[salaSelect.selectedIndex].text;
-                const computadorSelecionado = document.querySelector('input[name="ComputadorId"]:checked');
-                const computadorLabel = computadorSelecionado ? 
-                    computadorSelecionado.closest('.computador-card').querySelector('strong').textContent : '-';
-
-                document.getElementById('resumo-sala').textContent = salaTexto;
-                document.getElementById('resumo-computador').textContent = computadorLabel;
-            }
-
-            // Auto-hide alerts
-            setTimeout(function() {
-                const alerts = document.querySelectorAll('.alert');
-                alerts.forEach(alert => {
-                    alert.style.transition = 'opacity 0.5s';
-                    alert.style.opacity = '0';
-                    setTimeout(() => alert.remove(), 500);
-                });
-            }, 5000);
-        });
-    </script>
+    <script src="~/js/criarSolicitacao.js"></script>
 </body>
 </html>

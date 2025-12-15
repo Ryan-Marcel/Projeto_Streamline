@@ -67,236 +67,317 @@
 
 
     <script>
-  
-        Chart.defaults.font.family = 'Stack-Sans, system-ui, sans-serif';
-        Chart.defaults.font.size = 14;
-        Chart.defaults.color = '#333';
+  // Adicione este script ao final da seção <script> do arquivo Views/Principal/Dashboard.cshtml
+// Substitua todo o conteúdo dentro da tag <script> existente
 
-        async function loadStatusChart() {
-            try {
-                const response = await fetch('@Url.Action("GetStatusData", "Dashboard")');
-                const data = await response.json();
+// Variável para controlar o intervalo
+let refreshInterval;
 
-                const ctx = document.getElementById('statusChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: data.labels,
-                        datasets: [{
-                            data: data.data,
-                            backgroundColor: [
-                                '#ff6384', 
-                                '#4caf50', 
-                                '#ffce56' 
-                            ],
-                            borderWidth: 2,
-                            borderColor: '#fff'
-                        }]
+Chart.defaults.font.family = 'Stack-Sans, system-ui, sans-serif';
+Chart.defaults.font.size = 14;
+Chart.defaults.color = '#333';
+
+// Objetos para armazenar as instâncias dos gráficos
+let statusChartInstance = null;
+let monthlyChartInstance = null;
+let salaChartInstance = null;
+
+async function loadStatusChart() {
+    try {
+        const response = await fetch('@Url.Action("GetStatusData", "Dashboard")');
+        const data = await response.json();
+
+        const ctx = document.getElementById('statusChart').getContext('2d');
+        
+        // Se já existe um gráfico, destrua antes de criar um novo
+        if (statusChartInstance) {
+            statusChartInstance.destroy();
+        }
+        
+        statusChartInstance = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    data: data.data,
+                    backgroundColor: [
+                        '#ff6384', 
+                        '#4caf50', 
+                        '#ffce56' 
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 15,
+                            font: {
+                                size: 13
+                            }
+                        }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 15,
-                                    font: {
-                                        size: 13
-                                    }
-                                }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const label = context.label || '';
-                                        const value = context.parsed || 0;
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const percentage = ((value / total) * 100).toFixed(1);
-                                        return `${label}: ${value} (${percentage}%)`;
-                                    }
-                                }
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed || 0;
+                                const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                const percentage = ((value / total) * 100).toFixed(1);
+                                return `${label}: ${value} (${percentage}%)`;
                             }
                         }
                     }
-                });
-            } catch (error) {
-                console.error('Erro ao carregar gráfico de status:', error);
-            }
-        }
-
-        // Função para buscar e renderizar gráfico de linha (Mensal)
-        async function loadMonthlyChart() {
-            try {
-                const response = await fetch('@Url.Action("GetMonthlyData", "Dashboard")');
-                const data = await response.json();
-
-                const ctx = document.getElementById('monthlyChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: data.labels,
-                        datasets: [{
-                            label: 'Notificações',
-                            data: data.data,
-                            borderColor: '#2196f3',
-                            backgroundColor: 'rgba(33, 150, 243, 0.1)',
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.4,
-                            pointRadius: 5,
-                            pointHoverRadius: 7,
-                            pointBackgroundColor: '#2196f3',
-                            pointBorderColor: '#fff',
-                            pointBorderWidth: 2
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                mode: 'index',
-                                intersect: false
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    stepSize: 1
-                                },
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    display: false
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Erro ao carregar gráfico mensal:', error);
-            }
-        }
-
-        // Função para buscar e renderizar gráfico de barras (Por Sala)
-        async function loadSalaChart() {
-            try {
-                const response = await fetch('@Url.Action("GetSalaData", "Dashboard")');
-                const data = await response.json();
-
-                const ctx = document.getElementById('salaChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: data.labels,
-                        datasets: [{
-                            label: 'Solicitações',
-                            data: data.data,
-                            backgroundColor: 'rgba(102, 126, 234, 0.8)',
-                            borderColor: 'rgba(102, 126, 234, 1)',
-                            borderWidth: 2,
-                            borderRadius: 5
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: true,
-                        plugins: {
-                            legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        return `Solicitações: ${context.parsed.y}`;
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    stepSize: 1
-                                },
-                                grid: {
-                                    color: 'rgba(0, 0, 0, 0.05)'
-                                }
-                            },
-                            x: {
-                                grid: {
-                                    display: false
-                                }
-                            }
-                        }
-                    }
-                });
-            } catch (error) {
-                console.error('Erro ao carregar gráfico de salas:', error);
-            }
-        }
-
-        // Função para buscar e renderizar notificações recentes
-        async function loadRecentNotifications() {
-            try {
-                const response = await fetch('@Url.Action("GetRecentNotifications", "Dashboard")');
-                const notifications = await response.json();
-
-                const listElement = document.getElementById('recentNotificationsList');
-                
-                if (notifications.length === 0) {
-                    listElement.innerHTML = '<div class="no-notifications">Nenhuma notificação encontrada</div>';
-                    return;
                 }
-
-                const statusColors = {
-                    0: '#ff6384', 
-                    1: '#ffce56', 
-                    2: '#4caf50' 
-                };
-
-                const statusText = {
-                    0: 'Em Aberto',
-                    1: 'Em Andamento',
-                    2: 'Resolvido'
-                };
-
-                listElement.innerHTML = notifications.map(notif => `
-                    <div class="notification-item" onclick="window.location.href='@Url.Action("DetalhesComputador", "Principal")?id=${notif.computadorId}'">
-                        <div class="notification-header">
-                            <span class="notification-computer">💻 ${notif.computadorNome}</span>
-                            <span class="notification-status" style="background-color: ${statusColors[notif.status]}20; color: ${statusColors[notif.status]}">
-                                ${statusText[notif.status]}
-                            </span>
-                        </div>
-                        <div class="notification-body">
-                            <p class="notification-text">${notif.texto}</p>
-                            <span class="notification-date">📅 ${notif.dataCriacao}</span>
-                        </div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                console.error('Erro ao carregar notificações recentes:', error);
-                document.getElementById('recentNotificationsList').innerHTML = 
-                    '<div class="error">Erro ao carregar notificações</div>';
             }
+        });
+    } catch (error) {
+        console.error('Erro ao carregar gráfico de status:', error);
+    }
+}
+
+async function loadMonthlyChart() {
+    try {
+        const response = await fetch('@Url.Action("GetMonthlyData", "Dashboard")');
+        const data = await response.json();
+
+        const ctx = document.getElementById('monthlyChart').getContext('2d');
+        
+        // Se já existe um gráfico, destrua antes de criar um novo
+        if (monthlyChartInstance) {
+            monthlyChartInstance.destroy();
+        }
+        
+        monthlyChartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Notificações',
+                    data: data.data,
+                    borderColor: '#2196f3',
+                    backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    pointBackgroundColor: '#2196f3',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao carregar gráfico mensal:', error);
+    }
+}
+
+async function loadSalaChart() {
+    try {
+        const response = await fetch('@Url.Action("GetSalaData", "Dashboard")');
+        const data = await response.json();
+
+        const ctx = document.getElementById('salaChart').getContext('2d');
+        
+        // Se já existe um gráfico, destrua antes de criar um novo
+        if (salaChartInstance) {
+            salaChartInstance.destroy();
+        }
+        
+        salaChartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'Solicitações',
+                    data: data.data,
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return `Solicitações: ${context.parsed.y}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao carregar gráfico de salas:', error);
+    }
+}
+
+async function loadRecentNotifications() {
+    try {
+        const response = await fetch('@Url.Action("GetRecentNotifications", "Dashboard")');
+        const notifications = await response.json();
+
+        const listElement = document.getElementById('recentNotificationsList');
+        
+        if (notifications.length === 0) {
+            listElement.innerHTML = '<div class="no-notifications">Nenhuma notificação encontrada</div>';
+            return;
         }
 
-        // Carregar todos os dados quando a página carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            loadStatusChart();
-            loadMonthlyChart();
-            loadSalaChart();
-            loadRecentNotifications();
-        });
+        const statusColors = {
+            0: '#ff6384', 
+            1: '#ffce56', 
+            2: '#4caf50' 
+        };
+
+        const statusText = {
+            0: 'Em Aberto',
+            1: 'Em Andamento',
+            2: 'Resolvido'
+        };
+
+        listElement.innerHTML = notifications.map(notif => `
+            <div class="notification-item" onclick="window.location.href='@Url.Action("DetalhesComputador", "Principal")?id=${notif.computadorId}'">
+                <div class="notification-header">
+                    <span class="notification-computer">💻 ${notif.computadorNome}</span>
+                    <span class="notification-status" style="background-color: ${statusColors[notif.status]}20; color: ${statusColors[notif.status]}">
+                        ${statusText[notif.status]}
+                    </span>
+                </div>
+                <div class="notification-body">
+                    <p class="notification-text">${notif.texto}</p>
+                    <span class="notification-date">📅 ${notif.dataCriacao}</span>
+                </div>
+            </div>
+        `).join('');
+    } catch (error) {
+        console.error('Erro ao carregar notificações recentes:', error);
+        document.getElementById('recentNotificationsList').innerHTML = 
+            '<div class="error">Erro ao carregar notificações</div>';
+    }
+}
+
+// Função para atualizar o indicador de última atualização
+function updateLastRefreshIndicator() {
+    const now = new Date();
+    const timeString = now.toLocaleTimeString('pt-BR');
+    
+    let indicator = document.getElementById('lastRefreshIndicator');
+    if (!indicator) {
+        // Criar o indicador se não existir
+        indicator = document.createElement('div');
+        indicator.id = 'lastRefreshIndicator';
+        indicator.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: opacity 0.3s ease;
+        `;
+        document.body.appendChild(indicator);
+    }
+    
+    indicator.innerHTML = `Última atualização: ${timeString}`;
+    
+    // Adicionar efeito de fade
+    indicator.style.opacity = '1';
+    setTimeout(() => {
+        indicator.style.opacity = '0.7';
+    }, 2000);
+}
+
+// Função para recarregar todos os dados
+function refreshAllData() {
+    console.log('Atualizando dashboard...', new Date().toLocaleTimeString());
+    loadStatusChart();
+    loadMonthlyChart();
+    loadSalaChart();
+    loadRecentNotifications();
+    updateLastRefreshIndicator();
+}
+
+// Carregar dados iniciais e configurar auto-refresh
+document.addEventListener('DOMContentLoaded', function() {
+    // Carrega os dados pela primeira vez
+    refreshAllData();
+    
+    // Configura atualização automática a cada 1 minuto (60000 ms)
+    refreshInterval = setInterval(refreshAllData, 60000);
+    
+    console.log('✅ Dashboard configurado com atualização automática a cada 1 minuto');
+});
+
+// Limpar o intervalo quando a página for fechada/saída
+window.addEventListener('beforeunload', function() {
+    if (refreshInterval) {
+        clearInterval(refreshInterval);
+        console.log('🛑 Auto-refresh parado');
+    }
+});
     </script>
 </body>
 </html>

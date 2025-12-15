@@ -270,6 +270,7 @@ body {
     border: none;
     transition: 0.3s;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #voltar:hover {
