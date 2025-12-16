@@ -2,6 +2,20 @@
 
 @{
     ViewData["Title"] = "Detalhes do Computador";
+    var totalNotificacoes = Model.Mensagens?.Count ?? 0;
+    var notificacoesAbertas = Model.Mensagens?.Count(m => m.Status == 0) ?? 0;
+    var notificacoesAndamento = Model.Mensagens?.Count(m => m.Status == 1) ?? 0;
+    var notificacoesResolvidas = Model.Mensagens?.Count(m => m.Status == 2) ?? 0;
+    
+    string contadorClass = "ok";
+    if (notificacoesAbertas > 5 || notificacoesAndamento > 3)
+    {
+        contadorClass = "urgente";
+    }
+    else if (notificacoesAbertas > 2 || notificacoesAndamento > 0)
+    {
+        contadorClass = "alerta";
+    }
 }
 
 <!DOCTYPE html>
@@ -37,7 +51,44 @@
                         <span class="info-label">ID:</span>
                         <span class="info-valor">@Model.ID</span>
                     </div>
+
+                    <!-- CONTADOR DE NOTIFICAÇÕES -->
+                    <div class="contador-notificacoes @contadorClass">
+                        <span class="contador-icon"></span>
+                        <div>
+                            <span class="contador-numero">@totalNotificacoes</span>
+                            <span class="contador-texto">notificaç@(totalNotificacoes == 1 ? "ão" : "ões")</span>
+                        </div>
+                    </div>
+
+                    @if (totalNotificacoes > 0)
+                    {
+                        <div class="status-breakdown">
+                            @if (notificacoesAbertas > 0)
+                            {
+                                <div class="status-item" style="background: rgba(255, 107, 107, 0.3);">
+                                    <span class="status-item-icon">🔴</span>
+                                    <span>@notificacoesAbertas Em Aberto</span>
+                                </div>
+                            }
+                            @if (notificacoesAndamento > 0)
+                            {
+                                <div class="status-item" style="background: rgba(255, 165, 2, 0.3);">
+                                    <span class="status-item-icon">🟡</span>
+                                    <span>@notificacoesAndamento Em Andamento</span>
+                                </div>
+                            }
+                            @if (notificacoesResolvidas > 0)
+                            {
+                                <div class="status-item" style="background: rgba(76, 175, 80, 0.3);">
+                                    <span class="status-item-icon">🟢</span>
+                                    <span>@notificacoesResolvidas Resolvidas</span>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
+                
                 <div class="status-container">
                     <span class="status-label">Status:</span>
                     @if (Model.Mensagens != null && Model.Mensagens.Any())
@@ -51,44 +102,70 @@
                 </div>
             </div>
 
-           <div class="notificacoes-lista">
-    @if (Model.Mensagens != null && Model.Mensagens.Any())
-    {
-        foreach (var mensagem in Model.Mensagens)
-        {
-            <div class="notificacao-item">
-                <button class="notificacao-header" onclick="toggleNotificacao(this)">
-                    <div class="notificacao-info">
-                        <span class="aluno-nome">
-                            👤 @(mensagem.Usuario?.NomeCompleto ?? "Usuário não identificado")
-                            @if (!string.IsNullOrEmpty(mensagem.Usuario?.RU))
-                            {
-                                <span style="font-weight: normal; font-size: 14px; color: #666;"> (RU: @mensagem.Usuario.RU)</span>
-                            }
-                        </span>
-                        <span class="notificacao-data">
-                            📅 @mensagem.DataCriacao.ToString("dd/MM/yyyy HH:mm")
-                        </span>
+            <div class="notificacoes-lista">
+                @if (Model.Mensagens != null && Model.Mensagens.Any())
+                {
+                    foreach (var mensagem in Model.Mensagens)
+                    {
+                        <div class="notificacao-item">
+                            <button class="notificacao-header" onclick="toggleNotificacao(this)">
+                                <div class="notificacao-info">
+                                    <span class="aluno-nome">
+                                        👤 @(mensagem.Usuario?.NomeCompleto ?? "Usuário não identificado")
+                                        @if (!string.IsNullOrEmpty(mensagem.Usuario?.RU))
+                                        {
+                                            <span style="font-weight: normal; font-size: 14px; color: #666;"> (RU: @mensagem.Usuario.RU)</span>
+                                        }
+                                    </span>
+                                    <span class="notificacao-data">
+                                        📅 @mensagem.DataCriacao.ToString("dd/MM/yyyy HH:mm")
+                                    </span>
+                                </div>
+                                
+                                <div class="header-status-container">
+                                    @if (mensagem.Status == 0)
+                                    {
+                                        <span class="status-badge-header status-0">
+                                            <span class="status-icon">🔴</span>
+                                            Em Aberto
+                                        </span>
+                                    }
+                                    else if (mensagem.Status == 1)
+                                    {
+                                        <span class="status-badge-header status-1">
+                                            <span class="status-icon">🟡</span>
+                                            Em Andamento
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="status-badge-header status-2">
+                                            <span class="status-icon">🟢</span>
+                                            Resolvido
+                                        </span>
+                                    }
+                                    <span class="arrow-icon">▼</span>
+                                </div>
+                            </button>
+                            <div class="notificacao-conteudo">
+                                <div class="mensagem-box">
+                                    <p>@mensagem.Texto</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="sem-notificacoes">
+                        <p>Nenhuma notificação registrada para este computador.</p>
                     </div>
-                    <span class="arrow-icon">▼</span>
-                </button>
-                <div class="notificacao-conteudo">
-                    <div class="mensagem-box">
-                        <p>@mensagem.Texto</p>
-                    </div>
-                </div>
+                }
             </div>
-        }
-    }
-    else
-    {
-        <div class="sem-notificacoes">
-            <p>Nenhuma notificação registrada para este computador.</p>
-        </div>
-    }
-</div>
-        <div class="botoes-container">
-            <a asp-controller="Principal" asp-action="Salas" id="voltar">Voltar</a>
+
+            <div class="botoes-container">
+                <a asp-controller="Principal" asp-action="Salas" id="voltar">Voltar</a>
+            </div>
         </div>
     </section>
 

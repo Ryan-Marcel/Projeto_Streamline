@@ -51,12 +51,12 @@
                 <canvas id="salaChart"></canvas>
             </div>
 
-            <!-- Card de Notificações Recentes -->
-            <div class="dashboard-graphic-card recent-notifications-card">
+            <!-- Card de Computadores Mais Defeituosos -->
+            <div class="dashboard-graphic-card defective-computers-card">
                 <div class="card-header">
-                    <h3>Últimas Notificações</h3>
+                    <h3>Computadores Mais Defeituosos</h3>
                 </div>
-                <div class="recent-notifications-list" id="recentNotificationsList">
+                <div class="defective-computers-list" id="defectiveComputersList">
                     <div class="loading">Carregando...</div>
                 </div>
             </div>
@@ -67,9 +67,6 @@
 
 
     <script>
-  // Adicione este script ao final da seção <script> do arquivo Views/Principal/Dashboard.cshtml
-// Substitua todo o conteúdo dentro da tag <script> existente
-
 // Variável para controlar o intervalo
 let refreshInterval;
 
@@ -89,7 +86,6 @@ async function loadStatusChart() {
 
         const ctx = document.getElementById('statusChart').getContext('2d');
         
-        // Se já existe um gráfico, destrua antes de criar um novo
         if (statusChartInstance) {
             statusChartInstance.destroy();
         }
@@ -148,7 +144,6 @@ async function loadMonthlyChart() {
 
         const ctx = document.getElementById('monthlyChart').getContext('2d');
         
-        // Se já existe um gráfico, destrua antes de criar um novo
         if (monthlyChartInstance) {
             monthlyChartInstance.destroy();
         }
@@ -214,7 +209,6 @@ async function loadSalaChart() {
 
         const ctx = document.getElementById('salaChart').getContext('2d');
         
-        // Se já existe um gráfico, destrua antes de criar um novo
         if (salaChartInstance) {
             salaChartInstance.destroy();
         }
@@ -270,48 +264,49 @@ async function loadSalaChart() {
     }
 }
 
-async function loadRecentNotifications() {
+async function loadDefectiveComputers() {
     try {
-        const response = await fetch('@Url.Action("GetRecentNotifications", "Dashboard")');
-        const notifications = await response.json();
+        const response = await fetch('@Url.Action("GetTopDefectiveComputers", "Dashboard")');
+        const computers = await response.json();
 
-        const listElement = document.getElementById('recentNotificationsList');
+        const listElement = document.getElementById('defectiveComputersList');
         
-        if (notifications.length === 0) {
-            listElement.innerHTML = '<div class="no-notifications">Nenhuma notificação encontrada</div>';
+        if (computers.length === 0) {
+            listElement.innerHTML = '<div class="no-data">Nenhum computador com solicitações encontrado</div>';
             return;
         }
 
-        const statusColors = {
-            0: '#ff6384', 
-            1: '#ffce56', 
-            2: '#4caf50' 
-        };
-
-        const statusText = {
-            0: 'Em Aberto',
-            1: 'Em Andamento',
-            2: 'Resolvido'
-        };
-
-        listElement.innerHTML = notifications.map(notif => `
-            <div class="notification-item" onclick="window.location.href='@Url.Action("DetalhesComputador", "Principal")?id=${notif.computadorId}'">
-                <div class="notification-header">
-                    <span class="notification-computer">💻 ${notif.computadorNome}</span>
-                    <span class="notification-status" style="background-color: ${statusColors[notif.status]}20; color: ${statusColors[notif.status]}">
-                        ${statusText[notif.status]}
-                    </span>
-                </div>
-                <div class="notification-body">
-                    <p class="notification-text">${notif.texto}</p>
-                    <span class="notification-date">📅 ${notif.dataCriacao}</span>
+        listElement.innerHTML = computers.map((comp, index) => `
+            <div class="defective-computer-item" onclick="window.location.href='@Url.Action("DetalhesComputador", "Principal")?id=${comp.computadorId}'">
+                <div class="computer-rank">#${index + 1}</div>
+                <div class="computer-info">
+                    <div class="computer-name">
+                        <span class="icon">💻</span>
+                        <strong>${comp.computadorNome}</strong>
+                    </div>
+                    <div class="computer-stats">
+                        <span class="stat total">
+                            <strong>${comp.totalSolicitacoes}</strong> solicitações
+                        </span>
+                    </div>
+                    <div class="computer-status-breakdown">
+                        <span class="mini-stat open" title="Em Aberto">
+                            ${comp.emAberto}
+                        </span>
+                        <span class="mini-stat progress" title="Em Andamento">
+                            ${comp.emAndamento}
+                        </span>
+                        <span class="mini-stat resolved" title="Resolvidos">
+                            ${comp.resolvidos}
+                        </span>
+                    </div>
                 </div>
             </div>
         `).join('');
     } catch (error) {
-        console.error('Erro ao carregar notificações recentes:', error);
-        document.getElementById('recentNotificationsList').innerHTML = 
-            '<div class="error">Erro ao carregar notificações</div>';
+        console.error('Erro ao carregar computadores defeituosos:', error);
+        document.getElementById('defectiveComputersList').innerHTML = 
+            '<div class="error">Erro ao carregar dados</div>';
     }
 }
 
@@ -322,7 +317,6 @@ function updateLastRefreshIndicator() {
     
     let indicator = document.getElementById('lastRefreshIndicator');
     if (!indicator) {
-        // Criar o indicador se não existir
         indicator = document.createElement('div');
         indicator.id = 'lastRefreshIndicator';
         indicator.style.cssText = `
@@ -343,7 +337,6 @@ function updateLastRefreshIndicator() {
     
     indicator.innerHTML = `Última atualização: ${timeString}`;
     
-    // Adicionar efeito de fade
     indicator.style.opacity = '1';
     setTimeout(() => {
         indicator.style.opacity = '0.7';
@@ -356,16 +349,14 @@ function refreshAllData() {
     loadStatusChart();
     loadMonthlyChart();
     loadSalaChart();
-    loadRecentNotifications();
+    loadDefectiveComputers();
     updateLastRefreshIndicator();
 }
 
 // Carregar dados iniciais e configurar auto-refresh
 document.addEventListener('DOMContentLoaded', function() {
-    // Carrega os dados pela primeira vez
     refreshAllData();
     
-    // Configura atualização automática a cada 1 minuto (60000 ms)
     refreshInterval = setInterval(refreshAllData, 60000);
     
     console.log('✅ Dashboard configurado com atualização automática a cada 1 minuto');

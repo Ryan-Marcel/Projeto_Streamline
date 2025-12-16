@@ -45,8 +45,22 @@
                                 <ul class="computadores-list">
                                     @foreach (var computador in sala.Computadores)
                                     {
+                                        var totalNotificacoes = computador.Mensagens?.Count ?? 0;
+                                        var notificacoesAbertas = computador.Mensagens?.Count(m => m.Status == 0) ?? 0;
+                                        var notificacoesAndamento = computador.Mensagens?.Count(m => m.Status == 1) ?? 0;
+                                        
+                                        string badgeClass = "ok";
+                                        if (notificacoesAbertas > 5 || notificacoesAndamento > 3)
+                                        {
+                                            badgeClass = "urgente";
+                                        }
+                                        else if (notificacoesAbertas > 2 || notificacoesAndamento > 0)
+                                        {
+                                            badgeClass = "alerta";
+                                        }
+
                                         <li class="computador-item">
-                                            <a asp-controller="Principal" asp-action="DetalhesComputador" asp-route-id="@computador.ID" class="computador-link">
+                                            <a asp-controller="Principal" asp-action="DetalhesComputador" asp-route-id="@computador.ID" class="computador-link" style="display: flex; width: 100%; align-items: center; justify-content: space-between;">
                                                 <div class="computador-info">
                                                     <span class="pc-icon">💻</span>
                                                     <div class="pc-details">
@@ -54,10 +68,22 @@
                                                         <small>ID: @computador.ID | Cadastrado em: @computador.DataPostagem.ToString("dd/MM/yyyy HH:mm")</small>
                                                     </div>
                                                 </div>
-                                                @if (computador.Mensagens != null && computador.Mensagens.Any())
-                                                {
-                                                    <span class="badge-mensagens">@computador.Mensagens.Count mensagem(ns)</span>
-                                                }
+                                                <div class="computador-badges">
+                                                    @if (totalNotificacoes > 0)
+                                                    {
+                                                        <span class="badge-notificacoes @badgeClass">
+                                                            <span class="badge-icon"></span>
+                                                            <span>@totalNotificacoes notificaç@(totalNotificacoes == 1 ? "ão" : "ões")</span>
+                                                        </span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge-notificacoes ok">
+                                                            <span class="badge-icon">✓</span>
+                                                            <span>Sem notificações</span>
+                                                        </span>
+                                                    }
+                                                </div>
                                             </a>
                                         </li>
                                     }

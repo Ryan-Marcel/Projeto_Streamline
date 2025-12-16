@@ -131,6 +131,14 @@ public class Principal : Controller
         foreach (var sala in salas)
         {
             sala.Computadores = computadorRepository.ListarPorSala(sala.ID).ToList();
+
+            // Adicionar contagem de mensagens para cada computador
+            foreach (var computador in sala.Computadores)
+            {
+                computador.Mensagens = _context.Mensagens
+                    .Where(m => m.ComputadorID == computador.ID)
+                    .ToList();
+            }
         }
 
         return View(salas);

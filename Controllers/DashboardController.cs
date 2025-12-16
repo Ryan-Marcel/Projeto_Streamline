@@ -120,28 +120,28 @@ namespace Projeto_Dotnet8.Controllers
             }
         }
 
-        // API para últimas 3 notificações
-        [HttpGet]
-        public IActionResult GetRecentNotifications()
+         [HttpGet]
+        public IActionResult GetTopDefectiveComputers()
         {
             try
             {
-                var recentNotifications = _context.Mensagens
+                var topComputers = _context.Mensagens
                     .Include(m => m.Computador)
-                    .OrderByDescending(m => m.DataCriacao)
-                    .Take(3)
-                    .Select(m => new
+                    .GroupBy(m => new { m.ComputadorID, m.Computador.Nome })
+                    .Select(g => new
                     {
-                        id = m.ID,
-                        computadorId = m.ComputadorID,
-                        computadorNome = m.Computador.Nome,
-                        texto = m.Texto.Length > 50 ? m.Texto.Substring(0, 50) + "..." : m.Texto,
-                        dataCriacao = m.DataCriacao.ToString("dd/MM/yyyy HH:mm"),
-                        status = m.Status
+                        computadorId = g.Key.ComputadorID,
+                        computadorNome = g.Key.Nome,
+                        totalSolicitacoes = g.Count(),
+                        emAberto = g.Count(m => m.Status == 0),
+                        emAndamento = g.Count(m => m.Status == 1),
+                        resolvidos = g.Count(m => m.Status == 2)
                     })
+                    .OrderByDescending(c => c.totalSolicitacoes)
+                    .Take(5)
                     .ToList();
 
-                return Json(recentNotifications);
+                return Json(topComputers);
             }
             catch (Exception ex)
             {
@@ -170,3 +170,4 @@ namespace Projeto_Dotnet8.Controllers
         }
     }
 }
+

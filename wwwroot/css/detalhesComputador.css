@@ -105,6 +105,198 @@ body {
     align-items: flex-start;
 }
 
+.contador-notificacoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    margin-top: 10px;
+}
+
+.contador-notificacoes.urgente {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    animation: pulseDetail 2s infinite;
+}
+
+.contador-notificacoes.alerta {
+    background: linear-gradient(135deg, #ffa502 0%, #ff6348 100%);
+}
+
+.contador-notificacoes.ok {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+}
+
+.contador-icon {
+    font-size: 22px;
+}
+
+.contador-numero {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.contador-texto {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+@keyframes pulseDetail {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 18px rgba(255, 107, 107, 0.7);
+    }
+}
+
+/* Breakdown de status */
+.status-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.status-item-icon {
+    font-size: 16px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contador-notificacoes {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .contador-numero {
+        font-size: 20px;
+    }
+
+    .status-breakdown {
+        flex-direction: column;
+    }
+}
+
+/* Status Badge no Header das Notificações */
+.header-status-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-badge-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.status-badge-header.status-0 {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.status-badge-header.status-1 {
+    background: #fff3e0;
+    color: #ef6c00;
+    border: 1px solid #ffe0b2;
+}
+
+.status-badge-header.status-2 {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.status-icon {
+    font-size: 12px;
+}
+
+.notificacao-header:hover .status-badge-header.status-0 {
+    background: #ffcdd2;
+    box-shadow: 0 2px 6px rgba(198, 40, 40, 0.2);
+}
+
+.notificacao-header:hover .status-badge-header.status-1 {
+    background: #ffe0b2;
+    box-shadow: 0 2px 6px rgba(239, 108, 0, 0.2);
+}
+
+.notificacao-header:hover .status-badge-header.status-2 {
+    background: #c8e6c9;
+    box-shadow: 0 2px 6px rgba(46, 125, 50, 0.2);
+}
+
+/* Ajuste no layout do header da notificação */
+.notificacao-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: #ececef;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.notificacao-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    text-align: left;
+    flex: 1;
+}
+
+/* Responsividade atualizada */
+@media (max-width: 768px) {
+    .notificacao-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header-status-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .status-badge-header {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+}
+
 .header-info h2 {
     font-size: 28px;
     margin-bottom: 20px;
