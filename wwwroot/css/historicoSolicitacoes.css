@@ -156,11 +156,13 @@ body {
 
 .status-badge {
     padding: 8px 16px;
+    margin-right: 10px;
     border-radius: 20px;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
     min-width: 120px;
+    border: 1px solid #cfcfcfde;
 }
 
 .status-0 {

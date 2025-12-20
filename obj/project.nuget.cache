@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8nUGwm3kwmk=",
+  "dgSpecHash": "rKtsZeuE3L0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Downloads\\APRESENTAÇÃO TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
+  "projectFilePath": "C:\\VSCODE\\TCC\\Projeto_Streamline\\Projeto_Dotnet8.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
