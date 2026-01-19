@@ -124,7 +124,7 @@ Este projeto tem o objetivo de facilitar a comunicação entre alunos e técnico
 ## 📬 Contato
 
 Para dúvidas ou sugestões:
-- 📧 ryan.m.santos@ba.estudante.senai.br
+- 📧 ryanmarcel604@gmail.com
 - 📧 leonardo.a.oliveira6@ba.estudante.senai.br
 - 📧 gabriel.g.silva6@ba.estudante.senai.br
 - 🌐 https://github.com/Ryan-Marcel
