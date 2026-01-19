@@ -42,8 +42,8 @@ Este projeto tem o objetivo de facilitar a comunicação entre alunos e técnico
 
 2. Acesse o git bash no diretório escolhido
 
-3. Clone o repositório com o link:
-https://github.com/Ryan-Marcel/Projeto_Streamline
+3. Clone o repositório com o comando:
+" git clone https://github.com/Ryan-Marcel/Projeto_Streamline "
 
 4. Abra o diretório no VScode
 
